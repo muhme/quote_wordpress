@@ -4,7 +4,7 @@
 # MIT License, Copyright (c) 2023 Heiko Lübbe
 # https://github.com/muhme/quote_wordpress
 
-# use latest WordPress
+# use latest WordPress - actual 6.4.1
 FROM wordpress
 
 # use MSMTP as sendmail compatible SMTP client and deliver emails to maildev:1025

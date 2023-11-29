@@ -56,3 +56,13 @@ services:
         ports:
             - "4082:1080"
             - "1025:1025"
+    cypress:
+        container_name: quote_wp_cypress
+        image: cypress/included # actual 13 + Chrome 116 + Edge 116 + Firefox 117
+        restart: unless-stopped
+        entrypoint: ["sleep", "31536000"] # don't use cypress run, instead sleep one year
+        ports:
+        - 4083:80
+        volumes:
+        - .:/quote_wordpress
+        working_dir: /quote_wordpress/test

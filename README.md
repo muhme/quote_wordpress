@@ -15,7 +15,7 @@ cd quote_wordpress
 docker compose up -d
 ```
 
-Four Docker containers are running:
+Five Docker containers are running:
 
 ```
 host$ docker ps
@@ -24,6 +24,7 @@ quote_wordpress-wordpress   0.0.0.0:4080->80/tcp                             quo
 phpmyadmin/phpmyadmin       0.0.0.0:4081->80/tcp                             quote_wp_phpmyadmin
 mariadb                     3306/tcp                                         quote_wp_mariadb
 maildev/maildev             0.0.0.0:1025->1025/tcp, 0.0.0.0:4082->1080/tcp   quote_wp_maildev
+cypress/included            0.0.0.0:4083->80/tcp                             quote_wp_cypress
 ```
 
 Docker containers are:
@@ -40,6 +41,7 @@ Docker containers are:
   * quote_wp_maildev - [MailDev](https://github.com/maildev/maildev) for collecting and showing mails
     * listening for mails on maildev:1025
     * http://localhost:4082 – MailDev web interface
+  * quote_wp_cypress - [Cypress](https://www.cypress.io/) for headless end2end testing
 
 </details>
 
