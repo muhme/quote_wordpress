@@ -1,6 +1,8 @@
 # WordPress Plugin zitat-service.de
 
-Under Development: WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).
+WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).
+
+:bulb: **Tip:** Help for the WordPress plugin installation and administration is available at https://github.com/muhme/quote_wordpress/wiki.
 
 ## Test & Development Environment
 <details>
@@ -18,15 +20,15 @@ Four Docker containers are running:
 ```
 host$ docker ps
 IMAGE                       PORTS                                            NAMES
-quote_wordpress-wordpress   0.0.0.0:3080->80/tcp                             quote_wp_wordpress
-phpmyadmin/phpmyadmin       0.0.0.0:3081->80/tcp                             quote_wp_phpmyadmin
+quote_wordpress-wordpress   0.0.0.0:4080->80/tcp                             quote_wp_wordpress
+phpmyadmin/phpmyadmin       0.0.0.0:4081->80/tcp                             quote_wp_phpmyadmin
 mariadb                     3306/tcp                                         quote_wp_mariadb
-maildev/maildev             0.0.0.0:1025->1025/tcp, 0.0.0.0:3082->1080/tcp   quote_wp_maildev
+maildev/maildev             0.0.0.0:1025->1025/tcp, 0.0.0.0:4082->1080/tcp   quote_wp_maildev
 ```
 
 Docker containers are:
   * quote_wp_wordpress – WordPress CMS
-    * http://localhost:3080 – WordPress instance, ready for installation
+    * http://localhost:4080 – WordPress instance, ready for installation
     * WordPress files are available mapped to docker host in directory 'wp'
     * [msmtp](https://marlam.de/msmtp/) is used as a simple SMPT client
     * A small WordPress plugin sets the sender email address (from field) fixed to 'webmaster@docker.local' and fixes the problem of undeliverable address 'wordpress@localhost' inside Docker container. Installing it as [must-use WordPress plugin](https://wordpress.org/support/article/must-use-plugins) to have it already actived.
@@ -34,10 +36,10 @@ Docker containers are:
     * database available as mariadb:3306
     * user 'root', password 'root' and database 'wordpress'
   * quote_wp_phpmyadmin – phpmyadmin for database administration
-    * http://localhost:3081 – phpMyAdmin to work with the database
+    * http://localhost:4081 – phpMyAdmin to work with the database
   * quote_wp_maildev - [MailDev](https://github.com/maildev/maildev) for collecting and showing mails
     * listening for mails on maildev:1025
-    * http://localhost:3082 – MailDev web interface
+    * http://localhost:4082 – MailDev web interface
 
 </details>
 

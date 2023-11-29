@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# Copyright (c) 2023 Heiko Lübbe
+# This software is licensed under the MIT License.
+# For the full license text, see the LICENSE file in the project root or visit https://opensource.org/licenses/MIT
+#
+# pack.sh - create the installable plugin zip
+
+# -e exist if a command fails
+# -u attempt to use an unset variable.
+# -o pipefail the pipeline's return status is the value of the last (rightmost) command to exit with a non-zero status
+set -euo pipefail
+
+TMP=/tmp/$(basename $0).$$
+trap 'rm -rf $TMP' 0
+
+#
+# main
+#
+VERSION=`egrep "ZITAT_SERVICE_VERSIO.*[0-9].[0-9].[0-9]" src/zitat_service_widget.php | awk -F "'" '{print $4}'`
+ZIP="dist/zitat_service_widget_$VERSION.zip"
+
+# create zip
+(cd src && zip -r "../${ZIP}" . --quiet)
+
+# work is done
+echo "packed as $ZIP"
