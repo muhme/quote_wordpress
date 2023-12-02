@@ -25,13 +25,22 @@ describe("Install WordPress and plugin zitat-service", () => {
     // click 'Install WordPress'
     cy.get("input#submit", { timeout: 30000 }).click();
   });
-  it("Admin Login", function () {
+  it("Login, install and activate plugin", function () {
     cy.visit("/wp-login.php");
     cy.get("#user_login").type(Cypress.env("user"));
     cy.get("#user_pass").type(Cypress.env("password"));
+    cy.get("input#rememberme").click(); // tick the 'Remember Me' checkbox
     cy.get("#wp-submit").click();
     cy.url().should(url => {
         expect(url.endsWith('/wp-admin/')).to.be.true;
-    });    
+    });
+    // 'Add Plugins' page to install and activate the plugin
+    cy.visit("wp-admin/plugin-install.php?tab=upload");
+    cy.get("#pluginzip").selectFile("../dist/zitat_service_widget_1.0.0.zip");
+    cy.get("input#install-plugin-submit").click();
+    cy.contains("Plugin installed successfully.", { timeout: 10000 }).should(
+      "be.visible"
+    );
+    cy.contains("Activate Plugin").click();
   });
 });

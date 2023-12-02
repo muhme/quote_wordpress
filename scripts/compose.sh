@@ -14,5 +14,8 @@ echo 'deleting folder wp'
 rm -rf wp
 
 echo 'Creating docker containers new'
-docker compose build --no-cache
 docker compose up -d
+
+# or doing with rebuild and w/o cache
+# docker compose build --no-cache
+# docker compose up -d

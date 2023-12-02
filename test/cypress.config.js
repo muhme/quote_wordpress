@@ -8,7 +8,8 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {},
     baseUrl: `http://${host}:${port}/`,
-    supportFile: false
+    supportFile: false,
+    chromeWebSecurity: false // enable cookies
   },
   env: {
     title: "WordPress Plugin Zitat Service Test & Development",

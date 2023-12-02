@@ -43,8 +43,15 @@ Docker containers are:
     * http://localhost:4082 – MailDev web interface
   * quote_wp_cypress - [Cypress](https://www.cypress.io/) for headless end2end testing
 
-</details>
+### Testing
 
+Automated Cypress tests are in subfolder [test](./test/) and detailed README there.
+
+### Scripts
+
+There are scripts prepared for a more pleasant and also faster development, see folder [scripts](./scripts/) and commented list of scripts there.
+
+</details>
 
 ## License
 
