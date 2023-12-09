@@ -24,8 +24,6 @@ services:
             WORDPRESS_CONFIG_EXTRA: define('FORCE_SSL_ADMIN', false);
         ports:
             - "4080:80"
-        #volumes:
-        #    - ./wp:/var/www/html
         depends_on:
             - mariadb
             - maildev

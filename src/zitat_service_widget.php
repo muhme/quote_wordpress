@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Zitat Service
-Description: First version of the random quote from the user community zitat-service.de with short code [zitat_service] for frontend languages Deutsch 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 and Українська 🇺🇦.
+Description: Random quote from the user community zitat-service.de for quotations in the languages: Deutsch 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 and Українська 🇺🇦.
 Plugin URI: https://github.com/muhme/quote_wordpress
 Author: Heiko Lübbe
-Version: 1.0.0
+Version: 1.1.0
 Author URI: https://www.heikol.de
 License: MIT License, Copyright (c) 2023 Heiko Lübbe
 License URI: https://github.com/muhme/quote_wordpress/LICENSE
@@ -12,7 +12,7 @@ License URI: https://github.com/muhme/quote_wordpress/LICENSE
  * https://github.com/muhme/quote_wordpress
  */
 
-define('ZITAT_SERVICE_VERSION', '1.0.0');
+define('ZITAT_SERVICE_VERSION', '1.1.0');
 // define('ZITAT_SERVICE_API_URL', 'http://host.docker.internal:3000/v1');
 define('ZITAT_SERVICE_API_URL', 'https://api.zitat-service.de/v1');
 // list of valid languages as from https://api.zitat-service.de/v1/languages
@@ -24,10 +24,13 @@ class ZitatServiceWidget extends WP_Widget
     /**
      * get actual language w/o locale and fall back to 'en' if not supported
      */
-    public function getActualLanguage()
+    public function getActualLanguage($language)
     {
+        // use WordPress' user locale if language is not set
+        $language = $language ?? get_user_locale();
+
         // from e.g. 'de-DE' extract the first two characters to get the language w/o country
-        $langShort = substr(get_user_locale(), 0, 2);
+        $langShort = substr($language, 0, 2);
 
         // extracted language is valid or default to 'en'
         return in_array($langShort, LANGUAGES) ? $langShort : 'en';
@@ -56,7 +59,7 @@ class ZitatServiceWidget extends WP_Widget
             echo $args['before_title'] . $title . $args['after_title'];
         }
 
-        $url = ZITAT_SERVICE_API_URL . '/quote_html?contentOnly=true&V_' . ZITAT_SERVICE_VERSION . '_W' . '&language=' . $this->getActualLanguage();
+        $url = ZITAT_SERVICE_API_URL . '/quote_html?contentOnly=true&V_' . ZITAT_SERVICE_VERSION . '_W' . '&language=' . $this->getActualLanguage($instance['language'] ?? null);
 
         $response = wp_remote_get($url);
 
@@ -107,10 +110,10 @@ function zitat_service_load_widget()
 add_action('widgets_init', 'zitat_service_load_widget');
 
 // add shortcode
-function zitat_service_shortcode()
+function zitat_service_shortcode($attributes)
 {
     ob_start();
-    the_widget('ZitatServiceWidget');
+    the_widget('ZitatServiceWidget', $attributes);
     return ob_get_clean();
 }
 add_shortcode('zitat_service', 'zitat_service_shortcode');

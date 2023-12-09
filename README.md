@@ -45,7 +45,7 @@ Docker containers are:
 
 ### Testing
 
-Automated Cypress tests are in subfolder [test](./test/) and detailed README there.
+Automated Playwright tests are in subfolder [test](./test/) and detailed README there.
 
 ### Scripts
 
