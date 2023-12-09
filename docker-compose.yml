@@ -21,10 +21,11 @@ services:
             WORDPRESS_DB_USER: wordpress
             WORDPRESS_DB_PASSWORD: wordpress
             WORDPRESS_DEBUG: 1
+            WORDPRESS_CONFIG_EXTRA: define('FORCE_SSL_ADMIN', false);
         ports:
             - "4080:80"
-        # volumes:
-        #  - ./wp:/var/www/html
+        #volumes:
+        #    - ./wp:/var/www/html
         depends_on:
             - mariadb
             - maildev
@@ -56,13 +57,7 @@ services:
         ports:
             - "4082:1080"
             - "1025:1025"
-    cypress:
-        container_name: quote_wp_cypress
-        image: cypress/included # actual 13 + Chrome 116 + Edge 116 + Firefox 117
+    playwright:
+        container_name: quote_wp_playwright
+        image: mcr.microsoft.com/playwright:v1.40.1  # Docker image version that matches local Playwright version
         restart: unless-stopped
-        entrypoint: ["sleep", "31536000"] # don't use cypress run, instead sleep one year
-        ports:
-        - 4083:80
-        volumes:
-        - .:/quote_wordpress
-        working_dir: /quote_wordpress/test
