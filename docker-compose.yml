@@ -1,11 +1,7 @@
-# docker-compose.yml - Wordpress in docker with email
-# hlu, Nov 26th 2023 - Nov 27th 2023
-#
 # MIT License, Copyright (c) 2023 Heiko Lübbe
-# https://github.com/muhme/quote_wordpress
-
-# $ docker compose up -d  
-# $ docker exec -it quote_wp_wordpress bash
+# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+#
+# docker-compose.yml - define and orchestrate the used docker containers
 
 version: '3.5'
 services:
