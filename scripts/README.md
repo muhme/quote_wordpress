@@ -6,15 +6,14 @@ The scripts are used on the Mac command line, but should also work on Linux and 
 
 | Script | Description | Additional Info |
 | --- | --- | --- |
-| [scripts/compose.sh](scripts/compose.sh) | Delete the five Docker containers and build them new |  |
 | [scripts/install.sh](scripts/install.sh) | Install WordPress, install and activate the plugin | - using WP-CLI<br />- including five languages |
-| [scripts/clean.sh](scripts/clean.sh) | Removes all quote_wp_* Docker containers |  |
+| [scripts/test.sh](scripts/test.sh) | Run E2E tests in Playwright container | see [../tests](../tests) |
 | [scripts/pack.sh](scripts/pack.sh) | Create the plugin ZIP file |  |
+| [scripts/compose.sh](scripts/compose.sh) | Delete the five Docker containers and build them new |  |
+| [scripts/clean.sh](scripts/clean.sh) | Removes all quote_wp_* Docker containers |  |
+| [scripts/deleteAllPosts.sh](scripts/deleteAllPosts.sh) | Testing creates posts, this script simple delete all posts | :warning: ALL posts are deleted |
 
-And now you are ready for ... double speed :smiley: with the creation of five Docker containers, the installation of WordPress and the plugin with only one command line:
+And now you are ready for ... triple speed :smiley: with the creation of five Docker containers, the installation of WordPress and the plugin with only one command line:
 ```
-$ scripts/compose.sh && sleep 5 && scripts/install.sh
+host$ scripts/compose.sh && sleep 5 && scripts/install.sh && scripts/test.sh --project=chromium
 ```
-
-> [!NOTICE]
-> At the moment there are no other tests available than the installation of WordPress and the plugin, to be continued ...

@@ -1,61 +1,53 @@
 # Tests
 
-This `tests` subfolder contains an automated installation and configuration for WordPress and the `zitat-service` plugin. This is the base for the tests to be implemented to ensure the integrity and reliability of the plugin functionality. 
-
-For an overview of the plugin please refer to the main [../README.md](../README.md) file located in the parent directory.
+To ensure the integrity and reliability of the WordPress plugin `zitat-service`, the `tests` subfolder contains a test suite. An overview of the plugin can be found in the [../README.md](../README.md) file in the parent directory.
 
 ## Test Environment
 
-[Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright test utils for WordPress @wordpress/e2e-test-utils-playwright.
+[Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright test utils for WordPress [@wordpress/e2e-test-utils-playwright](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-e2e-test-utils-playwright/).
 
-host$ npm install playwright --save-dev # TODO im docker container testen
+:bulb: **Tip:** Before testing you have to install WordPress and the plugin with `scripts/install.sh`.
+
+### Dockerized
+
+To simplify testing Docker container `quote_wp_playwright` is running and `scripts/test.sh` is prepared. You can run tests for one browser with e.g.:
+
+```bash
+host$ scripts/test.sh --project=chromium
+
+Running 10 tests using 6 workers
+
+  ✓   1 [login setup] › login.setup.ts:7:6 › do login (996ms)
+  ✓   2 [chromium] › shortcode.spec.ts:17:7 › Shortcode › english language attribute (6.9s)
+  ✓   3 [chromium] › shortcode.spec.ts:12:7 › Shortcode › german language attribute (9.8s)
+  ✓   4 [chromium] › shortcode.spec.ts:22:7 › Shortcode › spanish language attribute (9.3s)
+  ✓   5 [chromium] › shortcode.spec.ts:37:7 › Shortcode › language attribute not set (4.5s)
+  ✓   6 [chromium] › shortcode.spec.ts:32:7 › Shortcode › ukrainian language attribute (10.7s)
+  ✓   7 [chromium] › shortcode.spec.ts:27:7 › Shortcode › japanese language attribute (11.1s)
+  ✓   8 [chromium] › shortcode.spec.ts:42:7 › Shortcode › language attribute not supported (7.2s)
+  ✓   9 [chromium] › shortcode.spec.ts:47:7 › Shortcode › cheesecake attribute (6.2s)
+  ✓  10 [chromium] › shortcode.spec.ts:52:7 › Shortcode › several nonsense attributes (4.7s)
+
+  10 passed (17.2s)
+```
+
+You can open the HTML report with your favored browser with file `playwright-report/index.html`.
+
+:bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwrigth container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine if you make the following `/etc/hosts` entry:
+```bash
+127.0.0.1	host.docker.internal
+```
+
+### Local Host Installation
+
+It is possible to run the E2E tests on your host machine if you install Playwright locally:
+
+```bash
+host$ npm install playwright --save-dev
 host$ npm install @wordpress/e2e-test-utils-playwright --save-dev
+host$ npx playwright install
+host$ npx playwright install-deps
 host$ npx playwright test 
+```
 
 Different options can used like `--ui` for interactive UI mode, see [Playwright command line otions](https://playwright.dev/docs/test-cli)
-
-
-
-
-
-
-
-
-
-
-
-It can be used either headless with Docker container `quote_wp_playwright` or from local host installation with GUI. Some scripts are used for a more pleasant working, see folder [../scripts](../scripts/) and commented list of scripts there.
-
-:warning: You have to remember for each new created docker container you can run installation only once.
-
-To install with Cypress headless mode:
-```
-host$ scripts/install.sh
-
-  (Run Starting)
-
-  ┌──────────────────────────────────────────────────────────────────────────────────────┐
-  │ Cypress:        13.3.0                                                               │
-  │ Browser:        Electron 114 (headless)                                              │
-  │ Node Version:   v20.6.1 (/usr/local/bin/node)                                        │
-  │ Specs:          1 found (install.cy.js)                                              │
-  │ Searched:       cypress/e2e/install.cy.j                                             │
-  └──────────────────────────────────────────────────────────────────────────────────────┘
-                                                                                                    
-  Running:  install.cy.js                                                         (1 of 1)
-
-  Install WordPress and plugin zitat-service
-    ✓ Install WordPress (6896ms)
-    ✓ Login, install and activate plugin (5378ms)
-
-  (Run Finished)
-```
-
-#### Interactive on Local Host
-
-To install with local installed [Cypress](https://www.cypress.io/) in GUI mode:
-```
-host$ scripts/cypress.sh
-```
-
-In Cypress, you use E2E Testing, launch your favorite browser and with the `install.cy.js` script you have automatic WordPress and plugin installation. This can run once after the Docker containers are created. Enjoy watching :smile:

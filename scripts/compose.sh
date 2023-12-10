@@ -1,10 +1,9 @@
 #!/bin/bash
 #
-# Copyright (c) 2023 Heiko Lübbe
-# This software is licensed under the MIT License.
-# For the full license text, see the LICENSE file in the project root or visit https://opensource.org/licenses/MIT
+# MIT License, Copyright (c) 2023 Heiko Lübbe
+# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 #
-# compose.sh - delete the four docker containers and build them new
+# compose.sh - delete the five docker containers and build them new
 
 NAME=quote_wp_
 echo "Removing all docker containers ${NAME}*"

@@ -1,0 +1,19 @@
+{
+  "name": "quote_wordpress",
+  "version": "1.1.0",
+  "description": "WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.3",
+    "@wordpress/e2e-test-utils-playwright": "^0.15.0",
+    "playwright": "^1.40.1"
+  }
+}

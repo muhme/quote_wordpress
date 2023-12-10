@@ -1,8 +1,7 @@
 #!/bin/bash
 #
-# Copyright (c) 2023 Heiko Lübbe
-# This software is licensed under the MIT License.
-# For the full license text, see the LICENSE file in the project root or visit https://opensource.org/licenses/MIT
+# MIT License, Copyright (c) 2023 Heiko Lübbe
+# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 #
 # pack.sh - create the installable plugin zip
 
@@ -17,7 +16,7 @@ trap 'rm -rf $TMP' 0
 #
 # main
 #
-VERSION=`egrep "ZITAT_SERVICE_VERSIO.*[0-9].[0-9].[0-9]" src/zitat_service_widget.php | awk -F "'" '{print $4}'`
+VERSION=`egrep "ZITAT_SERVICE_VERSION.*[0-9].[0-9].[0-9]" src/zitat_service_widget.php | awk -F "'" '{print $4}'`
 ZIP="dist/zitat_service_widget_$VERSION.zip"
 
 # create zip

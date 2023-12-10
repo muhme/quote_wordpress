@@ -59,3 +59,7 @@ services:
         container_name: quote_wp_playwright
         image: mcr.microsoft.com/playwright:v1.40.1  # Docker image version that matches local Playwright version
         restart: unless-stopped
+        entrypoint: ["sleep", "31536000"] # don't use Playwright run, instead sleep one year
+        volumes:
+            - .:/quote_wordpress # to see HTML reports as file
+        working_dir: /quote_wordpress

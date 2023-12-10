@@ -1,8 +1,8 @@
-# wordpress.Dockerfile
-# hlu, Nov 11th 2022 - Nov 29th 2022
 #
 # MIT License, Copyright (c) 2023 Heiko Lübbe
 # https://github.com/muhme/quote_wordpress
+# 
+# wordpress.Dockerfile - create docker container quote_wp_wordpress
 
 # use latest WordPress - actual 6.4.1
 FROM wordpress
