@@ -4,6 +4,11 @@ These scripts support the development and testing of WordPress plugin `zitat-ser
 
 The scripts are used on the Mac command line, but should also work on Linux and the Windows subsystem for Linux.
 
+:smiley:
+:smile:
+:grinning:
+:warning:
+
 | Script | Description | Additional Info |
 | --- | --- | --- |
 | [scripts/install.sh](scripts/install.sh) | Install WordPress, install and activate the plugin | - using WP-CLI<br />- including five languages |
