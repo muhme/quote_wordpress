@@ -15,6 +15,10 @@ The scripts are used on the Mac command line, but should also work on Linux and 
 
 And now you are ready for ... triple speed
 :smiley:
+:smile:
+:grinning:
+:warning:
+
 with the creation of the five Docker containers, the installation of WordPress and the plugin and with running the E2E tests, all with only one command line:
 ```
 host$ scripts/compose.sh && sleep 5 && scripts/install.sh && scripts/test.sh --project=chromium
