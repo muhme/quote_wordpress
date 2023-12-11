@@ -1,0 +1,40 @@
+# Copyright (C) 2023 Heiko Lübbe
+# This file is distributed under the MIT License, Copyright (c) 2023 Heiko Lübbe.
+msgid ""
+msgstr ""
+"Project-Id-Version: Zitat Service 1.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/muhme/quote_wordpress/issues\n"
+"Last-Translator: Heiko Lübbe\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-12-11T16:27:02+00:00\n"
+"PO-Revision-Date: 2023-12-11T16:27:02+00:00\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: zitat-service\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Plugin Name of the plugin
+msgid "Zitat Service"
+msgstr "Zitat Service"
+
+#. Plugin URI of the plugin
+msgctxt "Plugin URI"
+msgid "https://github.com/muhme/quote_wordpress"
+msgstr "https://github.com/muhme/quote_wordpress"
+
+#. Description of the plugin
+msgid "Display a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦."
+msgstr "Відобразити випадкову цитату з колекції спільноти користувачів zitat-service.de німецькою 🇩🇪, англійською 🇬🇧, іспанською 🇪🇸, японською 🇯🇵 або українською 🇺🇦."
+
+#. Author of the plugin
+msgid "Heiko Lübbe"
+msgstr "Хайко Люббе"
+
+#. Author URI of the plugin
+msgctxt "Author URI"
+msgid "https://github.com/muhme/quote_wordpress"
+msgstr "https://github.com/muhme/quote_wordpress"

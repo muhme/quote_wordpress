@@ -6,15 +6,13 @@
 # compose.sh - delete the five docker containers and build them new
 
 NAME=quote_wp_
-echo "Removing all docker containers ${NAME}*"
+echo "*** Removing all docker containers ${NAME}*"
 docker ps -a --format '{{.Names}}' | grep "^$NAME" | xargs docker rm -f
 
-echo 'deleting folder wp'
-rm -rf wp
+if [ $# -eq 1 ] && [ "$1" = "build" ] ; then
+  echo '*** Docker compose build --no-cache'
+  docker compose build --no-cache
+fi
 
-echo 'Creating docker containers new'
+echo '*** Docker compose up'
 docker compose up -d
-
-# or doing with rebuild and w/o cache
-# docker compose build --no-cache
-# docker compose up -d

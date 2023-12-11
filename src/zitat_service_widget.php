@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Zitat Service
-Description: Random quote from the user community zitat-service.de for quotations in the languages: Deutsch 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 and Українська 🇺🇦.
-Plugin URI: https://github.com/muhme/quote_wordpress
-Author: Heiko Lübbe
-Version: 1.1.0
-Author URI: https://www.heikol.de
-License: MIT License, Copyright (c) 2023 Heiko Lübbe
-License URI: https://github.com/muhme/quote_wordpress/LICENSE
- *
- * https://github.com/muhme/quote_wordpress
+ * Plugin Name: Zitat Service
+ * Description: Display a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦.
+ * Plugin URI: https://github.com/muhme/quote_wordpress
+ * Author: Heiko Lübbe
+ * Author URI: https://github.com/muhme/quote_wordpress
+ * Version: 1.1.0
+ * License: MIT License, Copyright (c) 2023 Heiko Lübbe
+ * License URI: https://github.com/muhme/quote_wordpress/LICENSE
+ * Text Domain: zitat-service
+ * Domain Path: /languages
  */
 
 define('ZITAT_SERVICE_VERSION', '1.1.0');
@@ -39,7 +39,7 @@ class ZitatServiceWidget extends WP_Widget
     public function __construct()
     {
         parent::__construct(
-            'zitat-service', // Base ID
+            'zitat-service', // Base ID == plug == Text Domain
             'Zitat Service' // Widget name in UI
         );
     }

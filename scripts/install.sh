@@ -21,8 +21,9 @@ docker exec -it quote_wp_wordpress sh -c "wp language core install es_ES --allow
 docker exec -it quote_wp_wordpress sh -c "wp language core install ja --allow-root"
 docker exec -it quote_wp_wordpress sh -c "wp language core install uk --allow-root"
 
-echo "*** install plugin zitat-service"
-docker cp src quote_wp_wordpress:/var/www/html/wp-content/plugins/zitat-service
+# now already existing with volume mapping
+# echo "*** install plugin zitat-service"
+# docker cp src quote_wp_wordpress:/var/www/html/wp-content/plugins/zitat-service
 
 echo "*** activate plugin zitat-service"
 docker exec -it quote_wp_wordpress sh -c "wp plugin activate zitat-service --allow-root"

@@ -15,3 +15,6 @@ RUN echo "sendmail_path = /usr/bin/msmtp -t --read-envelope-from" > /usr/local/e
 # must-use plugin to set from-mail-address "webmaster@docker.local" to prevent not usable "wordpress@localhost"
 RUN mkdir -p /var/www/html/wp-content/mu-plugins
 COPY misc/sets_mail_from.php /var/www/html/wp-content/mu-plugins/sets_mail_from.php 
+
+# install gettext for I18N, vim and ping for comfort
+RUN apt-get install -y gettext iputils-ping vim
