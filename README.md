@@ -11,7 +11,7 @@ WordPress plugin to display random quotes from community [zitat-service.de](http
   <summary>There is a docker test and development environment prepared.</summary>
 To create the test and development environment run:
 
-```bash
+```
 host$ git clone https://github.com/muhme/quote_wordpress
 host$ cd quote_wordpress
 host$ docker compose up -d
@@ -19,7 +19,7 @@ host$ docker compose up -d
 
 Five Docker containers are running:
 
-```bash
+```
 host$ docker ps
 IMAGE                          PORTS                                            NAMES
 quote_wordpress-wordpress      0.0.0.0:4080->80/tcp                             quote_wp_wordpress
@@ -44,9 +44,14 @@ Docker containers are:
     * http://localhost:4082 – MailDev web interface
   * quote_wp_playwright- for E2E testing
 
+:bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwrigth container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine, if you make the following `/etc/hosts` entry:
+```bash
+127.0.0.1	host.docker.internal
+```
+
 ### Installation
 
-For installation completion and other tasks the command-line interface for WordPress [WP-CLI](https://wp-cli.org/). `WP-CLI` is installed and used in docker container `quote_wp_wordpress`. After creating the `quote_wp_wordpress` docker container run `scripts/install.sh` once:
+For installation completion and other tasks the command-line interface for WordPress [WP-CLI](https://wp-cli.org/) is used. `WP-CLI` is installed and used in docker container `quote_wp_wordpress`. After creating the `quote_wp_wordpress` docker container run `scripts/install.sh` once:
 ```
 host$ scripts/install.sh
 *** installing WP-CLI
@@ -71,7 +76,7 @@ Automated Playwright tests are in subfolder [tests](./tests/) and and are descri
 
 ### Scripts
 
-More are scripts prepared for a more pleasant and also faster development, see folder [scripts](./scripts/) and commented list of scripts there.
+More scripts are prepared for a pleasant and also faster development, see folder [scripts](./scripts/) and commented list of scripts there.
 
 </details>
 

@@ -4,15 +4,15 @@ To ensure the integrity and reliability of the WordPress plugin `zitat-service`,
 
 ## Test Environment
 
-[Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright test utils for WordPress [@wordpress/e2e-test-utils-playwright](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-e2e-test-utils-playwright/).
+[Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright test utils for WordPress [@wordpress/e2e-test-utils-playwright](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-e2e-test-utils-playwright/). Playwright can be used local installed on host system or with docker container `quote_wp_playwright`. 
 
 :bulb: **Tip:** Before testing you have to install WordPress and the plugin with `scripts/install.sh`.
 
 ### Dockerized
 
-To simplify testing Docker container `quote_wp_playwright` is running and `scripts/test.sh` is prepared. You can run tests for one browser with e.g.:
+You can run the E2E tests in Docker container `quote_wp_playwright` with `scripts/test.sh`, e.g. for Chromium browser:
 
-```bash
+```
 host$ scripts/test.sh --project=chromium
 
 Running 10 tests using 6 workers
@@ -31,9 +31,9 @@ Running 10 tests using 6 workers
   10 passed (17.2s)
 ```
 
-You can open the HTML report with your favored browser with file `playwright-report/index.html`.
+As the docker container volume is mapped, you can open the HTML report from file `playwright-report/index.html` in your favored browser.
 
-:bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwrigth container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine if you make the following `/etc/hosts` entry:
+:bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwrigth container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine, if you make the following `/etc/hosts` entry:
 ```bash
 127.0.0.1	host.docker.internal
 ```
