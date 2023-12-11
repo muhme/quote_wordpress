@@ -13,7 +13,7 @@ The scripts are used on the Mac command line, but should also work on Linux and 
 | [scripts/clean.sh](scripts/clean.sh) | Removes all quote_wp_* Docker containers |  |
 | [scripts/deleteAllPosts.sh](scripts/deleteAllPosts.sh) | Testing creates posts, this script simple delete all posts | :warning: ALL posts are deleted |
 
-And now you are ready for ... triple speed
+And now you are ready for triple speed
 :smiley:
 :smile:
 :grinning:
