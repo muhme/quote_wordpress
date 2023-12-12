@@ -6,6 +6,8 @@ WordPress plugin to display random quotes from community [zitat-service.de](http
 
 :bulb: **Tip:** Help for the WordPress plugin installation and administration is available at https://github.com/muhme/quote_wordpress/wiki.
 
+The plugin has not yet been submitted to WordPress as it is still under development. But there is a first working version in folder [dist](dist), which is ready for download and installation. Change log is available as [CHANGELOG.md](CHANGELOG.md).
+
 ## Test & Development Environment
 <details>
   <summary>There is a docker test and development environment prepared.</summary>
@@ -34,6 +36,7 @@ Docker containers are:
     * http://host.docker.internal/:4080 – WordPress instance, ready for installation
     * [msmtp](https://marlam.de/msmtp/) is used as a simple SMPT client
     * A small WordPress plugin sets the sender email address (from field) fixed to 'webmaster@docker.local' and fixes the problem of undeliverable address 'wordpress@localhost' inside Docker container. Installing it as [must-use WordPress plugin](https://wordpress.org/support/article/must-use-plugins) to have it already actived.
+    * has gettext package, vim and ping installed
   * quote_wp_mariadb – MariaDB database
     * database available as mariadb:3306
     * user 'root', password 'root' and database 'wordpress'
