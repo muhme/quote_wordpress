@@ -9,11 +9,11 @@ import { defineConfig, devices } from '@playwright/test';
 import * as path from 'path';
 
 // admin login and cookie storage
-export const STORAGE_STATE  = process.env.WP_ADMIN_AUTH_STORAGE ?? path.join(__dirname, '.playwright_auth.json');
-export const ADMIN_USER     = process.env.WP_ADMIN_USERNAME     ?? 'admin';
-export const ADMIN_PASSWORD = process.env.WP_ADMIN_PASSWORD     ?? 'admin';
+export const STORAGE_STATE = process.env.WP_ADMIN_AUTH_STORAGE ?? path.join(__dirname, '.playwright_auth.json');
+export const ADMIN_USER = process.env.WP_ADMIN_USERNAME ?? 'admin';
+export const ADMIN_PASSWORD = process.env.WP_ADMIN_PASSWORD ?? 'admin';
 // WordPress base URL
-export const BASE_URL       = process.env.WP_BASE_URL           ?? 'http://host.docker.internal:4080';
+export const BASE_URL = process.env.WP_BASE_URL ?? 'http://host.docker.internal:4080';
 
 // see https://playwright.dev/docs/test-configuration
 export default defineConfig({
@@ -27,7 +27,7 @@ export default defineConfig({
   // opt out of parallel tests on CI
   workers: process.env.CI ? 1 : undefined,
   // reporter to use, see https://playwright.dev/docs/test-reporters
-  reporter: [ ['html', { open: 'never'}], ['list'] ],
+  reporter: [['html', { open: 'never' }], ['list']],
   // shared settings, see https://playwright.dev/docs/api/class-testoptions.
   use: {
     // use relative paths in tests, see
@@ -44,56 +44,98 @@ export default defineConfig({
     // using project dependencies to have global login setup,
     // see https://playwright.dev/docs/test-global-setup-teardown
     {
-      name: 'login setup',
+      name: 'login-setup',
       testMatch: 'tests/login.setup.ts'
     },
-    // configure projects for major browsers
+    // major browser tests, starting without login
     {
-      name: 'chromium',
-      testMatch: 'tests/*.spec.ts',
-      dependencies: ['login setup'],
+      name: 'chromium-logged-out',
+      testMatch: 'tests/*.logged.out.spec.ts',
       use: {
-        storageState: STORAGE_STATE,
-        ...devices['Desktop Chrome'] },
+        ...devices['Desktop Chrome']
+      },
     },
     {
-      name: 'firefox',
-      testMatch: 'tests/*.spec.ts',
-      dependencies: ['login setup'],
+      name: 'firefox-logged-out',
+      testMatch: 'tests/*.logged.out.spec.ts',
+      use: {
+        ...devices['Desktop Firefox']
+      },
+    },
+    {
+      name: 'webkit-logged-out',
+      testMatch: 'tests/*.logged.out.spec.ts',
+      use: {
+        ...devices['Desktop Safari']
+      },
+    },
+    // tests against mobile viewports
+    {
+      name: 'mobile-chrome-logged-out',
+      testMatch: 'tests/*.logged.out.spec.ts',
+      use: {
+        ...devices['Pixel 5']
+      },
+    },
+    {
+      name: 'mobile-safari-logged-out',
+      testMatch: 'tests/*.logged.out.spec.ts',
+      use: {
+        ...devices['iPhone 12']
+      },
+    },
+    // major browsers tests, logged in
+    {
+      name: 'chromium-logged-in',
+      testMatch: 'tests/*.logged.in.spec.ts',
+      dependencies: ['login-setup'],
+      use: {
+        storageState: STORAGE_STATE,
+        ...devices['Desktop Chrome']
+      },
+    },
+    {
+      name: 'firefox-logged-in',
+      testMatch: 'tests/*.logged.in.spec.ts',
+      dependencies: ['login-setup'],
       use: {
         storageState: STORAGE_STATE,
         ...devices['Desktop Firefox']
       },
     },
     {
-      name: 'webkit',
-      testMatch: 'tests/*.spec.ts',
-      dependencies: ['login setup'],
-      use: { 
+      name: 'webkit-logged-in',
+      testMatch: 'tests/*.logged.in.spec.ts',
+      dependencies: ['login-setup'],
+      use: {
         storageState: STORAGE_STATE,
-        ...devices['Desktop Safari'] },
+        ...devices['Desktop Safari']
+      },
     },
     // test against mobile viewports
     {
-      name: 'Mobile Chrome',
-      testMatch: 'tests/*.spec.ts',
-      dependencies: ['login setup'],
-      use: { 
+      name: 'mobile-chrome-logged-in',
+      testMatch: 'tests/*.logged.in.spec.ts',
+      dependencies: ['login-setup'],
+      use: {
         storageState: STORAGE_STATE,
-        ...devices['Pixel 5'] },
+        ...devices['Pixel 5']
+      },
     },
     {
-      name: 'Mobile Safari',
-      testMatch: 'tests/*.spec.ts',
-      dependencies: ['login setup'],
-      use: { 
+      name: 'mobile-safari-logged-in',
+      testMatch: 'tests/*.logged.in.spec.ts',
+      dependencies: ['login-setup'],
+      use: {
         storageState: STORAGE_STATE,
-        ...devices['iPhone 12'] },
+        ...devices['iPhone 12']
+      },
     },
+
     // test against branded browsers - only local installed, not available in quote_wp_playwright
     // {
     //   name: 'Microsoft Edge',
-    //   testMatch: 'tests/*.spec.ts',
+    //   testMatch: 'tests/*.logged.in.spec.ts',
     //   dependencies: ['login setup'],
     //   use: { 
     //     storageState: STORAGE_STATE,
@@ -101,7 +143,7 @@ export default defineConfig({
     // },
     // {
     //   name: 'Google Chrome',
-    //   testMatch: 'tests/*.spec.ts',
+    //   testMatch: 'tests/*.logged.in.spec.ts',
     //   dependencies: ['login setup'],
     //   use: { 
     //     storageState: STORAGE_STATE,

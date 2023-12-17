@@ -42,7 +42,7 @@ Docker containers are:
     * user 'root', password 'root' and database 'wordpress'
   * quote_wp_phpmyadmin – phpmyadmin for database administration
     * http://localhost:4081 – phpMyAdmin to work with the database
-  * quote_wp_maildev - [MailDev](https://github.com/maildev/maildev) for collecting and showing mails
+  * quote_wp_maildev - [MailDev](https://github.com/maildev/maildev) for collecting and showing WordPress mails
     * listening for mails on maildev:1025
     * http://localhost:4082 – MailDev web interface
   * quote_wp_playwright- for E2E testing
@@ -54,7 +54,7 @@ Docker containers are:
 
 ### Installation
 
-For installation completion and other tasks the command-line interface for WordPress [WP-CLI](https://wp-cli.org/) is used. `WP-CLI` is installed and used in docker container `quote_wp_wordpress`. After creating the `quote_wp_wordpress` docker container run `scripts/install.sh` once:
+The command-line interface for WordPress [WP-CLI](https://wp-cli.org/) is used for the script-based completion of the installation and other tasks . `WP-CLI` is installed and used in docker container `quote_wp_wordpress`. After creating the `quote_wp_wordpress` docker container run `scripts/install.sh` once:
 ```
 host$ scripts/install.sh
 *** installing WP-CLI
@@ -65,13 +65,13 @@ Language 'de_DE' installed.
 Language 'es_ES' installed.
 Language 'ja' installed.
 Language 'uk' installed.
-*** install plugin zitat-service
+*** creation of four additional admins with locales
 *** activate plugin zitat-service
 Plugin 'zitat-service' activated.
 *** recursivly chown to www-data
 ```
 
-WordPress is installed with the five languages supported by the plugin. The plugin `zitat-service` is installed and activated.
+WordPress is installed with the five languages supported by the plugin. The plugin `zitat-service` is installed and activated. There are five admin users who have each set one of the languages.
 
 ### Testing
 

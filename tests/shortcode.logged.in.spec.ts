@@ -7,7 +7,11 @@
 import { test, expect } from '@wordpress/e2e-test-utils-playwright';
 import { checkQuote, createPostWithShortcode } from './testHelper';
 
-test.describe('Shortcode', () => {
+/*
+ * Test shortcode in posts with different `language` attributes.
+ * Needs to be logged-in as WordPress admin before.
+ */
+test.describe('Frontend – Shortcode', () => {
 
   test('german language attribute', async ({ editor, page, admin }) => {
     const postId = await createPostWithShortcode(editor, admin, 'Language Deutsch', {language: 'de'});

@@ -65,3 +65,28 @@ async function createPostWithShortcode<T extends Record<string, string>>(editor:
     return editor.publishPost();;
 }
 export { createPostWithShortcode };
+
+/**
+ * Do admin login and store cookies if desired.
+ * 
+ * Implemented it myself and didn't use @wordpress/e2e-test-utils-playwright (with the ?REST login?) because I didn't get it work.
+ *
+ * @param page - to be passed from WordPress utils for Playwright
+ * @param user - WordPress user name, e.g. 'admin'
+ * @param password - users password
+ * @param storage_path - Cookie storage file to reuse in Brwoser context, or null if not needed
+ */
+async function userLogin(page: Page, user: string, password: string, storage_path: string | null) {
+    await page.goto('/wp-admin');
+    await page.getByLabel('Username or Email Address').fill(user);
+    await page.locator('input#user_pass').fill(password);
+    await page.getByText('Log in').click();
+
+    // '#wpadminbar' is visible on Desktop and mobile
+    await expect(page.locator('div#wpadminbar')).toBeVisible();
+
+    if (storage_path != null) {
+        await page.context().storageState({ path: storage_path });
+    }
+}
+export { userLogin };

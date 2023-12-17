@@ -21,6 +21,18 @@ docker exec -it quote_wp_wordpress sh -c "wp language core install es_ES --allow
 docker exec -it quote_wp_wordpress sh -c "wp language core install ja --allow-root"
 docker exec -it quote_wp_wordpress sh -c "wp language core install uk --allow-root"
 
+echo "*** creation of four additional admins with locales"
+# this is a new installation, so new user IDs start with 2
+docker exec -it quote_wp_wordpress sh -c \
+ "wp user create admin_de admin_de@admin.com --role=administrator --user_pass=admin --allow-root &&
+  wp user meta update 2 locale 'de_DE'                                              --allow-root && 
+  wp user create admin_es admin_es@admin.com --role=administrator --user_pass=admin --allow-root &&
+  wp user meta update 3 locale 'es_ES'                                              --allow-root && 
+  wp user create admin_ja admin_ja@admin.com --role=administrator --user_pass=admin --allow-root &&
+  wp user meta update 4 locale 'ja'                                                 --allow-root && 
+  wp user create admin_uk admin_uk@admin.com --role=administrator --user_pass=admin --allow-root &&
+  wp user meta update 5 locale 'uk'                                                 --allow-root" 
+
 # now already existing with volume mapping
 # echo "*** install plugin zitat-service"
 # docker cp src quote_wp_wordpress:/var/www/html/wp-content/plugins/zitat-service

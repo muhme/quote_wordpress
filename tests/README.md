@@ -6,7 +6,7 @@ To ensure the integrity and reliability of the WordPress plugin `zitat-service`,
 
 [Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright test utils for WordPress [@wordpress/e2e-test-utils-playwright](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-e2e-test-utils-playwright/). Playwright can be used local installed on host system or with docker container `quote_wp_playwright`. 
 
-:bulb: **Tip:** Before testing you have to install WordPress and the plugin with `scripts/install.sh`.
+:bulb: **Tip:** Before testing, you have to complete WordPress installation and to activate the plugin with `scripts/install.sh`.
 
 ### Dockerized
 
@@ -50,4 +50,4 @@ host$ npx playwright install-deps
 host$ npx playwright test 
 ```
 
-Different options can used like `--ui` for interactive UI mode, see [Playwright command line otions](https://playwright.dev/docs/test-cli)
+Various options can used, such as `--ui` for interactive UI mode, see [Playwright command line otions](https://playwright.dev/docs/test-cli).

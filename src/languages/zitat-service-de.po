@@ -27,7 +27,7 @@ msgstr "https://github.com/muhme/quote_wordpress"
 
 #. Description of the plugin
 msgid "Display a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦."
-msgstr "Anzeige eines zufälliges Zitat aus der Sammlung der Nutzergemeinschaft zitat-service.de in Deutsch 🇩🇪, Englisch 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 oder Українська 🇺🇦."
+msgstr "Anzeige eines zufälliges Zitats aus der Sammlung der Nutzergemeinschaft zitat-service.de in Deutsch 🇩🇪, Englisch 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 oder Українська 🇺🇦."
 
 #. Author of the plugin
 msgid "Heiko Lübbe"
