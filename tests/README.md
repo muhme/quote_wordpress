@@ -8,27 +8,33 @@ To ensure the integrity and reliability of the WordPress plugin `zitat-service`,
 
 :bulb: **Tip:** Before testing, you have to complete WordPress installation and to activate the plugin with `scripts/install.sh`.
 
+Playwright tests are grouped into `*-logged out` and `*-logged in`. The reason for this is that five different admin users with different locales are used for the backend tests with I18N. These tests are started logged out and themselves make a login with an administrative user in the locale to be tested.
+
+The frontend tests change the plugin parameters in the backend and then check the expected result in the frontend. To change the plugin parameters, they have to first be logged in once as a WordPress admin user.
+
+One more grouping are the different browsers. However you can simple run the actual 71 tests with:
+```
+host$ scripts/test.sh
+```
+
 ### Dockerized
 
 You can run the E2E tests in Docker container `quote_wp_playwright` with `scripts/test.sh`, e.g. for Chromium browser:
 
 ```
-host$ scripts/test.sh --project=chromium
+host$ scripts/test.sh --project=chromium-logged-out --project=chromium-logged-in
 
-Running 10 tests using 6 workers
+Running 15 tests using 6 workers
 
-  ✓   1 [login setup] › login.setup.ts:7:6 › do login (996ms)
-  ✓   2 [chromium] › shortcode.spec.ts:17:7 › Shortcode › english language attribute (6.9s)
-  ✓   3 [chromium] › shortcode.spec.ts:12:7 › Shortcode › german language attribute (9.8s)
-  ✓   4 [chromium] › shortcode.spec.ts:22:7 › Shortcode › spanish language attribute (9.3s)
-  ✓   5 [chromium] › shortcode.spec.ts:37:7 › Shortcode › language attribute not set (4.5s)
-  ✓   6 [chromium] › shortcode.spec.ts:32:7 › Shortcode › ukrainian language attribute (10.7s)
-  ✓   7 [chromium] › shortcode.spec.ts:27:7 › Shortcode › japanese language attribute (11.1s)
-  ✓   8 [chromium] › shortcode.spec.ts:42:7 › Shortcode › language attribute not supported (7.2s)
-  ✓   9 [chromium] › shortcode.spec.ts:47:7 › Shortcode › cheesecake attribute (6.2s)
-  ✓  10 [chromium] › shortcode.spec.ts:52:7 › Shortcode › several nonsense attributes (4.7s)
-
-  10 passed (17.2s)
+  ✓  1 [chromium-logged-out] › plugin.logged.out.spec.ts:39:7 › Backend – Plugin descriptions › ja - Japanese language (3.2s)
+  ✓  2 [chromium-logged-out] › plugin.logged.out.spec.ts:25:7 › Backend – Plugin descriptions › de - German language (4.4s)
+  ✓  3 [chromium-logged-out] › plugin.logged.out.spec.ts:18:7 › Backend – Plugin descriptions › en - English language (4.5s)
+  ✓  4 [chromium-logged-out] › plugin.logged.out.spec.ts:32:7 › Backend – Plugin descriptions › es - Spanish language (2.1s)
+  ✓  5 [chromium-logged-out] › plugin.logged.out.spec.ts:46:7 › Backend – Plugin descriptions › uk - Ukrainian language (3.6s)
+  ✓  6 [login-setup] › login.setup.ts:17:6 › do login (1.2s)
+  ✓  7 [chromium-logged-in] › shortcode.logged.in.spec.ts:41:7 › Frontend – Shortcode › language attribute not set (5.0s)
+  ✓  8 [chromium-logged-in] › shortcode.logged.in.spec.ts:16:7 › Frontend – Shortcode › german language attribute (10.0s)
+  ...
 ```
 
 As the docker container volume is mapped, you can open the HTML report from file `playwright-report/index.html` in your preferred browser.
