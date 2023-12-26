@@ -1,6 +1,6 @@
 {
   "name": "quote_wordpress",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).",
   "main": "index.js",
   "directories": {

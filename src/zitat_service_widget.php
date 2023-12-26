@@ -5,14 +5,14 @@
  * Plugin URI: https://github.com/muhme/quote_wordpress
  * Author: Heiko Lübbe
  * Author URI: https://github.com/muhme/quote_wordpress
- * Version: 1.1.0
+ * Version: 1.2.0
  * License: MIT License, Copyright (c) 2023 Heiko Lübbe
  * License URI: https://github.com/muhme/quote_wordpress/LICENSE
  * Text Domain: zitat-service
  * Domain Path: /languages
  */
 
-define('ZITAT_SERVICE_VERSION', '1.1.0');
+define('ZITAT_SERVICE_VERSION', '1.2.0');
 // define('ZITAT_SERVICE_API_URL', 'http://host.docker.internal:3000/v1');
 define('ZITAT_SERVICE_API_URL', 'https://api.zitat-service.de/v1');
 // list of valid languages as from https://api.zitat-service.de/v1/languages

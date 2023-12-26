@@ -2,7 +2,7 @@
 # This file is distributed under the MIT License, Copyright (c) 2023 Heiko Lübbe.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zitat Service 1.1.0\n"
+"Project-Id-Version: Zitat Service 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/muhme/quote_wordpress/issues\n"
 "Last-Translator: Heiko Lübbe\n"
 "Language-Team: none\n"
