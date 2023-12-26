@@ -31,7 +31,7 @@ Running 10 tests using 6 workers
   10 passed (17.2s)
 ```
 
-As the docker container volume is mapped, you can open the HTML report from file `playwright-report/index.html` in your favored browser.
+As the docker container volume is mapped, you can open the HTML report from file `playwright-report/index.html` in your preferred browser.
 
 :bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwrigth container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine, if you make the following `/etc/hosts` entry:
 ```bash
