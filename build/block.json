@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "random-quote/zitat-service",
+  "version": "1.3.0",
+  "title": "Random Quote",
+  "category": "widgets",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "zitat-service",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

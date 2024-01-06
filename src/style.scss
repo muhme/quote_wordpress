@@ -1,0 +1,17 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+/* Targeting links within the .quote class */
+.quote a {
+    text-decoration: none; /* Removes underline from links by default */
+    color: inherit; /* Optional: to make link colors consistent within the block */
+}
+
+.quote a:hover,
+.quote a:focus {
+    text-decoration: underline; /* Adds underline on hover and focus */
+}
