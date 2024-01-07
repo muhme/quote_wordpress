@@ -45,4 +45,4 @@ docker exec -it quote_wp_wordpress sh -c "wp plugin activate zitat-service --all
 
 # simple running all WP-CLI commands as root (with the --allow-root) and chown user/group in the end
 echo "*** Recursivly chown to www-data"
-docker exec -it quote_wp_wordpress sh -c "chown -R www-data:www-data /var/www/html/wp-content/plugins/zitat-service 2>/dev/null"
+docker exec -it quote_wp_wordpress sh -c "chown -R www-data:www-data /var/www/html 2>/dev/null"

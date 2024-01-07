@@ -11,7 +11,7 @@
  * License URI:       https://raw.githubusercontent.com/muhme/quote_wordpress/main/LICENSE
  * Text Domain:       zitat-service
  *
- * @package           random-quote
+ * @package           zitat-service
  */
 
 if (!defined('ABSPATH')) {

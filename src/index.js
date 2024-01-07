@@ -20,6 +20,23 @@ import "./style.scss";
 import Edit from "./edit";
 import metadata from "./block.json";
 
+const zitat_service_icon = (
+	<svg
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		version="1.1"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path
+			d="M 21.349347,0.37882874 V 3.5443873 L 9.2447721,19.700212 h 1.4269649 q 2.952335,0 4.412099,-0.541261 1.459765,-0.557664 2.689906,-1.95182 1.24654,-1.394159 1.93542,-3.427989 l 3.00154,1.016916 -3.00154,8.463357 H 2.2411804 V 20.093856 L 14.394958,3.9872358 h -1.902614 q -1.93542,0 -3.1163566,0.4592528 Q 8.1950534,4.9057398 7.3257554,5.8078431 6.456457,6.709944 4.832673,9.596669 L 1.9459475,8.3173249 5.4231393,0.37882874 Z"
+			fill="#208020"
+			stroke-width=".097029"
+			aria-label="Z"
+		/>
+	</svg>
+);
+
 /**
  * Every block starts by registering a new block type definition.
  *
@@ -30,24 +47,9 @@ registerBlockType(metadata.name, {
 	 * @see ./edit.js
 	 */
 	edit: Edit,
-	icon: () => (
-		<svg
-			width="24"
-			height="24"
-			version="1.1"
-			viewBox="0 0 6.35 6.35"
-			xmlns="http://www.w3.org/2000/svg"
-		>
-			<path
-				d="m5.3961 0.37883v0.78028l-2.9837 3.9823h0.35173q0.72772 0 1.0875-0.13342 0.35982-0.13746 0.66304-0.48111 0.30726-0.34365 0.47706-0.84497l0.73985 0.25066-0.73985 2.0861h-4.3057v-0.78028l2.9958-3.9701h-0.46898q-0.47706 0-0.76815 0.1132-0.29109 0.1132-0.50536 0.33556-0.21427 0.22236-0.61452 0.93391l-0.71155-0.31535 0.8571-1.9568z"
-				fill="#208020"
-				stroke-width=".097029"
-				aria-label="Z"
-			/>
-		</svg>
-	),
+	icon: zitat_service_icon,
 	// quote will be fetched dynamically on the frontend, block's save function returns markup that the frontend script can target, see frontend.js
 	save: () => {
-        return <div className="zitat-service-quote">Loading quote...</div>;
-    },
+		return <div className="zitat-service-quote">Loading quote...</div>;
+	},
 });
