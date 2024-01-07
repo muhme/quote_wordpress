@@ -24,18 +24,39 @@ function checkLanguageForParameter(language) {
 	if (language === "all") {
 		return ""; // no language parameter
 	}
-	
+
 	// TODO: implement frontend
 	var l = DEFAULT_LANGUAGE;
 	if (Object.keys(LANGUAGES).includes(language)) {
 		l = language;
 	}
-	
+
 	return `&language=${l}`;
 }
 
-async function fetchQuote(language) {
-	const url = `${ZITAT_SERVICE_API_URL}/quote_html?contentOnly=true&V_${ZITAT_SERVICE_VERSION}_B` + checkLanguageForParameter(language);
+function checkIdForParameter(parameter, id) {
+	if (
+		parameter === null ||
+		parameter === "" ||
+		id === null ||
+		id === "" ||
+		!Number.isInteger(Number(id)) ||
+		Number(id) < 0
+	) {
+		return ""; // no parameter
+	}
+	return `&${parameter}=${id}`;
+}
+
+async function fetchQuote(attributes) {
+	const { language, userId, authorId, categoryId } = attributes;
+	const url =
+		`${ZITAT_SERVICE_API_URL}/quote_html?contentOnly=true&V_${ZITAT_SERVICE_VERSION}_B` +
+		checkLanguageForParameter(language) +
+		checkIdForParameter("userId", userId) +
+		checkIdForParameter("authorId", authorId) +
+		checkIdForParameter("categoryId", categoryId);
+	console.log(`fetchQuote(${url})`);
 	try {
 		const response = await fetch(url);
 		const text = await response.text();

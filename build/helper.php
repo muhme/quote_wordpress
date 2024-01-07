@@ -23,14 +23,15 @@ function getActualLanguage($language)
     return in_array($langShort, LANGUAGES) ? $langShort : 'en';
 }
 
-function checkLanguageForParameter($language) {
+function checkLanguageForParameter($language)
+{
     if ($language === "all") {
         return ""; // No language parameter
     }
 
     if ($language === "frontend") {
         // use WP user locale e.g. 'de-DE' and extract the 1st two chars to get the language w/o country
-        $language = substr (get_user_locale(), 0, 2);
+        $language = substr(get_user_locale(), 0, 2);
     }
 
     // Define the default language
@@ -43,12 +44,27 @@ function checkLanguageForParameter($language) {
     return "&language=" . $l;
 }
 
+function checkIdForParameter($parameter, $attributes)
+{
+    // Check if either parameter or id is null or an empty string
+    if ($parameter === null || $parameter === '' || $attributes === null ||
+        $attributes[$parameter] === null || $attributes[$parameter] === '' || $attributes[$parameter] < 0) {
+        return ""; // no parameter
+    }
+
+    return "&" . $parameter . "=" . $attributes[$parameter];
+}
+
 /**
  * retrieve quote from API in HTML style (<div> enclosed)
  */
-function fetchQuote($language)
+function fetchQuote($attributes)
 {
-    $url = ZITAT_SERVICE_API_URL . '/quote_html?contentOnly=true&V_' . ZITAT_SERVICE_VERSION . '_B' . checkLanguageForParameter($language);
+    $url = ZITAT_SERVICE_API_URL . '/quote_html?contentOnly=true&V_' . ZITAT_SERVICE_VERSION . '_B' .
+           checkLanguageForParameter($attributes["language"]) .
+           checkIdForParameter("userId", $attributes) .
+           checkIdForParameter("authorId", $attributes) .
+           checkIdForParameter("categoryId", $attributes);
 
     $response = wp_remote_get($url);
 

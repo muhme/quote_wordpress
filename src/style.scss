@@ -1,8 +1,5 @@
 /**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
+ * Styles for the frontend (website) as well as for the backend (editor).
  */
 
 /* Targeting links within the .quote class */
@@ -13,5 +10,10 @@
 
 .quote a:hover,
 .quote a:focus {
-    text-decoration: underline; /* Adds underline on hover and focus */
+    text-decoration: underline; /* Adds underlining on hover and focus */
+}
+
+/* all references (author, source) with half opacity */
+.quote .source {
+    opacity: 0.5;
 }

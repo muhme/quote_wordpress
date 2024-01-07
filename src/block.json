@@ -29,6 +29,18 @@
 		"language": {
 			"type": "string",
 			"default": "all"
+		},
+		"userId": {
+			"type": "integer",
+			"default": -1
+		},
+		"categoryId": {
+			"type": "integer",
+			"default": -1
+		},
+		"authorId": {
+			"type": "integer",
+			"default": -1
 		}
 	},
 	"textdomain": "zitat-service",

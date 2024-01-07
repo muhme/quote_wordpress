@@ -16,6 +16,7 @@ import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 import { useEffect, useState } from "@wordpress/element";
 import fetchQuote from "./fetchQuote";
 import { PanelBody, SelectControl } from "@wordpress/components";
+import SelectControlUser from "./selectControlUser";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -26,16 +27,20 @@ import { PanelBody, SelectControl } from "@wordpress/components";
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { language } = attributes;
+	const { language, userId, authorId, categoryId } = attributes;
 	const [quote, setQuote] = useState("");
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	useEffect(() => {
-		fetchQuote(language).then((quote) => {
+		fetchQuote(attributes).then((quote) => {
 			setQuote(quote);
 			setIsLoaded(true);
 		});
-	}, [language]);
+	}, [language, userId, authorId, categoryId]);
+
+    const handleUserChange = (selectedUserId) => {
+        setAttributes({ userId: selectedUserId });
+    };
 
 	return (
 		<>
@@ -45,7 +50,7 @@ export default function Edit({ attributes, setAttributes }) {
 						label={__("Language", "zitat-service")}
 						value={language || "all"}
 						options={[
-                            { label: "🌍 all", value: "all" },
+							{ label: "🌍 all", value: "all" },
 							{ label: "Frontend", value: "frontend" },
 							{ label: "🇩🇪 de", value: "de" },
 							{ label: "🇬🇧 en", value: "en" },
@@ -55,6 +60,7 @@ export default function Edit({ attributes, setAttributes }) {
 						]}
 						onChange={(value) => setAttributes({ language: value })}
 					/>
+					<SelectControlUser onChange={handleUserChange} value={userId} />
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
