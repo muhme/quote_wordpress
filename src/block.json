@@ -12,6 +12,9 @@
 			"background": true,
 			"text": true
 		},
+		"dimensions": {
+            "minHeight": true
+		},
 		"html": false,
 		"spacing": {
 			"margin": true,
@@ -20,6 +23,12 @@
 		},
 		"typography": {
 			"fontSize": true
+		}
+	},
+	"attributes": {
+		"language": {
+			"type": "string",
+			"default": "all"
 		}
 	},
 	"textdomain": "zitat-service",

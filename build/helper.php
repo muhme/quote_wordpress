@@ -23,12 +23,32 @@ function getActualLanguage($language)
     return in_array($langShort, LANGUAGES) ? $langShort : 'en';
 }
 
+function checkLanguageForParameter($language) {
+    if ($language === "all") {
+        return ""; // No language parameter
+    }
+
+    if ($language === "frontend") {
+        // use WP user locale e.g. 'de-DE' and extract the 1st two chars to get the language w/o country
+        $language = substr (get_user_locale(), 0, 2);
+    }
+
+    // Define the default language
+    $defaultLanguage = "en"; // Replace 'en' with your actual default language
+
+    // Check if the provided language is in the list of supported languages
+    $l = in_array($language, LANGUAGES) ? $language : DEFAULT_LANGUAGE;
+
+    // Return the language parameter
+    return "&language=" . $l;
+}
+
 /**
  * retrieve quote from API in HTML style (<div> enclosed)
  */
-function fetchQuote()
+function fetchQuote($language)
 {
-    $url = ZITAT_SERVICE_API_URL . '/quote_html?contentOnly=true&V_' . ZITAT_SERVICE_VERSION . '_B&language=' . DEFAULT_LANGUAGE;
+    $url = ZITAT_SERVICE_API_URL . '/quote_html?contentOnly=true&V_' . ZITAT_SERVICE_VERSION . '_B' . checkLanguageForParameter($language);
 
     $response = wp_remote_get($url);
 
