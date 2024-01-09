@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __, getLocaleData } from "@wordpress/i18n";
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -17,6 +17,8 @@ import { useEffect, useState } from "@wordpress/element";
 import fetchQuote from "./fetchQuote";
 import { PanelBody, SelectControl } from "@wordpress/components";
 import SelectControlUser from "./selectControlUser";
+import SelectControlCategory from "./selectControlCategory";
+import SelectControlAuthor from "./selectControlAuthor";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -31,16 +33,29 @@ export default function Edit({ attributes, setAttributes }) {
 	const [quote, setQuote] = useState("");
 	const [isLoaded, setIsLoaded] = useState(false);
 
+	const localeData = getLocaleData();
+	const userLanguage = localeData[""]?.["lang"];
+	console.log(`userLanguage=${userLanguage}`);
+
 	useEffect(() => {
-		fetchQuote(attributes).then((quote) => {
+		fetchQuote(attributes, userLanguage).then((quote) => {
 			setQuote(quote);
 			setIsLoaded(true);
 		});
 	}, [language, userId, authorId, categoryId]);
 
-    const handleUserChange = (selectedUserId) => {
-        setAttributes({ userId: selectedUserId });
-    };
+	const handleUserChange = (selectedUserId) => {
+		// convert selectedUserId to a number
+		setAttributes({ userId: parseInt(selectedUserId, 10) });
+	};
+	const handleCategoryChange = (selectedCategoryId) => {
+		// convert selectedCategoryId to a number
+		setAttributes({ categoryId: parseInt(selectedCategoryId, 10) });
+	};
+	const handleAuthorChange = (selectedAuthorId) => {
+		// convert selectedAuthorId to a number
+		setAttributes({ authorId: parseInt(selectedAuthorId, 10) });
+	};
 
 	return (
 		<>
@@ -61,13 +76,23 @@ export default function Edit({ attributes, setAttributes }) {
 						onChange={(value) => setAttributes({ language: value })}
 					/>
 					<SelectControlUser onChange={handleUserChange} value={userId} />
+					<SelectControlCategory
+						userLanguage={userLanguage}
+						onChange={handleCategoryChange}
+						value={categoryId}
+					/>
+					<SelectControlAuthor
+						userLanguage={userLanguage}
+						onChange={handleAuthorChange}
+						value={authorId}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				{isLoaded ? (
 					<div dangerouslySetInnerHTML={{ __html: quote }} />
 				) : (
-					<p>Loading quote...</p>
+					<div>Loading quote ...</div>
 				)}
 			</div>
 		</>

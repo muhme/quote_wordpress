@@ -20,18 +20,24 @@ const LANGUAGES = {
  * @param {string} language, e.g. "uk"
  * @returns "" or e.g. "&language=uk"
  */
-function checkLanguageForParameter(language) {
-	if (language === "all") {
+function checkLanguageForParameter(quoteLanguage, userLanguage) {
+	var parameterLanguage;
+
+	console.log(`checkLanguageForParameter(${quoteLanguage}, "${userLanguage})`);
+	if (quoteLanguage === "all") {
 		return ""; // no language parameter
 	}
-
-	// TODO: implement frontend
-	var l = DEFAULT_LANGUAGE;
-	if (Object.keys(LANGUAGES).includes(language)) {
-		l = language;
+	if (quoteLanguage === "frontend" && userLanguage !== null) {
+		quoteLanguage = userLanguage;
 	}
 
-	return `&language=${l}`;
+	if (Object.keys(LANGUAGES).includes(quoteLanguage)) {
+		parameterLanguage = quoteLanguage;
+	} else {
+		parameterLanguage = DEFAULT_LANGUAGE;
+	}
+
+	return `&language=${parameterLanguage}`;
 }
 
 function checkIdForParameter(parameter, id) {
@@ -48,11 +54,11 @@ function checkIdForParameter(parameter, id) {
 	return `&${parameter}=${id}`;
 }
 
-async function fetchQuote(attributes) {
+async function fetchQuote(attributes, userLanguage) {
 	const { language, userId, authorId, categoryId } = attributes;
 	const url =
 		`${ZITAT_SERVICE_API_URL}/quote_html?contentOnly=true&V_${ZITAT_SERVICE_VERSION}_B` +
-		checkLanguageForParameter(language) +
+		checkLanguageForParameter(language, userLanguage) +
 		checkIdForParameter("userId", userId) +
 		checkIdForParameter("authorId", authorId) +
 		checkIdForParameter("categoryId", categoryId);

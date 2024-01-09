@@ -19,7 +19,7 @@ services:
             WORDPRESS_DEBUG: 1
             WORDPRESS_CONFIG_EXTRA: define('FORCE_SSL_ADMIN', false);
         volumes:
-            - .:/var/www/html/wp-content/plugins/zitat-service/
+            - ./plugin:/var/www/html/wp-content/plugins/zitat-service/
         ports:
             - "4080:80"
         depends_on:

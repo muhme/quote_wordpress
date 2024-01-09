@@ -31,15 +31,15 @@
 			"default": "all"
 		},
 		"userId": {
-			"type": "integer",
+			"type": "number",
 			"default": -1
 		},
 		"categoryId": {
-			"type": "integer",
+			"type": "number",
 			"default": -1
 		},
 		"authorId": {
-			"type": "integer",
+			"type": "number",
 			"default": -1
 		}
 	},
