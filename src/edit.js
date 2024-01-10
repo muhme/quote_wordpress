@@ -92,7 +92,7 @@ export default function Edit({ attributes, setAttributes }) {
 				{isLoaded ? (
 					<div dangerouslySetInnerHTML={{ __html: quote }} />
 				) : (
-					<div>Loading quote ...</div>
+					<div>{__("Loading quote ...", "zitat-service")}</div>
 				)}
 			</div>
 		</>

@@ -19,7 +19,11 @@ services:
             WORDPRESS_DEBUG: 1
             WORDPRESS_CONFIG_EXTRA: define('FORCE_SSL_ADMIN', false);
         volumes:
-            - ./plugin:/var/www/html/wp-content/plugins/zitat-service/
+            # mount only needed sub-directories and plugin PHP file
+            - ./src:/var/www/html/wp-content/plugins/zitat-service/src
+            - ./languages:/var/www/html/wp-content/plugins/zitat-service/languages
+            - ./build:/var/www/html/wp-content/plugins/zitat-service/build
+            - ./zitat-service.php:/var/www/html/wp-content/plugins/zitat-service/zitat-service.php
         ports:
             - "4080:80"
         depends_on:

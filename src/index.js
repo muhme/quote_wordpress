@@ -14,6 +14,8 @@ import { registerBlockType } from "@wordpress/blocks";
  */
 import "./style.scss";
 
+import { __ } from "@wordpress/i18n";
+
 /**
  * Internal dependencies
  */
@@ -50,6 +52,10 @@ registerBlockType(metadata.name, {
 	icon: zitat_service_icon,
 	// quote will be fetched dynamically on the frontend, block's save function returns markup that the frontend script can target, see frontend.js
 	save: () => {
-		return <div className="zitat-service-quote">Loading quote...</div>;
+		return (
+			<div className="zitat-service-quote">
+				{__("Loading quote ...", "zitat-service")}
+			</div>
+		);
 	},
 });

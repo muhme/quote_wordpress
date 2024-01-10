@@ -48,6 +48,6 @@ function zitat_service_enqueue_block_frontend_scripts()
 add_action('wp_enqueue_scripts', 'zitat_service_enqueue_block_frontend_scripts');
 
 function zitat_service_set_script_translations() {
-    wp_set_script_translations( 'myguten-script', 'myguten' );
+    wp_set_script_translations( 'zitat-service-script', 'zitat-service', plugin_dir_path( __FILE__ ) . 'languages' );
 }
 add_action( 'init', 'zitat_service_set_script_translations' );
