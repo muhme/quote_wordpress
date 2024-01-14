@@ -1,16 +1,19 @@
+/*
+ * ********** selectControlAuthor.js **********
+ */
+import { __ } from "@wordpress/i18n";
 import { useState, useEffect } from "@wordpress/element";
 import { SelectControl } from "@wordpress/components";
 
-const LANGUAGES = ["en", "de", "es", "ja", "uk"];
-const DEFAULT_LANGUAGE = "en";
-
-function AddLanguageParameter(userLanguage) {
-	return LANGUAGES.includes(userLanguage) ? userLanguage : DEFAULT_LANGUAGE;
-}
+// internal dependencies
+import {
+	ValidLanguage,
+	ZITAT_SERVICE_API_URL
+} from "./common";
 
 /**
  * Returns authors name for selection list.
- * @param {*} author 
+ * @param {*} author
  * @returns "", "lastname", "lastname, firstname" or ", firstname"
  */
 function authorName(author) {
@@ -27,17 +30,18 @@ function authorName(author) {
 }
 
 /**
- * 
- * @param {*} param0 
- * @returns 
+ *
+ * @param {*} param0
+ * @returns
  */
 const SelectControlAuthor = ({ userLanguage, onChange, value }) => {
 	const [authors, setAuthors] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	const url =
-		"https://api.zitat-service.de/v1/authors?size=2000&language=" +
-		AddLanguageParameter(userLanguage);
+		ZITAT_SERVICE_API_URL +
+		"/authors?size=2000&language=" +
+		ValidLanguage(userLanguage);
 
 	console.log(`SelectControlAuthor(${userLanguage}) url=${url}`);
 	useEffect(() => {
@@ -49,7 +53,7 @@ const SelectControlAuthor = ({ userLanguage, onChange, value }) => {
 					setIsLoaded(true);
 				})
 				.catch((error) => {
-					console.error("Error fetching authors:", error);
+					console.error("Error fetching authors: ", error);
 				});
 		}
 	}, [isLoaded]);
@@ -64,7 +68,7 @@ const SelectControlAuthor = ({ userLanguage, onChange, value }) => {
 
 	return (
 		<SelectControl
-			label="Author"
+			label={__("Author", "zitat-service")}
 			value={value}
 			options={options}
 			onChange={onChange}

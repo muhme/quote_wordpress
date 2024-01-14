@@ -20,9 +20,10 @@ services:
             WORDPRESS_CONFIG_EXTRA: define('FORCE_SSL_ADMIN', false);
         volumes:
             # mount only needed sub-directories and plugin PHP file
-            - ./src:/var/www/html/wp-content/plugins/zitat-service/src
-            - ./languages:/var/www/html/wp-content/plugins/zitat-service/languages
-            - ./build:/var/www/html/wp-content/plugins/zitat-service/build
+            -               ./src:/var/www/html/wp-content/plugins/zitat-service/src
+            -             ./build:/var/www/html/wp-content/plugins/zitat-service/build
+            -           ./scripts:/var/www/html/wp-content/plugins/zitat-service/scripts
+            -         ./languages:/var/www/html/wp-content/plugins/zitat-service/languages
             - ./zitat-service.php:/var/www/html/wp-content/plugins/zitat-service/zitat-service.php
         ports:
             - "4080:80"

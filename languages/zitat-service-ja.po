@@ -1,39 +1,88 @@
-# Copyright (C) 2023 Heiko Lübbe
-# This file is distributed under the MIT License, Copyright (c) 2023 Heiko Lübbe.
+# Copyright (C) 2023 - 2024 Heiko Lübbe
+# This file is distributed under the MIT License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zitat Service 1.2.0\n"
-"Report-Msgid-Bugs-To: https://github.com/muhme/quote_wordpress/issues\n"
+"Project-Id-Version: Zitat-Service Random Quote 1.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/zitat-service\n"
 "Last-Translator: Heiko Lübbe\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-12-11T16:27:02+00:00\n"
-"PO-Revision-Date: 2023-12-11T16:27:02+00:00\n"
+"POT-Creation-Date: 2024-01-14T04:56:37+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: zitat-service\n"
-"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. Plugin Name of the plugin
-msgid "Zitat Service"
-msgstr "Zitat Service"
+msgid "Zitat-Service Random Quote"
+msgstr "Zitat-Service ランダム引用"
 
 #. Plugin URI of the plugin
-msgctxt "Plugin URI"
 msgid "https://github.com/muhme/quote_wordpress"
 msgstr "https://github.com/muhme/quote_wordpress"
 
 #. Description of the plugin
 msgid "Display a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦."
-msgstr "ユーザーコミュニティzitat-service.deのコレクションから、ドイツ語🇩🇪、英語🇬🇧、スペイン語🇪🇸、日本語🇯🇵、またはУкраїнська🇺🇦。"
+msgstr "ドイツ語 🇩🇪、英語 🇬🇧、スペイン語 🇪🇸、日本語 🇯🇵、ウクライナ語 🇺🇦 のユーザーコミュニティ zitat-service.de のコレクションからランダムな引用を表示します。"
 
 #. Author of the plugin
 msgid "Heiko Lübbe"
-msgstr "ハイコ・リュッベ"
+msgstr "Heiko Lübbe"
 
-#. Author URI of the plugin
-msgctxt "Author URI"
-msgid "https://github.com/muhme/quote_wordpress"
-msgstr "https://github.com/muhme/quote_wordpress"
+#: build/helper.php:72
+#: src/helper.php:72
+#: build/index.js:1
+#: src/fetchQuote.js:67
+msgid "Error fetching quote"
+msgstr "引用の取得エラー"
+
+#: build/index.js:1
+#: src/selectControlUser.js:39
+msgid "User"
+msgstr "ユーザー"
+
+#: build/index.js:1
+#: src/selectControlCategory.js:45
+msgid "Category"
+msgstr "カテゴリー"
+
+#: build/index.js:1
+#: src/selectControlAuthor.js:71
+msgid "Author"
+msgstr "著者"
+
+#: build/block.json
+#: src/block.json
+#: build/index.js:1
+#: src/index.js:52
+msgid "Random Quote"
+msgstr "ランダム引用"
+
+#: build/index.js:1
+#: src/index.js:53
+msgid "Displays a random quote from the collection of the user community zitat-service.de."
+msgstr "ユーザーコミュニティ zitat-service.de のコレクションからランダムな引用を表示します。"
+
+#: build/index.js:1
+#: src/edit.js:63
+msgid "Settings"
+msgstr "設定"
+
+#: build/index.js:1
+#: src/edit.js:65
+msgid "Language"
+msgstr "言語"
+
+#: build/index.js:1
+#: src/edit.js:95
+#: src/index.js:64
+msgid "Loading quote ..."
+msgstr "引用を読み込み中..."
+
+#: build/block.json
+#: src/block.json
+msgctxt "block description"
+msgid "Displays a random quote from the collection of the user community zitat-service.de."
+msgstr "ユーザーコミュニティ zitat-service.de のコレクションからランダムな引用を表示します。"

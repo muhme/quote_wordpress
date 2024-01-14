@@ -1,20 +1,21 @@
+/*
+ * ********** selectControlCategory.js **********
+ */
+import { __, getLocaleData } from "@wordpress/i18n";
 import { useState, useEffect } from "@wordpress/element";
 import { SelectControl } from "@wordpress/components";
 
-const LANGUAGES = ["en", "de", "es", "ja", "uk"];
-const DEFAULT_LANGUAGE = "en";
-
-function AddLanguageParameter(userLanguage) {
-	return LANGUAGES.includes(userLanguage) ? userLanguage : DEFAULT_LANGUAGE;
-}
+// internal dependencies
+import { ValidLanguage, ZITAT_SERVICE_API_URL } from "./common";
 
 const SelectControlCategory = ({ userLanguage, onChange, value }) => {
 	const [categories, setCategories] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	const url =
-		"https://api.zitat-service.de/v1/categories?size=2000&language=" +
-		AddLanguageParameter(userLanguage);
+		ZITAT_SERVICE_API_URL +
+		"/categories?size=2000&language=" +
+		ValidLanguage(userLanguage);
 
 	console.log(`SelectControlCategory(${userLanguage}) url=${url}`);
 	useEffect(() => {
@@ -26,7 +27,7 @@ const SelectControlCategory = ({ userLanguage, onChange, value }) => {
 					setIsLoaded(true);
 				})
 				.catch((error) => {
-					console.error("Error fetching categories:", error);
+					console.error("Error fetching categories: ", error);
 				});
 		}
 	}, [isLoaded]);
@@ -41,7 +42,7 @@ const SelectControlCategory = ({ userLanguage, onChange, value }) => {
 
 	return (
 		<SelectControl
-			label="Category"
+			label={__("Category", "zitat-service")}
 			value={value}
 			options={options}
 			onChange={onChange}

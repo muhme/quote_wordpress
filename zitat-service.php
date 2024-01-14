@@ -15,7 +15,7 @@
  * @package           zitat-service
  */
 
-if (!defined('ABSPATH')) {
+if (!defined("ABSPATH")) {
     exit; // Exit if accessed directly.
 }
 
@@ -25,29 +25,17 @@ if (!defined('ABSPATH')) {
  * through the block editor in the corresponding context.
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
+ * @see https://wordpress.stackexchange.com/a/407437/239194
  */
 function zitat_service_zitat_service_block_init()
 {
-    register_block_type(__DIR__ . '/build');
-}
-add_action('init', 'zitat_service_zitat_service_block_init');
+    register_block_type(__DIR__ . "/build");
 
-function zitat_service_enqueue_block_frontend_scripts()
-{
-    wp_enqueue_script(
-        'zitat-service-frontend', // script handle
-        plugin_dir_url(__FILE__) . 'src/frontend.js', // frontend.js file
-        array('wp-blocks', 'wp-i18n', 'wp-element'), // dependency array
-        '1.3.0', // version number.
-        true // enqueue in the footer
-    );
+    // Load MO files for PHP.
+    load_plugin_textdomain( 'zitat-service', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
-	// set 'module' script type
-    wp_script_add_data('zitat-service-frontend', 'type', 'module');
+    // Load JSON files for JS - this is necessary if using a custom languages path!!
+    $script_handle = generate_block_asset_handle( 'zitat-service/random-quote', 'editorScript' );
+    wp_set_script_translations( $script_handle, 'zitat-service', plugin_dir_path( __FILE__ ) . 'languages' );
 }
-add_action('wp_enqueue_scripts', 'zitat_service_enqueue_block_frontend_scripts');
-
-function zitat_service_set_script_translations() {
-    wp_set_script_translations( 'zitat-service-script', 'zitat-service', plugin_dir_path( __FILE__ ) . 'languages' );
-}
-add_action( 'init', 'zitat_service_set_script_translations' );
+add_action("init", "zitat_service_zitat_service_block_init");

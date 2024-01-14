@@ -1,4 +1,11 @@
 /**
+ * Retrieves the translation of text.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+ */
+import { __, getLocaleData } from "@wordpress/i18n";
+
+/**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
@@ -14,13 +21,9 @@ import { registerBlockType } from "@wordpress/blocks";
  */
 import "./style.scss";
 
-import { __ } from "@wordpress/i18n";
-
-/**
- * Internal dependencies
- */
-import Edit from "./edit";
+// internal dependencies
 import metadata from "./block.json";
+import Edit from "./edit";
 
 const zitat_service_icon = (
 	<svg
@@ -45,12 +48,16 @@ const zitat_service_icon = (
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 registerBlockType(metadata.name, {
-	/**
-	 * @see ./edit.js
-	 */
+	// title and description in block.js are only placeholders, for I18N they are set here
+	title: __("Random Quote", "zitat-service"),
+	description: __(
+		"Displays a random quote from the collection of the user community zitat-service.de.",
+		"zitat-service",
+	),
+	//@see ./edit.js
 	edit: Edit,
 	icon: zitat_service_icon,
-	// quote will be fetched dynamically on the frontend, block's save function returns markup that the frontend script can target, see frontend.js
+	// quote will be fetched dynamically on the frontend, block"s save function returns markup that the frontend script can target, see frontend.js
 	save: () => {
 		return (
 			<div className="zitat-service-quote">

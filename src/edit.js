@@ -1,7 +1,5 @@
-/**
- * Retrieves the translation of text.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
+/*
+ * ********** edit.js **********
  */
 import { __, getLocaleData } from "@wordpress/i18n";
 
@@ -14,8 +12,10 @@ import { __, getLocaleData } from "@wordpress/i18n";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 
 import { useEffect, useState } from "@wordpress/element";
-import fetchQuote from "./fetchQuote";
 import { PanelBody, SelectControl } from "@wordpress/components";
+
+// internal dependencies
+import fetchQuote from "./fetchQuote";
 import SelectControlUser from "./selectControlUser";
 import SelectControlCategory from "./selectControlCategory";
 import SelectControlAuthor from "./selectControlAuthor";

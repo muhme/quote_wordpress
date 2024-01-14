@@ -1,40 +1,89 @@
-# Copyright (C) 2023 Heiko Lübbe
-# This file is distributed under the MIT License, Copyright (c) 2023 Heiko Lübbe.
+# Copyright (C) 2023 - 2024 Heiko Lübbe
+# This file is distributed under the MIT License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Zitat Service 1.2.0\n"
-"Report-Msgid-Bugs-To: https://github.com/muhme/quote_wordpress/issues\n"
+"Project-Id-Version: Zitat-Service Random Quote 1.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/zitat-service\n"
 "Last-Translator: Heiko Lübbe\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-12-11T16:27:02+00:00\n"
-"PO-Revision-Date: 2023-12-11T16:27:02+00:00\n"
+"POT-Creation-Date: 2024-01-14T04:56:37+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: zitat-service\n"
 "Language: uk\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. Plugin Name of the plugin
-msgid "Zitat Service"
-msgstr "Zitat Service"
+msgid "Zitat-Service Random Quote"
+msgstr "Zitat-Service Випадковий Цитат"
 
 #. Plugin URI of the plugin
-msgctxt "Plugin URI"
 msgid "https://github.com/muhme/quote_wordpress"
 msgstr "https://github.com/muhme/quote_wordpress"
 
 #. Description of the plugin
 msgid "Display a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦."
-msgstr "Відобразити випадкову цитату з колекції спільноти користувачів zitat-service.de німецькою 🇩🇪, англійською 🇬🇧, іспанською 🇪🇸, японською 🇯🇵 або українською 🇺🇦."
+msgstr "Показує випадковий цитат з колекції спільноти користувачів zitat-service.de на німецькій 🇩🇪, англійській 🇬🇧, іспанській 🇪🇸, японській 🇯🇵 та українській 🇺🇦 мовах."
 
 #. Author of the plugin
 msgid "Heiko Lübbe"
-msgstr "Хайко Люббе"
+msgstr "Heiko Lübbe"
 
-#. Author URI of the plugin
-msgctxt "Author URI"
-msgid "https://github.com/muhme/quote_wordpress"
-msgstr "https://github.com/muhme/quote_wordpress"
+#: build/helper.php:72
+#: src/helper.php:72
+#: build/index.js:1
+#: src/fetchQuote.js:67
+msgid "Error fetching quote"
+msgstr "Помилка при отриманні цитати"
+
+#: build/index.js:1
+#: src/selectControlUser.js:39
+msgid "User"
+msgstr "Користувач"
+
+#: build/index.js:1
+#: src/selectControlCategory.js:45
+msgid "Category"
+msgstr "Категорія"
+
+#: build/index.js:1
+#: src/selectControlAuthor.js:71
+msgid "Author"
+msgstr "Автор"
+
+#: build/block.json
+#: src/block.json
+#: build/index.js:1
+#: src/index.js:52
+msgid "Random Quote"
+msgstr "Випадковий Цитат"
+
+#: build/index.js:1
+#: src/index.js:53
+msgid "Displays a random quote from the collection of the user community zitat-service.de."
+msgstr "Показує випадковий цитат з колекції спільноти користувачів zitat-service.de."
+
+#: build/index.js:1
+#: src/edit.js:63
+msgid "Settings"
+msgstr "Налаштування"
+
+#: build/index.js:1
+#: src/edit.js:65
+msgid "Language"
+msgstr "Мова"
+
+#: build/index.js:1
+#: src/edit.js:95
+#: src/index.js:64
+msgid "Loading quote ..."
+msgstr "Завантаження цитати ..."
+
+#: build/block.json
+#: src/block.json
+msgctxt "block description"
+msgid "Displays a random quote from the collection of the user community zitat-service.de."
+msgstr "Показує випадковий цитат з колекції спільноти користувачів zitat-service.de."

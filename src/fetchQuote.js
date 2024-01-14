@@ -1,16 +1,15 @@
+/*
+ * ********** fetchQuote.js **********
+ */
+import { __ } from "@wordpress/i18n";
 import DOMPurify from "dompurify";
 
-const ZITAT_SERVICE_API_URL = "https://api.zitat-service.de/v1";
-const ZITAT_SERVICE_VERSION = "1.3.0";
-const DEFAULT_LANGUAGE = "en";
-// available languages from https://api.zitat-service.de/v1/languages
-const LANGUAGES = {
-	de: "German",
-	en: "English",
-	es: "Spanish",
-	ja: "Japanese",
-	uk: "Ukrainian",
-};
+// internal dependencies
+import {
+	ValidLanguage,
+	ZITAT_SERVICE_API_URL,
+	ZITAT_SERVICE_VERSION,
+} from "./common";
 
 /**
  * Check language parameter. Returns:
@@ -23,7 +22,7 @@ const LANGUAGES = {
 function checkLanguageForParameter(quoteLanguage, userLanguage) {
 	var parameterLanguage;
 
-	console.log(`checkLanguageForParameter(${quoteLanguage}, "${userLanguage})`);
+	console.log(`checkLanguageForParameter(${quoteLanguage}, ${userLanguage})`);
 	if (quoteLanguage === "all") {
 		return ""; // no language parameter
 	}
@@ -31,11 +30,7 @@ function checkLanguageForParameter(quoteLanguage, userLanguage) {
 		quoteLanguage = userLanguage;
 	}
 
-	if (Object.keys(LANGUAGES).includes(quoteLanguage)) {
-		parameterLanguage = quoteLanguage;
-	} else {
-		parameterLanguage = DEFAULT_LANGUAGE;
-	}
+	parameterLanguage = ValidLanguage(quoteLanguage);
 
 	return `&language=${parameterLanguage}`;
 }
@@ -69,7 +64,7 @@ async function fetchQuote(attributes, userLanguage) {
 		return DOMPurify.sanitize(text);
 	} catch (error) {
 		console.error("Error fetching quote:", error);
-		return "Error loading quote";
+		return __("Error fetching quote", "zitat-service");
 	}
 }
 
