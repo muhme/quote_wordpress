@@ -33,7 +33,7 @@ mcr.microsoft.com/playwright   0.0.0.0:4083->80/tcp                             
 
 Docker containers are:
   * quote_wp_wordpress – WordPress CMS
-    * http://host.docker.internal/:4080 – WordPress instance, ready for installation
+    * http://host.docker.internal:4080 – WordPress instance, ready for installation
     * [msmtp](https://marlam.de/msmtp/) is used as a simple SMPT client
     * A small WordPress plugin sets the sender email address (from field) fixed to 'webmaster@docker.local' and fixes the problem of undeliverable address 'wordpress@localhost' inside Docker container. Installing it as [must-use WordPress plugin](https://wordpress.org/support/article/must-use-plugins) to have it already actived.
     * has gettext package, vim and ping installed
