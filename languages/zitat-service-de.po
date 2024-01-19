@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-14T04:56:37+00:00\n"
+"POT-Creation-Date: 2024-01-19T06:56:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: zitat-service\n"
@@ -26,7 +26,7 @@ msgstr "https://github.com/muhme/quote_wordpress"
 
 #. Description of the plugin
 msgid "Display a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦."
-msgstr "Anzeige eines zufälliges Zitats aus der Sammlung der Nutzergemeinschaft zitat-service.de in Deutsch 🇩🇪, Englisch 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 oder Українська 🇺🇦."
+msgstr "Anzeige eines zufälligen Zitats aus der Sammlung der Nutzergemeinschaft zitat-service.de in Deutsch 🇩🇪, Englisch 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 oder Українська 🇺🇦."
 
 #. Author of the plugin
 msgid "Heiko Lübbe"
