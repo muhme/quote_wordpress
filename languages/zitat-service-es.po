@@ -18,7 +18,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 msgid "Zitat-Service Random Quote"
-msgstr "Servicio de Citas Aleatorias Zitat"
+msgstr "Zitat-Service Cita Aleatoria"
 
 #. Plugin URI of the plugin
 msgid "https://github.com/muhme/quote_wordpress"
