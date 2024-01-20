@@ -59,10 +59,11 @@ registerBlockType(metadata.name, {
 	icon: zitat_service_icon,
 	// quote will be fetched dynamically on the frontend, block"s save function returns markup that the frontend script can target, see frontend.js
 	save: () => {
+		// as we are getting ' Block validation failed' after locale change, this is not translated
+		// <div>{__("Loading quote ...", "zitat-service")}</div>
+		//			<div>...</div>
 		return (
-			<div className="zitat-service-quote">
-				{__("Loading quote ...", "zitat-service")}
-			</div>
+			<div className="zitat-service-quote">...</div>
 		);
 	},
 });

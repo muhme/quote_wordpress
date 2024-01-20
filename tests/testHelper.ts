@@ -5,7 +5,7 @@
  * testHelper.ts - utility methods used in the tests
  */
 
-import { Page } from 'playwright';
+import { Page, Locator } from 'playwright';
 import { expect, Editor, Admin } from '@wordpress/e2e-test-utils-playwright';
 
 /**
@@ -15,10 +15,10 @@ import { expect, Editor, Admin } from '@wordpress/e2e-test-utils-playwright';
  *   3. expect quotation link goes to given language code
  * 
  * @param page - to be passed from WordPress utils for Playwright
- * @param postId - unique post number, as returned from createPostWithShortcode()
- * @param languageCode - two-letter language code, e.g. 'de'
+ * @param postId - unique post number, as returned from createPostWithPlugin()
+ * @param languageCode - two-letter language code, e.g. 'de' or null for all languages
  */
-async function checkQuote(page: Page, postId: number | null, languageCode: string) {
+async function checkQuote(page: Page, postId: number | null, languageCode: string | null) {
     // Navigate to the page with the specified post ID
     await page.goto(`/?p=${postId}`);
 
@@ -31,40 +31,48 @@ async function checkQuote(page: Page, postId: number | null, languageCode: strin
     await expect(quotationDiv).toBeVisible();
 
     // Check for visibility of the link with language-specific URL
-    const link = page.locator(`div.quotation a[href^="https://www.zitat-service.de/${languageCode}/quotations/"]`);
-    await expect(link).toBeVisible();
+    let linkLocator: Locator;
+    if (languageCode === null) {
+        // if no language is given, then check beginning and it contains '/quotations/'
+        linkLocator = page.locator(`div.quotation a[href^="https://www.zitat-service.de/"][href*="/quotations/"]`);
+    } else {
+        linkLocator = page.locator(`div.quotation a[href^="https://www.zitat-service.de/${languageCode}/quotations/"]`);
+    }
+    await expect(linkLocator).toBeVisible();
 
 }
 export { checkQuote };
 
 /**
- * Creates a post with [zitat_service] shortcode and parameters e.g. language="de" in backend.
+ * Creates a post with [zitat_service] block widget plugin and given parameters e.g. language="de" in backend.
+ * 
+ * Does it simplified as with code editor (not selecting values in the GUI).
  * 
  * @param editor - to be passed from WordPress utils for Playwright
  * @param admin - to be passed from WordPress utils for Playwright
  * @param title - used as post title and second time as paragraph in the blog post
- * @param attribute - keys/values object to create the shortcode attributes
+ * @param attributes - keys/values object to create the plugin attributes
  * @returns postId - unique post number or null
  */
-async function createPostWithShortcode<T extends Record<string, string>>(editor: Editor, admin: Admin, title: string, attribute: T | null): Promise<number | null> {
+async function createPostWithPlugin<T extends Record<string, string>>(editor: Editor, admin: Admin, title: string, attributes: T | null): Promise<number | null> {
 
-    let attributesWithSpaces = '';
-    if (attribute) {
-        attributesWithSpaces = " " + Object.entries(attribute).map(([key, value]) => `${key}="${value}"`).join(" ")
+    let attributesPrinted = '';
+    if (attributes && attributes !== undefined && attributes !== null && Object.keys(attributes).length > 0) {
+        attributesPrinted = JSON.stringify(attributes);
     }
 
     await admin.createNewPost({ title: title });
     // post is created via REST, set the content in additional step to prevent encoding HTML special chars
     await editor.setContent(`
 <p>${title}</p>
-<!-- wp:shortcode -->
-[zitat_service${attributesWithSpaces}]
-<!-- /wp:shortcode -->
+<!-- wp:zitat-service/random-quote ${attributesPrinted} -->
+<div class="zitat-service-quote"> ...</div>
+<!-- /wp:zitat-service/random-quote -->
 `);
 
     return editor.publishPost();;
 }
-export { createPostWithShortcode };
+export { createPostWithPlugin };
 
 /**
  * Do admin login and store cookies if desired.

@@ -5,4 +5,5 @@
 #
 # deleteAllPosts.sh - delete ALL posts in WordPress
 
-docker exec -it quote_wp_wordpress sh -c "wp post list --post_type='post' --format=ids --allow-root | xargs -n 1 wp post delete --force --allow-root"
+echo '*** Delete all posts'
+docker exec -it quote_wp_wordpress sh -c "wp post list --post_type='post' --format=ids --allow-root | xargs --no-run-if-empty -n 1 wp post delete --force --allow-root"

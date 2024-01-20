@@ -19,6 +19,8 @@ trap 'rm -rf $TMP' 0
 VERSION=`egrep "ZITAT_SERVICE_VERSION.*[0-9].[0-9].[0-9]" src/zitat_service_widget.php | awk -F "'" '{print $4}'`
 ZIP="dist/zitat_service_widget_$VERSION.zip"
 
+echo '*** Pack plugin as ZIP file'
+
 # create zip
 (cd src && zip -r "../${ZIP}" . --quiet)
 

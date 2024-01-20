@@ -44,6 +44,11 @@ As the docker container volume is mapped, you can open the HTML report from file
 127.0.0.1	host.docker.internal
 ```
 
+You can run one single test, e.g.
+```
+host$ scripts/test.sh --project=chromium-logged-in -g \'language attribute not set\'
+```
+
 ### Local Host Installation
 
 It is possible to run the E2E tests on your host machine if you install Playwright locally:

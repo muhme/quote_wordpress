@@ -92,7 +92,9 @@ export default function Edit({ attributes, setAttributes }) {
 				{isLoaded ? (
 					<div dangerouslySetInnerHTML={{ __html: quote }} />
 				) : (
-					<div>{__("Loading quote ...", "zitat-service")}</div>
+					// as we are getting ' Block validation failed' after locale change, this is not translated
+					// <div>{__("Loading quote ...", "zitat-service")}</div>
+					<div className="zitat-service-quote">...</div>
 				)}
 			</div>
 		</>

@@ -5,5 +5,5 @@
 #
 # clean.sh - delete all quote_wp_* docker containers
 
-echo 'Removing all docker containers quote_wp_*'
+echo '*** Removing all docker containers quote_wp_*'
 docker ps -a --format '{{.Names}}' | grep '^quote_wp_' | xargs docker rm -f
