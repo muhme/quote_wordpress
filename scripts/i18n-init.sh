@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# MIT License, Copyright (c) 2023 Heiko Lübbe
-# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+# scripts/i18n-init.sh - Create languages/zitat-service.pot (Portable Object Template) file
 #
-# i18n-init.sh - Create languages/zitat-service.pot (Portable Object Template) file
+# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 #
 # needs gettext package installed as already in quote_wp_wordpress container
 # needs WP-CLI installed in quote_wp_wordpress container as scripts/install.sh does

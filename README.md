@@ -2,7 +2,7 @@
 
 ![WordPress plugin zitat_service](images/wordpress_plugin_zitat_service.png)
 
-WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).
+Free and open-source WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).
 
 :bulb: **Tip:** Help for the WordPress plugin installation and administration is available at https://github.com/muhme/quote_wordpress/wiki.
 

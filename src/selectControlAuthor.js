@@ -1,5 +1,9 @@
-/*
- * ********** selectControlAuthor.js **********
+/**
+ * src/selectControlAuthor.js - block editor UI SelectControl implementation for authors
+ *
+ * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ *
  */
 import { __ } from "@wordpress/i18n";
 import { useState, useEffect } from "@wordpress/element";
@@ -30,9 +34,12 @@ function authorName(author) {
 }
 
 /**
- *
- * @param {*} param0
- * @returns
+ * SelectControl implementaion for selecting an authors ID.
+ * 
+ * @param {string} userLanguage users language for author names
+ * @param {} onChange author change handle
+ * @param {} value actual set ID value
+ * @returns SelectControl
  */
 const SelectControlAuthor = ({ userLanguage, onChange, value }) => {
 	const [authors, setAuthors] = useState([]);

@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# MIT License, Copyright (c) 2023 Heiko Lübbe
-# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+# scripts/install.sh - install WordPress and plugin zitat-service with WP-CLI
 #
-# install.sh - install WordPress and plugin zitat-service with WP-CLI
+# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 
 echo "*** Waiting for container"
 node_modules/wait-on/bin/wait-on -l -t "60s" "http://host.docker.internal:4080/" 

@@ -1,13 +1,25 @@
-/*
- * ********** selectControlCategory.js **********
+/**
+ * src/selectControlCategory.js - block editor UI SelectControl implementation for categories
+ *
+ * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ *
  */
-import { __, getLocaleData } from "@wordpress/i18n";
+import { __ } from "@wordpress/i18n";
 import { useState, useEffect } from "@wordpress/element";
 import { SelectControl } from "@wordpress/components";
 
 // internal dependencies
 import { ValidLanguage, ZITAT_SERVICE_API_URL } from "./common";
 
+/**
+ * SelectControl implementaion for selecting a category ID.
+ * 
+ * @param {string} userLanguage users language for category name
+ * @param {} onChange category change handle
+ * @param {} value actual set ID value
+ * @returns SelectControl
+ */
 const SelectControlCategory = ({ userLanguage, onChange, value }) => {
 	const [categories, setCategories] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);

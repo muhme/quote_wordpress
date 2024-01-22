@@ -1,9 +1,16 @@
 /**
+ * src/index.js - block.json confgured editorScript
+ *
+ * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ */
+
+/**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __, getLocaleData } from "@wordpress/i18n";
+import { __ } from "@wordpress/i18n";
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -25,6 +32,7 @@ import "./style.scss";
 import metadata from "./block.json";
 import Edit from "./edit";
 
+// green 'Z' as zitat-service plugin icon
 const zitat_service_icon = (
 	<svg
 		width="24"
@@ -54,16 +62,13 @@ registerBlockType(metadata.name, {
 		"Displays a random quote from the collection of the user community zitat-service.de.",
 		"zitat-service",
 	),
-	//@see ./edit.js
+	// @see ./edit.js
 	edit: Edit,
 	icon: zitat_service_icon,
 	// quote will be fetched dynamically on the frontend, block"s save function returns markup that the frontend script can target, see frontend.js
 	save: () => {
-		// as we are getting ' Block validation failed' after locale change, this is not translated
+		// as we are getting 'Block validation failed' after changing locale, this is not translated
 		// <div>{__("Loading quote ...", "zitat-service")}</div>
-		//			<div>...</div>
-		return (
-			<div className="zitat-service-quote">...</div>
-		);
+		return <div className="zitat-service-quote">...</div>;
 	},
 });

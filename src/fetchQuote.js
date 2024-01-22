@@ -1,5 +1,9 @@
-/*
- * ********** fetchQuote.js **********
+/**
+ * src/fetchQuote.js - fetching a random quote, used by index.js
+ *
+ * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ *
  */
 import { __ } from "@wordpress/i18n";
 import DOMPurify from "dompurify";
@@ -35,6 +39,13 @@ function checkLanguageForParameter(quoteLanguage, userLanguage) {
 	return `&language=${parameterLanguage}`;
 }
 
+/**
+ * Check parameter with ID and return string with URL part.
+ *  
+ * @param {string} parameter parameter name, e.g. 'categoryId'
+ * @param {number} id parameter value, e.g. 42
+ * @returns string with URL part e.g. '&categoryId=42' or empty string
+ */
 function checkIdForParameter(parameter, id) {
 	if (
 		parameter === null ||
@@ -49,23 +60,63 @@ function checkIdForParameter(parameter, id) {
 	return `&${parameter}=${id}`;
 }
 
+/**
+ * Return random quote for given parameters from API in HTML format.
+ * 
+ * errors are protocolled in paralell on console.error()
+ * 
+ * @param {*} attributes ID parameters
+ * @param {string} userLanguage language code, e.g. 'de'
+ * @returns HTML formated quote or error string
+ */
 async function fetchQuote(attributes, userLanguage) {
 	const { language, userId, authorId, categoryId } = attributes;
-	const url =
-		`${ZITAT_SERVICE_API_URL}/quote_html?contentOnly=true&V_${ZITAT_SERVICE_VERSION}_B` +
-		checkLanguageForParameter(language, userLanguage) +
-		checkIdForParameter("userId", userId) +
-		checkIdForParameter("authorId", authorId) +
-		checkIdForParameter("categoryId", categoryId);
-	console.log(`fetchQuote(${url})`);
+	var url = "";
+
 	try {
-		const response = await fetch(url);
+		// compose URL with parameters, plugin version 'V' and blocke editor marker 'B'
+		url =
+			`${ZITAT_SERVICE_API_URL}/quote_html?contentOnly=true&V_${ZITAT_SERVICE_VERSION}_B` +
+			checkLanguageForParameter(language, userLanguage) +
+			checkIdForParameter("userId", userId) +
+			checkIdForParameter("authorId", authorId) +
+			checkIdForParameter("categoryId", categoryId);
+
+		// do the request
+		const response = await fetch(url, {
+			method: "GET",
+			headers: {
+				"Content-Type": "text/html",
+			},
+		});
+
+		// check and proceed the response
+		if (!response.ok) {
+			const err = "response is not JSON parsable";
+			let jsonResponse;
+			try {
+				jsonResponse = await response.json();
+			} catch (e) {
+				console.error(err + " 1: " + JSON.stringify(jsonResponse));
+				throw new Error(err);
+			}
+			if (jsonResponse && jsonResponse.error && jsonResponse.error.statusCode && jsonResponse.error.message) {
+				// JSON packed error from API found
+				// e.g. "Error 404 – No quote found for given parameters: language=ja (Japanese), userId=85 (charly)."
+				throw new Error(jsonResponse.error.statusCode + " – " + jsonResponse.error.message);
+			}
+			// response is not parsable, simple return the stuff
+			console.error(err + " 2: " + JSON.stringify(jsonResponse));
+			throw new Error(err);
+		}
 		const text = await response.text();
 		return DOMPurify.sanitize(text);
 	} catch (error) {
-		console.error("Error fetching quote:", error);
-		return __("Error fetching quote", "zitat-service");
+		// 1st protocol to console
+		console.error("Error fetching the data from url '" + url + "': " + error.message);
+		// 2nd return the error
+		// not translated as the error message from API is always English
+		return ("Error " + error.message);
 	}
 }
-
 export default fetchQuote;

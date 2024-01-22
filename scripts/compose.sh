@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# MIT License, Copyright (c) 2023 Heiko Lübbe
-# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+# scripts/compose.sh - delete the five docker containers and build them new
 #
-# compose.sh - delete the five docker containers and build them new
+# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 
 NAME=quote_wp_
 echo "*** Removing all docker containers ${NAME}*"

@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# MIT License, Copyright (c) 2023 Heiko Lübbe
-# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+# scripts/test.sh - running end-to-end tests
 #
-# test.sh - end-to-end test for WordPress plugin zitat_service
+# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 
 echo "*** Running test in Docker container quote_wp_playwright: npx playwright test $*"
 

@@ -1,8 +1,9 @@
-/*
- * MIT License, Copyright (c) 2023 Heiko Lübbe
- * https://github.com/muhme/quote_wordpress
+/**
+ * tests/testHelper.ts - utility methods used in the tests
+ *
+ * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  * 
- * testHelper.ts - utility methods used in the tests
  */
 
 import { Page, Locator } from 'playwright';
@@ -44,33 +45,54 @@ async function checkQuote(page: Page, postId: number | null, languageCode: strin
 export { checkQuote };
 
 /**
+ * Showing the post in frontend and verifying error message
+ * 
+ * @param page - to be passed from WordPress utils for Playwright
+ * @param postId - unique post number, as returned from createPostWithPlugin()
+ */
+async function checkNoQuoteFound(page: Page, postId: number | null) {
+
+    // Navigate to the page with the specified post ID
+    await page.goto(`/?p=${postId}`);
+
+    // Check for visibility of the plugin
+    const quoteDiv = page.locator('.wp-block-zitat-service-random-quote');
+    await expect(quoteDiv).toHaveCount(1);
+
+    await expect(quoteDiv).toContainText('Error 404');
+    await expect(quoteDiv).toContainText('No quote found for given parameter');
+
+}
+export { checkNoQuoteFound };
+
+/**
  * Creates a post with [zitat_service] block widget plugin and given parameters e.g. language="de" in backend.
  * 
  * Does it simplified as with code editor (not selecting values in the GUI).
  * 
- * @param editor - to be passed from WordPress utils for Playwright
+ * @param editor - active editor on the page, to be passed from WordPress utils for Playwright
  * @param admin - to be passed from WordPress utils for Playwright
  * @param title - used as post title and second time as paragraph in the blog post
  * @param attributes - keys/values object to create the plugin attributes
  * @returns postId - unique post number or null
  */
-async function createPostWithPlugin<T extends Record<string, string>>(editor: Editor, admin: Admin, title: string, attributes: T | null): Promise<number | null> {
+async function createPostWithPlugin<T extends Record<string, string | number>>(editor: Editor, admin: Admin, title: string, attributes: T | null): Promise<number | null> {
 
-    let attributesPrinted = '';
+    let attributesStringified = '';
     if (attributes && attributes !== undefined && attributes !== null && Object.keys(attributes).length > 0) {
-        attributesPrinted = JSON.stringify(attributes);
+        attributesStringified = JSON.stringify(attributes);
     }
 
     await admin.createNewPost({ title: title });
     // post is created via REST, set the content in additional step to prevent encoding HTML special chars
     await editor.setContent(`
 <p>${title}</p>
-<!-- wp:zitat-service/random-quote ${attributesPrinted} -->
+<!-- wp:zitat-service/random-quote ${attributesStringified} -->
 <div class="zitat-service-quote"> ...</div>
 <!-- /wp:zitat-service/random-quote -->
 `);
 
-    return editor.publishPost();;
+    return editor.publishPost();
 }
 export { createPostWithPlugin };
 
