@@ -1,6 +1,6 @@
 # Tests
 
-To ensure the integrity and reliability of the WordPress plugin `zitat-service`, the `tests` subfolder contains a test suite. An overview of the plugin can be found in the [../README.md](../README.md) file in the parent directory.
+To ensure the integrity and reliability of the WordPress plugin `zitat-service`, the `test` subfolder contains a test suite. An overview of the plugin can be found in the [../README.md](../README.md) file in the parent directory.
 
 ## Test Environment
 

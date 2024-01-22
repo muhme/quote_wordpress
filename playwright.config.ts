@@ -3,7 +3,7 @@
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  *
  * playwright.config.ts - Playwright configuration for E2E tests
- * @see ./tests
+ * @see ./test
  */
 
 import { defineConfig, devices } from '@playwright/test';
@@ -18,7 +18,7 @@ export const BASE_URL = process.env.WP_BASE_URL ?? 'http://host.docker.internal:
 
 // see https://playwright.dev/docs/test-configuration
 export default defineConfig({
-  testDir: 'tests',
+  testDir: 'test',
   // run tests in files in parallel
   fullyParallel: true,
   // fail the build on CI if you accidentally left test.only in the source code
@@ -46,26 +46,26 @@ export default defineConfig({
     // see https://playwright.dev/docs/test-global-setup-teardown
     {
       name: 'login-setup',
-      testMatch: 'tests/login.setup.ts'
+      testMatch: 'test/login.setup.ts'
     },
     // major browser tests, starting without login
     {
       name: 'chromium-logged-out',
-      testMatch: 'tests/*.logged.out.spec.ts',
+      testMatch: 'test/*.logged.out.spec.ts',
       use: {
         ...devices['Desktop Chrome']
       },
     },
     {
       name: 'firefox-logged-out',
-      testMatch: 'tests/*.logged.out.spec.ts',
+      testMatch: 'test/*.logged.out.spec.ts',
       use: {
         ...devices['Desktop Firefox']
       },
     },
     {
       name: 'webkit-logged-out',
-      testMatch: 'tests/*.logged.out.spec.ts',
+      testMatch: 'test/*.logged.out.spec.ts',
       use: {
         ...devices['Desktop Safari']
       },
@@ -73,14 +73,14 @@ export default defineConfig({
     // tests against mobile viewports
     {
       name: 'mobile-chrome-logged-out',
-      testMatch: 'tests/*.logged.out.spec.ts',
+      testMatch: 'test/*.logged.out.spec.ts',
       use: {
         ...devices['Pixel 5']
       },
     },
     {
       name: 'mobile-safari-logged-out',
-      testMatch: 'tests/*.logged.out.spec.ts',
+      testMatch: 'test/*.logged.out.spec.ts',
       use: {
         ...devices['iPhone 12']
       },
@@ -88,7 +88,7 @@ export default defineConfig({
     // major browsers tests, logged in
     {
       name: 'chromium-logged-in',
-      testMatch: 'tests/*.logged.in.spec.ts',
+      testMatch: 'test/*.logged.in.spec.ts',
       dependencies: ['login-setup'],
       use: {
         storageState: STORAGE_STATE,
@@ -97,7 +97,7 @@ export default defineConfig({
     },
     {
       name: 'firefox-logged-in',
-      testMatch: 'tests/*.logged.in.spec.ts',
+      testMatch: 'test/*.logged.in.spec.ts',
       dependencies: ['login-setup'],
       use: {
         storageState: STORAGE_STATE,
@@ -106,7 +106,7 @@ export default defineConfig({
     },
     {
       name: 'webkit-logged-in',
-      testMatch: 'tests/*.logged.in.spec.ts',
+      testMatch: 'test/*.logged.in.spec.ts',
       dependencies: ['login-setup'],
       use: {
         storageState: STORAGE_STATE,
@@ -116,7 +116,7 @@ export default defineConfig({
     // test against mobile viewports
     {
       name: 'mobile-chrome-logged-in',
-      testMatch: 'tests/*.logged.in.spec.ts',
+      testMatch: 'test/*.logged.in.spec.ts',
       dependencies: ['login-setup'],
       use: {
         storageState: STORAGE_STATE,
@@ -125,7 +125,7 @@ export default defineConfig({
     },
     {
       name: 'mobile-safari-logged-in',
-      testMatch: 'tests/*.logged.in.spec.ts',
+      testMatch: 'test/*.logged.in.spec.ts',
       dependencies: ['login-setup'],
       use: {
         storageState: STORAGE_STATE,
@@ -136,7 +136,7 @@ export default defineConfig({
     // test against branded browsers - only local installed, not available in quote_wp_playwright
     // {
     //   name: 'Microsoft Edge',
-    //   testMatch: 'tests/*.logged.in.spec.ts',
+    //   testMatch: 'test/*.logged.in.spec.ts',
     //   dependencies: ['login setup'],
     //   use: { 
     //     storageState: STORAGE_STATE,
@@ -144,7 +144,7 @@ export default defineConfig({
     // },
     // {
     //   name: 'Google Chrome',
-    //   testMatch: 'tests/*.logged.in.spec.ts',
+    //   testMatch: 'test/*.logged.in.spec.ts',
     //   dependencies: ['login setup'],
     //   use: { 
     //     storageState: STORAGE_STATE,

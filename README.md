@@ -75,7 +75,7 @@ WordPress is installed with the five languages supported by the plugin. The plug
 
 ### Testing
 
-Automated Playwright tests are in subfolder [tests](./tests/) and and are described there.
+Automated Playwright tests are in subfolder [test](./test/) and and are described there.
 
 ### Scripts
 

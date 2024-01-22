@@ -7,7 +7,7 @@ The scripts are used on the Mac command line, but should also work on Linux and 
 | Script | Description | Additional Info |
 | --- | --- | --- |
 | [scripts/install.sh](install.sh) | Inside `quote_wp_wordpress` install WP-CLI, complete the WordPress installation, install additional languages and admin users, activate the plugin | - must be executed first and only once |
-| [scripts/test.sh](test.sh) | Run E2E tests in Playwright container | - see [../tests](../tests) |
+| [scripts/test.sh](test.sh) | Run E2E tests in Playwright container | - see [../test](../test) |
 | [scripts/pack.sh](pack.sh) | Create the plugin ZIP file |  |
 | [scripts/compose.sh](compose.sh) | Delete the five Docker containers and build them new | - with optional argument `build` the WordPress container is rebuild without cache |
 | [scripts/clean.sh](clean.sh) | Removes all quote_wp_* Docker containers |  |

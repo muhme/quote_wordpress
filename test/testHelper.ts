@@ -14,12 +14,30 @@ import { expect, Editor, Admin } from '@wordpress/e2e-test-utils-playwright';
  *   1. expect to have div.quote
  *   2. expect to have div.quotation
  *   3. expect quotation link goes to given language code
+ *
+ * optional parameters are only checked if they are given (not null)
  * 
  * @param page - to be passed from WordPress utils for Playwright
  * @param postId - unique post number, as returned from createPostWithPlugin()
- * @param languageCode - two-letter language code, e.g. 'de' or null for all languages
+ * @param languageCode - two-letter language code, e.g. 'de' or defaults to null for all languages
+ * @param quotation - the quote or null, defaults to null
+ * @param quotationLink - the zitat-service.de-link or null, defaults to null
+ * @param source - quotation source or null, defaults to null
+ * @param sourceLink - quotation source link or null, defaults to null
+ * @param author - auhors name or null, defaults to null
+ * @param authorLink - authors link or null, defaults to null
  */
-async function checkQuote(page: Page, postId: number | null, languageCode: string | null) {
+async function checkQuote(
+    page: Page,
+    postId: number | null,
+    languageCode: string | null = null,
+    quotation: string | null = null,
+    quotationLink: string | null = null,
+    source: string | null = null,
+    sourceLink: string | null = null,
+    author: string | null = null,
+    authorLink: string | null = null
+) {
     // Navigate to the page with the specified post ID
     await page.goto(`/?p=${postId}`);
 
@@ -31,9 +49,9 @@ async function checkQuote(page: Page, postId: number | null, languageCode: strin
     const quotationDiv = page.locator('div.quote div.quotation');
     await expect(quotationDiv).toBeVisible();
 
-    // Check for visibility of the link with language-specific URL
+    // Check for visibility of the zitat-service.de-link with language-specific URL
     let linkLocator: Locator;
-    if (languageCode === null) {
+    if (languageCode === null || languageCode === 'all' || languageCode === 'frontend') {
         // if no language is given, then check beginning and it contains '/quotations/'
         linkLocator = page.locator(`div.quotation a[href^="https://www.zitat-service.de/"][href*="/quotations/"]`);
     } else {
@@ -41,6 +59,40 @@ async function checkQuote(page: Page, postId: number | null, languageCode: strin
     }
     await expect(linkLocator).toBeVisible();
 
+    /*
+     * tests the optional arguments with exactly comparing the results
+     */
+    if (quotation) {
+        const found = await page.textContent('div.quote div.quotation a');
+        expect(found).toBe(quotation);
+    }
+    if (quotationLink) {
+        const found = await page.getAttribute('div.quote div.quotation a', 'href');
+        expect(found).toBe(quotationLink);
+    }
+    if (source) {
+        const found = await page.textContent('div.quote div.source');
+        expect(found).toBe(source);
+    }
+    if (author) {
+        const found = await page.textContent('div.quote div.source');
+        expect(found).toContain(author);
+    }
+    if (sourceLink || authorLink) {
+        // .source can have two links, if source is existing it is always the first;
+        // authorLink is the second, if sourceLink exists, else the first
+        const sourceLinks = await page.$$eval('div.quote div.source a', links => links.map(link => (link as HTMLAnchorElement).href));
+        if (sourceLink) {
+            const found = sourceLinks[0];
+            // some sourceLink's are URL encoded
+            expect(decodeURIComponent(found)).toBe(sourceLink);
+        }
+        if (authorLink) {
+            const found = sourceLinks[sourceLink ? 1 : 0];
+            // some authorLink's are URL encoded
+            expect(decodeURIComponent(found)).toBe(authorLink);
+        }
+    }
 }
 export { checkQuote };
 
