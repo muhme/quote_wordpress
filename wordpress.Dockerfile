@@ -1,11 +1,11 @@
 #
 # wordpress.Dockerfile - create docker container quote_wp_wordpress
 #
-# MIT License, Copyright (c) 2023 Heiko Lübbe
+# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
 # https://github.com/muhme/quote_wordpress
 # 
 
-# use latest WordPress - actual 6.4.1
+# use latest WordPress - actual 6.4.2
 FROM wordpress
 
 # use MSMTP as sendmail compatible SMTP client and deliver emails to maildev:1025

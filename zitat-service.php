@@ -4,7 +4,7 @@
  * Plugin URI:        https://github.com/muhme/quote_wordpress
  * Description:       Display a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦.
  * Requires at least: 6.1
- * Requires PHP:      7.0
+ * Requires PHP:      7.4
  * Version:           1.3.0
  * Author:            Heiko Lübbe
  * License:           MIT

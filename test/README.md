@@ -6,36 +6,59 @@ To ensure the integrity and reliability of the WordPress plugin `zitat-service`,
 
 [Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright test utils for WordPress [@wordpress/e2e-test-utils-playwright](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-e2e-test-utils-playwright/). Playwright can be used local installed on host system or with docker container `quote_wp_playwright`. 
 
+There are two WordPress Docker containers for testing. Docker container `quote_wp_wordpress` is the latest version WordPress and Docker container `quote_wp_min` is the minimum required WordPress version. Installation and test can go with one of them with container name as first argument. If no container name is given, the installation or the test is started two times, for each of the containers.
+
 :bulb: **Tip:** Before testing, you have to complete WordPress installation and to activate the plugin with `scripts/install.sh`.
 
 Playwright tests are grouped into `*-logged out` and `*-logged in`. The reason for this is that five different admin users with different locales are used for the backend tests with I18N. These tests are started logged out and themselves make a login with an administrative user in the locale to be tested.
 
-The frontend tests change the plugin parameters in the backend and then check the expected result in the frontend. To change the plugin parameters, they have to first be logged in once as a WordPress admin user.
+The frontend tests create posts with the desired plugin parameters in the backend and then check the expected result in the frontend. To create posts, they have to first be logged in once as a WordPress admin user with `login-setup`.
 
-One more grouping are the different browsers. However you can simple run the actual 71 tests with:
+One more grouping are the different browsers. Actual we can test with five different browsers: chromium, firefox, webkit, mobile-chrome and mobile-safari.
+
+You can run all the actual 2 x 121 tests with:
 ```
 host$ scripts/test.sh
 ```
 
 ### Dockerized
 
-You can run the E2E tests in Docker container `quote_wp_playwright` with `scripts/test.sh`, e.g. for Chromium browser:
+You can run the E2E tests in Docker container `quote_wp_playwright` with `scripts/test.sh`.
+
+<details>
+  <summary>Sample for Chromium browser and the actual WordPress version:</summary>
 
 ```
-host$ scripts/test.sh --project=chromium-logged-out --project=chromium-logged-in
-
-Running 15 tests using 6 workers
-
-  ✓  1 [chromium-logged-out] › plugin.logged.out.spec.ts:39:7 › Backend – Plugin descriptions › ja - Japanese language (3.2s)
-  ✓  2 [chromium-logged-out] › plugin.logged.out.spec.ts:25:7 › Backend – Plugin descriptions › de - German language (4.4s)
-  ✓  3 [chromium-logged-out] › plugin.logged.out.spec.ts:18:7 › Backend – Plugin descriptions › en - English language (4.5s)
-  ✓  4 [chromium-logged-out] › plugin.logged.out.spec.ts:32:7 › Backend – Plugin descriptions › es - Spanish language (2.1s)
-  ✓  5 [chromium-logged-out] › plugin.logged.out.spec.ts:46:7 › Backend – Plugin descriptions › uk - Ukrainian language (3.6s)
-  ✓  6 [login-setup] › login.setup.ts:17:6 › do login (1.2s)
-  ✓  7 [chromium-logged-in] › shortcode.logged.in.spec.ts:41:7 › Frontend – Shortcode › language attribute not set (5.0s)
-  ✓  8 [chromium-logged-in] › shortcode.logged.in.spec.ts:16:7 › Frontend – Shortcode › german language attribute (10.0s)
-  ...
+host$ scripts/test.sh quote_wp_wordpress --project=chromium-logged-out --project=chromium-logged-in
+Running 25 tests using 6 workers
+  ✓  1 [chromium-logged-out] › plugin.logged.out.spec.ts:22:7 › Backend – Plugin descriptions › en - English language (4.6s)
+  ✓  2 [chromium-logged-out] › plugin.logged.out.spec.ts:29:7 › Backend – Plugin descriptions › de - German language (5.9s)
+  ✓  3 [chromium-logged-out] › plugin.logged.out.spec.ts:36:7 › Backend – Plugin descriptions › es - Spanish language (5.9s)
+  ✓  4 [chromium-logged-out] › plugin.logged.out.spec.ts:51:7 › Backend – Plugin descriptions › uk - Ukrainian language (3.1s)
+  ✓  5 [chromium-logged-out] › plugin.logged.out.spec.ts:43:7 › Backend – Plugin descriptions › ja - Japanese language (5.9s)
+  ✓  6 [login-setup] › login.setup.ts:17:6 › do login (4.2s)
+  ✓  7 [chromium-logged-in] › plugin.logged.in.spec.ts:74:11 › Frontend – Widget › Language 'es' (5.9s)
+  ✓  8 [chromium-logged-in] › plugin.logged.in.spec.ts:74:11 › Frontend – Widget › Language 'de' (7.0s)
+  ✓  9 [chromium-logged-in] › plugin.logged.in.spec.ts:79:11 › Frontend – Widget › Language 'de', user 'heikoAdmin' (7.3s)
+  ✓  10 [chromium-logged-in] › plugin.logged.in.spec.ts:79:11 › Frontend – Widget › Language 'en', user 'heikoAdmin' (6.9s)
+  ✓  11 [chromium-logged-in] › plugin.logged.in.spec.ts:79:11 › Frontend – Widget › Language 'es', user 'heikoAdmin' (10.6s)
+  ✓  12 [chromium-logged-in] › plugin.logged.in.spec.ts:74:11 › Frontend – Widget › Language 'en' (9.1s)
+  ✓  13 [chromium-logged-in] › plugin.logged.in.spec.ts:74:11 › Frontend – Widget › Language 'ja' (6.8s)
+  ✓  14 [chromium-logged-in] › plugin.logged.in.spec.ts:79:11 › Frontend – Widget › Language 'ja', user 'heikoAdmin' (7.0s)
+  ✓  15 [chromium-logged-in] › plugin.logged.in.spec.ts:74:11 › Frontend – Widget › Language 'uk' (7.5s)
+  ✓  16 [chromium-logged-in] › plugin.logged.in.spec.ts:79:11 › Frontend – Widget › Language 'uk', user 'heikoAdmin' (7.7s)
+  ✓  17 [chromium-logged-in] › plugin.logged.in.spec.ts:86:7 › Frontend – Widget › Language not set (7.1s)
+  ✓  18 [chromium-logged-in] › plugin.logged.in.spec.ts:91:7 › Frontend – Widget › Language 'all' (7.7s)
+  ✓  19 [chromium-logged-in] › plugin.logged.in.spec.ts:96:7 › Frontend – Widget › Language 'frontend' (7.1s)
+  ✓  20 [chromium-logged-in] › plugin.logged.in.spec.ts:101:7 › Frontend – Widget › Language 'fr' (not supported) (7.3s)
+  ✓  21 [chromium-logged-in] › plugin.logged.in.spec.ts:106:7 › Frontend – Widget › Cheesecake attribute (7.4s)
+  ✓  22 [chromium-logged-in] › plugin.logged.in.spec.ts:111:7 › Frontend – Widget › Several nonsense attributes (7.1s)
+  ✓  23 [chromium-logged-in] › plugin.logged.in.spec.ts:116:7 › Frontend – Widget › 404 (no quote found) (6.6s)
+  ✓  24 [chromium-logged-in] › plugin.logged.in.spec.ts:122:7 › Frontend – Widget › Language 'de', Category 'Ameise' (5.7s)
+  ✓  25 [chromium-logged-in] › plugin.logged.in.spec.ts:128:7 › Frontend – Widget › Language 'uk', Author 'Шевченко', category 'Писання' (5.2s)
+  25 passed (34.0s)
 ```
+</details>
 
 As the docker container volume is mapped, you can open the HTML report from file `playwright-report/index.html` in your preferred browser.
 
@@ -44,9 +67,9 @@ As the docker container volume is mapped, you can open the HTML report from file
 127.0.0.1	host.docker.internal
 ```
 
-You can run one single test, e.g.
+You can run one single test, e.g. on minimal version WordPress Docker container and with Chromium browser: 
 ```
-host$ scripts/test.sh --project=chromium-logged-in -g \'language attribute not set\'
+host$ scripts/test.sh quote_wp_min --project=chromium-logged-in -g \'language attribute not set\'
 ```
 
 ### Local Host Installation
@@ -62,3 +85,11 @@ host$ npx playwright test
 ```
 
 Various options can used, such as `--ui` for interactive UI mode, see [Playwright command line otions](https://playwright.dev/docs/test-cli).
+
+### Trouble-Shooting
+
+The standard for the parallelization of Playwright is 6 workers. If this is too much load for your host, you can reduce the number of workers with the `--workers` option, for example:
+
+```bash
+host$ scripts/test.sh --workers=2
+```

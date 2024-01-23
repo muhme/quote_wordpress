@@ -1,6 +1,6 @@
 <?php
 /**
- * src/render.js - PHP based frontend, block.json confgured render
+ * src/render.js - PHP based frontend, block.json configured renderer
  *
  * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress

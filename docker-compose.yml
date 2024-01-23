@@ -6,12 +6,13 @@
 
 version: '3.5'
 services:
+    # WordPress latest version container
     wordpress:
         container_name: quote_wp_wordpress
         build:
             context: .
             dockerfile: wordpress.Dockerfile
-        restart: always
+        restart: unless-stopped
         environment:
             WORDPRESS_DB_HOST: mariadb
             WORDPRESS_DB_NAME: wordpress
@@ -31,10 +32,36 @@ services:
         depends_on:
             - mariadb
             - maildev
+    # WordPress minimum required WordPress/PHP version container
+    wp_min:
+        container_name: quote_wp_min
+        image: wordpress:6.1-php7.4-apache
+        restart: unless-stopped
+        environment:
+            WORDPRESS_DB_HOST: mariadb
+            WORDPRESS_DB_NAME: wp_min
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DEBUG: 1
+            WORDPRESS_CONFIG_EXTRA: define('FORCE_SSL_ADMIN', false);
+        volumes:
+            # mount only needed sub-directories and plugin PHP file
+            -               ./src:/var/www/html/wp-content/plugins/zitat-service/src
+            -             ./build:/var/www/html/wp-content/plugins/zitat-service/build
+            -           ./scripts:/var/www/html/wp-content/plugins/zitat-service/scripts
+            -         ./languages:/var/www/html/wp-content/plugins/zitat-service/languages
+            - ./zitat-service.php:/var/www/html/wp-content/plugins/zitat-service/zitat-service.php
+        ports:
+            - "4084:80"
+        depends_on:
+            - mariadb
+            - maildev
     mariadb:
         container_name: quote_wp_mariadb
-        image: mariadb
-        restart: always
+        build:
+            context: .
+            dockerfile: mariadb.Dockerfile
+        restart: unless-stopped
         environment:
             MARIADB_ROOT_PASSWORD: root
             MARIADB_DATABASE: wordpress
@@ -43,7 +70,7 @@ services:
     phpmyadmin:
         container_name: quote_wp_phpmyadmin
         image: phpmyadmin/phpmyadmin
-        restart: always
+        restart: unless-stopped
         ports:
             - "4081:80"
         environment:
@@ -55,7 +82,7 @@ services:
     maildev:
         container_name: quote_wp_maildev
         image: maildev/maildev
-        restart: always
+        restart: unless-stopped
         ports:
             - "4082:1080"
             - "1025:1025"
