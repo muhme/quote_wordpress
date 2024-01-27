@@ -5,18 +5,85 @@
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
-const LANGUAGES = ["en", "de", "es", "ja", "uk"];
+
+// exported constants
 const DEFAULT_LANGUAGE = "en";
+// languages that are implemented in the API , see https://api.zitat-service.de/v1/languages
+const LANGUAGES = ["en", "de", "es", "ja", "uk"];
 const ZITAT_SERVICE_API_URL = "https://api.zitat-service.de/v1";
 const ZITAT_SERVICE_VERSION = "1.3.0";
+const MAX_REQUESTED_IDS = 10000; // Januar 2024: authors, categories and users < 1.000
+export {
+	DEFAULT_LANGUAGE,
+	LANGUAGES,
+	ZITAT_SERVICE_API_URL,
+	ZITAT_SERVICE_VERSION,
+	MAX_REQUESTED_IDS
+};
+
+// local constants
+const VALID_LANGUAGES_VALUES = ["all", "frontend", ...LANGUAGES];
+const MAX_VALID_ID = 10000; // Januar 2024: authors, categories and users < 1.000
+const DEFAULT_ID = -1; // -1 is not set == all authors/categories/users
 
 /**
  * Check if the language is supported. Returns always a supported language.
- * 
+ *
  * @param {*} userLanguage - to be checked language
  * @returns always return language code (e.g. 'de'), in doubt the default 'en'
  */
-function ValidLanguage(language_to_check) {
-	return LANGUAGES.includes(language_to_check) ? language_to_check : DEFAULT_LANGUAGE;
+function validLanguage(language_to_check) {
+	return LANGUAGES.includes(language_to_check)
+		? language_to_check
+		: DEFAULT_LANGUAGE;
 }
-export {ValidLanguage, LANGUAGES, DEFAULT_LANGUAGE, ZITAT_SERVICE_API_URL, ZITAT_SERVICE_VERSION};
+export { validLanguage };
+
+/**
+ * Sanitize - for security reason - the given language value against the predefined list of valid language values.
+ * If the language value is not in the list, it defaults to 'all'.
+ *
+ * @param {string} languageValue - The language code to sanitize.
+ * @returns {string} - The sanitized language value code, or 'all' if the input is not valid.
+ */
+function sanitizeLanguageValue(languageValue) {
+	if (VALID_LANGUAGES_VALUES.includes(languageValue)) {
+		return languageValue;
+	}
+
+	// default to 'all'
+	return "all";
+}
+export { sanitizeLanguageValue };
+
+/**
+ * Sanitizes - for security reason - the given ID value.
+ * Valid values are from 0 to 100,000.
+ * If the ID is not in the valid range, it defaults to -1.
+ *
+ * @param {number} id - The ID value to sanitize.
+ * @returns {number} - The sanitized ID value.
+ */
+function sanitizeIdValue(id) {
+	// check if the ID is a number and within the valid range
+	if (typeof id === "number" && id >= DEFAULT_ID && id <= MAX_VALID_ID) {
+		return id;
+	}
+
+	// default to -1 (* == all) if the ID is not valid
+	return DEFAULT_ID;
+}
+export { sanitizeIdValue };
+
+/**
+ * Make console.log() on development stage only.
+ * @param {*} message
+ */
+function devLog(message) {
+
+	if (window.location.hostname === 'localhost' || window.location.hostname === 'host.docker.internal') {
+		console.log(message);
+	}
+
+}
+export { devLog };

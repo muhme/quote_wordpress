@@ -44,7 +44,7 @@
 		}
 	},
 	"textdomain": "zitat-service",
-	"editorScript": "file:./index.js",
+	"editorScript": "file:./editorScript.js",
 	"render": "file:./render.php",
-	"style": "file:./style-index.css"
+	"style": "file:./style-editorScript.css"
 }

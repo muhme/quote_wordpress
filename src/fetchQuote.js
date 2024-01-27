@@ -10,7 +10,8 @@ import DOMPurify from "dompurify";
 
 // internal dependencies
 import {
-	ValidLanguage,
+	devLog,
+	validLanguage,
 	ZITAT_SERVICE_API_URL,
 	ZITAT_SERVICE_VERSION,
 } from "./common";
@@ -26,7 +27,8 @@ import {
 function checkLanguageForParameter(quoteLanguage, userLanguage) {
 	var parameterLanguage;
 
-	console.log(`checkLanguageForParameter(${quoteLanguage}, ${userLanguage})`);
+	//console.log(process.env);
+	devLog(`checkLanguageForParameter(${quoteLanguage}, ${userLanguage})`);
 	if (quoteLanguage === "all") {
 		return ""; // no language parameter
 	}
@@ -34,7 +36,7 @@ function checkLanguageForParameter(quoteLanguage, userLanguage) {
 		quoteLanguage = userLanguage;
 	}
 
-	parameterLanguage = ValidLanguage(quoteLanguage);
+	parameterLanguage = validLanguage(quoteLanguage);
 
 	return `&language=${parameterLanguage}`;
 }
@@ -76,19 +78,14 @@ async function fetchQuote(attributes, userLanguage) {
 	try {
 		// compose URL with parameters, plugin version 'V' and blocke editor marker 'B'
 		url =
-			`${ZITAT_SERVICE_API_URL}/quote_html?contentOnly=true&V_${ZITAT_SERVICE_VERSION}_B` +
+			`${ZITAT_SERVICE_API_URL}/quote?V_${ZITAT_SERVICE_VERSION}_B` +
 			checkLanguageForParameter(language, userLanguage) +
 			checkIdForParameter("userId", userId) +
 			checkIdForParameter("authorId", authorId) +
 			checkIdForParameter("categoryId", categoryId);
 
 		// do the request
-		const response = await fetch(url, {
-			method: "GET",
-			headers: {
-				"Content-Type": "text/html",
-			},
-		});
+		const response = await fetch(url);
 
 		// check and proceed the response
 		if (!response.ok) {
@@ -109,14 +106,15 @@ async function fetchQuote(attributes, userLanguage) {
 			console.error(err + " 2: " + JSON.stringify(jsonResponse));
 			throw new Error(err);
 		}
-		const text = await response.text();
-		return DOMPurify.sanitize(text);
+		const json = await response.json();
+		devLog('fetchQuote() returns ' + JSON.stringify(json));
+		return json;
 	} catch (error) {
 		// 1st protocol to console
 		console.error("Error fetching the data from url '" + url + "': " + error.message);
 		// 2nd return the error
 		// not translated as the error message from API is always English
-		return ("Error " + error.message);
+		return ({errorMessage: error.message});
 	}
 }
 export default fetchQuote;

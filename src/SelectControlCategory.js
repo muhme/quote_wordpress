@@ -10,7 +10,7 @@ import { useState, useEffect } from "@wordpress/element";
 import { SelectControl } from "@wordpress/components";
 
 // internal dependencies
-import { ValidLanguage, ZITAT_SERVICE_API_URL } from "./common";
+import { devLog, validLanguage, MAX_REQUESTED_IDS, ZITAT_SERVICE_API_URL } from "./common";
 
 /**
  * SelectControl implementaion for selecting a category ID.
@@ -24,12 +24,16 @@ const SelectControlCategory = ({ userLanguage, onChange, value }) => {
 	const [categories, setCategories] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 
+	// e.g. https://api.zitat-service.de/v1/categories?size=10000&language=uk
 	const url =
 		ZITAT_SERVICE_API_URL +
-		"/categories?size=2000&language=" +
-		ValidLanguage(userLanguage);
+		"/categories?size=" +
+		MAX_REQUESTED_IDS +
+		"&language=" +
+		validLanguage(userLanguage);
 
-	console.log(`SelectControlCategory(${userLanguage}) url=${url}`);
+	devLog(`SelectControlCategory(${userLanguage}) url=${url}`);
+	
 	useEffect(() => {
 		if (!isLoaded) {
 			fetch(url)
@@ -61,5 +65,4 @@ const SelectControlCategory = ({ userLanguage, onChange, value }) => {
 		/>
 	);
 };
-
 export default SelectControlCategory;

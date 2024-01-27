@@ -10,10 +10,7 @@ import { useState, useEffect } from "@wordpress/element";
 import { SelectControl } from "@wordpress/components";
 
 // internal dependencies
-import {
-	ValidLanguage,
-	ZITAT_SERVICE_API_URL
-} from "./common";
+import { devLog, validLanguage, MAX_REQUESTED_IDS, ZITAT_SERVICE_API_URL } from "./common";
 
 /**
  * Returns authors name for selection list.
@@ -35,7 +32,7 @@ function authorName(author) {
 
 /**
  * SelectControl implementaion for selecting an authors ID.
- * 
+ *
  * @param {string} userLanguage users language for author names
  * @param {} onChange author change handle
  * @param {} value actual set ID value
@@ -45,12 +42,16 @@ const SelectControlAuthor = ({ userLanguage, onChange, value }) => {
 	const [authors, setAuthors] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 
+	// e.g. https://api.zitat-service.de/v1/authors?size=10000&language=ja
 	const url =
 		ZITAT_SERVICE_API_URL +
-		"/authors?size=2000&language=" +
-		ValidLanguage(userLanguage);
+		"/authors?size=" +
+		MAX_REQUESTED_IDS +
+		"&language=" +
+		validLanguage(userLanguage);
 
-	console.log(`SelectControlAuthor(${userLanguage}) url=${url}`);
+	devLog(`SelectControlAuthor(${userLanguage}) url=${url}`);
+
 	useEffect(() => {
 		if (!isLoaded) {
 			fetch(url)
@@ -82,5 +83,4 @@ const SelectControlAuthor = ({ userLanguage, onChange, value }) => {
 		/>
 	);
 };
-
 export default SelectControlAuthor;

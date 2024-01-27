@@ -10,11 +10,11 @@ import { useState, useEffect } from "@wordpress/element";
 import { SelectControl } from "@wordpress/components";
 
 // internal dependencies
-import { ZITAT_SERVICE_API_URL } from "./common";
+import { devLog, MAX_REQUESTED_IDS, ZITAT_SERVICE_API_URL } from "./common";
 
 /**
  * SelectControl implementaion for selecting a zitat-service user ID.
- * 
+ *
  * @param {} onChange user change handle
  * @param {} value actual set ID value
  * @returns SelectControl
@@ -23,9 +23,14 @@ const SelectControlUser = ({ onChange, value }) => {
 	const [users, setUsers] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 
+	// e.g. https://api.zitat-service.de/v1/users?size=10000
+	const url = ZITAT_SERVICE_API_URL + "/users?size=" + MAX_REQUESTED_IDS;
+
+	devLog(`SelectControlUser() url=${url}`);
+
 	useEffect(() => {
 		if (!isLoaded) {
-			fetch(ZITAT_SERVICE_API_URL + "/users?size=2000")
+			fetch(url)
 				.then((response) => response.json())
 				.then((data) => {
 					setUsers(data.users);
@@ -54,5 +59,4 @@ const SelectControlUser = ({ onChange, value }) => {
 		/>
 	);
 };
-
 export default SelectControlUser;

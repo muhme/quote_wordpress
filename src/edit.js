@@ -16,13 +16,16 @@ import { __, getLocaleData } from "@wordpress/i18n";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 
 import { useEffect, useState } from "@wordpress/element";
-import { PanelBody, SelectControl } from "@wordpress/components";
+import { PanelBody } from "@wordpress/components";
 
 // internal dependencies
+import { devLog, sanitizeIdValue, sanitizeLanguageValue } from "./common.js";
 import fetchQuote from "./fetchQuote";
-import SelectControlUser from "./selectControlUser";
-import SelectControlCategory from "./selectControlCategory";
+import SelectControlLanguage from "./SelectControlLanguage";
+import SelectControlUser from "./SelectControlUser";
+import SelectControlCategory from "./SelectControlCategory";
 import SelectControlAuthor from "./selectControlAuthor";
+import QuoteBlock from "./QuoteBlock";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -34,73 +37,72 @@ import SelectControlAuthor from "./selectControlAuthor";
  */
 export default function Edit({ attributes, setAttributes }) {
 	const { language, userId, authorId, categoryId } = attributes;
-	const [quote, setQuote] = useState("");
+	const [quoteData, setQuote] = useState({});
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	const localeData = getLocaleData();
 	const userLanguage = localeData[""]?.["lang"];
-	console.log(`userLanguage=${userLanguage}`);
+
+	devLog(`Edit() userLanguage=${userLanguage}`);
 
 	useEffect(() => {
-		fetchQuote(attributes, userLanguage).then((quote) => {
-			setQuote(quote);
+		fetchQuote(attributes, userLanguage).then((quoteData) => {
+			setQuote(quoteData);
 			setIsLoaded(true);
+			console.log("Edit() " + JSON.stringify(quoteData));
 		});
 	}, [language, userId, authorId, categoryId]);
 
+	const handleLanguageChange = (selectedLanguage) => {
+		// sanitize and store
+		setAttributes({ language: sanitizeLanguageValue(selectedLanguage) });
+	};
 	const handleUserChange = (selectedUserId) => {
-		// convert selectedUserId to a number
-		setAttributes({ userId: parseInt(selectedUserId, 10) });
+		// convert selectedUserId to a number and sanitize
+		setAttributes({ userId: sanitizeIdValue(parseInt(selectedUserId, 10)) });
 	};
 	const handleCategoryChange = (selectedCategoryId) => {
-		// convert selectedCategoryId to a number
-		setAttributes({ categoryId: parseInt(selectedCategoryId, 10) });
+		// convert selectedCategoryId to a number and sanitize
+		setAttributes({
+			categoryId: sanitizeIdValue(parseInt(selectedCategoryId, 10)),
+		});
 	};
 	const handleAuthorChange = (selectedAuthorId) => {
-		// convert selectedAuthorId to a number
-		setAttributes({ authorId: parseInt(selectedAuthorId, 10) });
+		// convert selectedAuthorId to a number and sanitize
+		setAttributes({
+			authorId: sanitizeIdValue(parseInt(selectedAuthorId, 10)),
+		});
 	};
 
 	return (
 		<>
 			<InspectorControls>
 				<PanelBody title={__("Settings", "zitat-service")}>
-					<SelectControl
-						label={__("Language", "zitat-service")}
-						value={language || "all"}
-						options={[
-							{ label: "🌍 all", value: "all" },
-							{ label: "Frontend", value: "frontend" },
-							{ label: "🇩🇪 de", value: "de" },
-							{ label: "🇬🇧 en", value: "en" },
-							{ label: "🇪🇸 es", value: "es" },
-							{ label: "🇯🇵 ja", value: "ja" },
-							{ label: "🇺🇦 uk", value: "uk" },
-						]}
-						onChange={(value) => setAttributes({ language: value })}
+					<SelectControlLanguage
+						onChange={handleLanguageChange}
+						value={sanitizeLanguageValue(language)}
 					/>
-					<SelectControlUser onChange={handleUserChange} value={userId} />
+					<SelectControlUser
+						onChange={handleUserChange}
+						value={sanitizeIdValue(userId)}
+					/>
 					<SelectControlCategory
 						userLanguage={userLanguage}
 						onChange={handleCategoryChange}
-						value={categoryId}
+						value={sanitizeIdValue(categoryId)}
 					/>
 					<SelectControlAuthor
 						userLanguage={userLanguage}
 						onChange={handleAuthorChange}
-						value={authorId}
+						value={sanitizeIdValue(authorId)}
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div {...useBlockProps()}>
-				{isLoaded ? (
-					<div dangerouslySetInnerHTML={{ __html: quote }} />
-				) : (
-					// as we are getting ' Block validation failed' after locale change, this is not translated
-					// <div>{__("Loading quote ...", "zitat-service")}</div>
-					<div className="zitat-service-quote">...</div>
-				)}
-			</div>
+			<QuoteBlock
+				isLoaded={isLoaded}
+				quoteData={quoteData}
+				useBlockProps={useBlockProps}
+			/>
 		</>
 	);
 }
