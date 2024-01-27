@@ -1,27 +1,28 @@
 /**
- * src/style.scss - styles for the frontend (website) as well as for the backend (editor)
+ * src/style.scss - styles for frontend-website as well as for backend-editor
  *
  * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
- * 
+ *
  */
 
-/* Targeting links within the .quote class */
+/* targeting links within the .quote class */
 .quote a {
-    text-decoration: none; /* Removes underline from links by default */
-    color: inherit; /* Optional: to make link colors consistent within the block */
+	text-decoration: none; /* removes underline from links by default */
+	color: inherit; /* make link colors consistent within the block */
 }
 
 .quote a:hover,
 .quote a:focus {
-    text-decoration: underline; /* Adds underlining on hover and focus */
+	text-decoration: underline; /* adds underlining on hover and focus */
 }
 
 /* all references (author, source) with half opacity */
 .quote .source {
-    opacity: 0.5;
+	opacity: 0.5;
 }
 
+/* error message color */
 .quote .error {
-    color: darkred;
+	color: #8b0000; /* darkred */
 }
