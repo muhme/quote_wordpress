@@ -1,6 +1,6 @@
 # WordPress Plugin zitat-service.de
 
-![WordPress plugin zitat_service](images/wordpress_plugin_zitat_service.png)
+![WordPress plugin zitat_service](assets/screenshot-1.png)
 
 Free and open-source WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).
 

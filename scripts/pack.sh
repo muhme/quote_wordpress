@@ -16,13 +16,17 @@ trap 'rm -rf $TMP' 0
 #
 # main
 #
-VERSION=`egrep "ZITAT_SERVICE_VERSION.*[0-9].[0-9].[0-9]" src/zitat_service_widget.php | awk -F "'" '{print $4}'`
-ZIP="dist/zitat_service_widget_$VERSION.zip"
+# e.g. ' * Version:           1.3.0'
+VERSION=`grep "Version:" zitat-service.php | awk '{print $3}'`
+ZIP="dist/zitat-service-$VERSION.zip"
 
-echo '*** Pack plugin as ZIP file'
+echo '*** Packing plugin'
 
 # create zip
-(cd src && zip -r "../${ZIP}" . --quiet)
+# Synchronize the contents of the zip archive with the current directory.
+# -r: Recursively include directories.
+(cd src && zip --filesync -r "../${ZIP}" . --quiet)
+zip "${ZIP}" assets/screenshot-1.png zitat-service.php readme.txt --quiet
 
 # work is done
-echo "packed as $ZIP"
+zipinfo "${ZIP}"

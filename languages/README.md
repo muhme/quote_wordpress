@@ -32,7 +32,9 @@ Afterwards the `msgstr` in the `.po` files have to be filled with the translatio
 
 Once all four `.po` files are translated, the 20 `.mo` and the 20 `.json` files have to be created:
 
+```
 host$ docker exec -it quote_wp_wordpress /var/www/html/wp-content/plugins/zitat-service/scripts/i18n-create.sh
+```
 
 ## Update Process
 
