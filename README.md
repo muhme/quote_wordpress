@@ -109,7 +109,7 @@ More scripts are prepared for a pleasant and also faster development, see folder
 
 ## License
 
-MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe, see [LICENSE](LICENSE)
+GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe, see [LICENSE](LICENSE)
 
 ## Contact
 Don't hesitate to ask if you have any questions or comments.

@@ -2,7 +2,7 @@
 /**
  * src/render.js - PHP based frontend, block.json configured renderer
  *
- * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  *
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render

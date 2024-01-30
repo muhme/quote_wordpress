@@ -2,7 +2,7 @@
 #
 # scripts/i18n-init.sh - Create languages/zitat-service.pot (Portable Object Template) file
 #
-# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
 # WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 #
 # needs gettext package installed as already in quote_wp_wordpress container

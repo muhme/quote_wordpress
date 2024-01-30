@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com) and this p
 
 ### Changed
   * Development environment, tests, scripts and documentation extended
+  * MIT license replaced by GPLv3 license
 
 ### Removed
   * Shortcode support

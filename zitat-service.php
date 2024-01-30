@@ -7,7 +7,7 @@
  * Requires PHP:      7.4
  * Version:           1.3.0
  * Author:            Heiko Lübbe
- * License:           MIT
+ * License:           GPLv3
  * License URI:       https://raw.githubusercontent.com/muhme/quote_wordpress/main/LICENSE
  * Text Domain:       zitat-service
  * Domain Path:       /languages

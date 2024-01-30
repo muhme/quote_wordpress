@@ -5,7 +5,7 @@
 #   quote_wp_min - doing installation on the minimal WordPress version container
 #   w/o arguments - doing the installation on both containers
 #
-# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
 # WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 
 # doing the installation either on 

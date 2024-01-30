@@ -2,7 +2,7 @@
 #
 # scripts/i18n-create.sh - create .mo and .json from .po files
 #
-# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
 # WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 #
 # intended to be run in quote_wp_wordpress container

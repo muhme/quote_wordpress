@@ -1,7 +1,7 @@
 #
 # mariadb.Dockerfile - create docker container quote_wp_mariadb with databases `wordpress` and `wp_min`
 #
-# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
 # https://github.com/muhme/quote_wordpress
 # 
 FROM mariadb

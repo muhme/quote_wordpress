@@ -4,9 +4,9 @@
  * Version: 0.0.1
  * Description: Sets mail 'From' hard-wired to 'webmaster@docker.local'.
  * 
- * misc/sets_mail_from.pho - must-use WordPress plugin to set email From hard-wired in docker env
+ * misc/sets_mail_from.php - must-use WordPress plugin to set email 'From' hard-wired in docker env
  *
- * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  * 
  */

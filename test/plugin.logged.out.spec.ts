@@ -1,7 +1,7 @@
 /**
  * tests/plugin.logged.out.spec.ts - backend E2E tests plugin description, without login
  *
- * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */

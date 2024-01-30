@@ -1,7 +1,7 @@
 /**
  * src/common.js - common JavaScript constants and methods
  *
- * MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */

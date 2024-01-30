@@ -2,7 +2,7 @@
 #
 # scripts/deleteAllPosts.sh - delete ALL posts in WordPress
 #
-# MIT License, Copyright (c) 2023 - 2024 Heiko Lübbe
+# GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
 # WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
 
 echo '*** Delete all posts'
