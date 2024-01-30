@@ -5,57 +5,64 @@
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
-import { __ } from "@wordpress/i18n";
-import { useState, useEffect } from "@wordpress/element";
-import { SelectControl } from "@wordpress/components";
+import { __ } from '@wordpress/i18n';
+import { useState, useEffect } from '@wordpress/element';
+import { SelectControl } from '@wordpress/components';
 
 // internal dependencies
-import { devLog, MAX_REQUESTED_IDS, ZITAT_SERVICE_API_URL } from "./common";
+import {
+	devLog,
+	devError,
+	MAX_REQUESTED_IDS,
+	ZITAT_SERVICE_API_URL,
+} from './common';
 
+/* eslint-disable jsdoc/require-param, jsdoc/check-param-names -- params are not recognized correctly */
 /**
  * SelectControl implementaion for selecting a zitat-service user ID.
  *
- * @param {} onChange user change handle
- * @param {} value actual set ID value
- * @returns SelectControl
+ * @param {Function} onChange user change handle
+ * @param {Object}   value    actual ID value
+ * @return {Object} returns zitat.service user SelectControl component
  */
-const SelectControlUser = ({ onChange, value }) => {
-	const [users, setUsers] = useState([]);
-	const [isLoaded, setIsLoaded] = useState(false);
+/* eslint-enable */
+const SelectControlUser = ( { onChange, value } ) => {
+	const [ users, setUsers ] = useState( [] );
+	const [ isLoaded, setIsLoaded ] = useState( false );
 
 	// e.g. https://api.zitat-service.de/v1/users?size=10000
-	const url = ZITAT_SERVICE_API_URL + "/users?size=" + MAX_REQUESTED_IDS;
+	const url = ZITAT_SERVICE_API_URL + '/users?size=' + MAX_REQUESTED_IDS;
 
-	devLog(`SelectControlUser() url=${url}`);
+	devLog( `SelectControlUser() url=${ url }` );
 
-	useEffect(() => {
-		if (!isLoaded) {
-			fetch(url)
-				.then((response) => response.json())
-				.then((data) => {
-					setUsers(data.users);
-					setIsLoaded(true);
-				})
-				.catch((error) => {
-					console.error("Error fetching users: ", error);
-				});
+	useEffect( () => {
+		if ( ! isLoaded ) {
+			fetch( url )
+				.then( ( response ) => response.json() )
+				.then( ( data ) => {
+					setUsers( data.users );
+					setIsLoaded( true );
+				} )
+				.catch( ( error ) => {
+					devError( 'Error fetching users: ' + error );
+				} );
 		}
-	}, [isLoaded]);
+	}, [ isLoaded, url ] );
 
 	const options = [
-		{ label: "*", value: -1 },
-		...users.map((user) => ({
+		{ label: '*', value: -1 },
+		...users.map( ( user ) => ( {
 			label: user.login,
 			value: user.id,
-		})),
+		} ) ),
 	];
 
 	return (
 		<SelectControl
-			label={__("User", "zitat-service")}
-			value={value}
-			options={options}
-			onChange={onChange}
+			label={ __( 'User', 'zitat-service' ) }
+			value={ value }
+			options={ options }
+			onChange={ onChange }
 		/>
 	);
 };

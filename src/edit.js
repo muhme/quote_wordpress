@@ -5,7 +5,7 @@
  * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
-import { __, getLocaleData } from "@wordpress/i18n";
+import { __, getLocaleData } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -13,95 +13,103 @@ import { __, getLocaleData } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
 
-import { useEffect, useState } from "@wordpress/element";
-import { PanelBody } from "@wordpress/components";
+import { useEffect, useState } from '@wordpress/element';
+import { PanelBody } from '@wordpress/components';
 
 // internal dependencies
-import { devLog, sanitizeIdValue, sanitizeLanguageValue } from "./common.js";
-import fetchQuote from "./fetchQuote";
-import SelectControlLanguage from "./SelectControlLanguage";
-import SelectControlUser from "./SelectControlUser";
-import SelectControlCategory from "./SelectControlCategory";
-import SelectControlAuthor from "./selectControlAuthor";
-import QuoteBlock from "./QuoteBlock";
+import { devLog, sanitizeIdValue, sanitizeLanguageValue } from './common.js';
+import fetchQuote from './fetchQuote';
+import SelectControlLanguage from './SelectControlLanguage';
+import SelectControlUser from './SelectControlUser';
+import SelectControlCategory from './SelectControlCategory';
+import SelectControlAuthor from './SelectControlAuthor';
+import QuoteBlock from './QuoteBlock';
 
+/* eslint-disable jsdoc/require-param, jsdoc/check-param-names -- params are not recognized correctly */
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
  *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
- *
+ * @param {Object}   attributes    stored module parameter
+ * @param {Function} setAttributes hook to store changed module parameter
  * @return {Element} Element to render.
+ *
+ *  @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  */
-export default function Edit({ attributes, setAttributes }) {
+/* eslint-enable */
+export default function Edit( { attributes, setAttributes } ) {
 	const { language, userId, authorId, categoryId } = attributes;
-	const [quoteData, setQuote] = useState({});
-	const [isLoaded, setIsLoaded] = useState(false);
+	const [ quoteData, setQuote ] = useState( {} );
+	const [ isLoaded, setIsLoaded ] = useState( false );
 
 	const localeData = getLocaleData();
-	const userLanguage = localeData[""]?.["lang"];
+	const userLanguage = localeData[ '' ]?.lang;
 
-	devLog(`Edit() userLanguage=${userLanguage}`);
+	devLog( `Edit() userLanguage=${ userLanguage }` );
 
-	useEffect(() => {
-		fetchQuote(attributes, userLanguage).then((quoteData) => {
-			setQuote(quoteData);
-			setIsLoaded(true);
-			console.log("Edit() " + JSON.stringify(quoteData));
-		});
-	}, [language, userId, authorId, categoryId]);
+	useEffect( () => {
+		fetchQuote( attributes, userLanguage ).then( ( thisQuoteData ) => {
+			setQuote( thisQuoteData );
+			setIsLoaded( true );
+			devLog( 'Edit() ' + JSON.stringify( thisQuoteData ) );
+		} );
+	}, [ attributes, userLanguage, language, userId, authorId, categoryId ] );
 
-	const handleLanguageChange = (selectedLanguage) => {
+	const handleLanguageChange = ( selectedLanguage ) => {
 		// sanitize and store
-		setAttributes({ language: sanitizeLanguageValue(selectedLanguage) });
+		setAttributes( {
+			language: sanitizeLanguageValue( selectedLanguage ),
+		} );
 	};
-	const handleUserChange = (selectedUserId) => {
+	const handleUserChange = ( selectedUserId ) => {
 		// convert selectedUserId to a number and sanitize
-		setAttributes({ userId: sanitizeIdValue(parseInt(selectedUserId, 10)) });
+		setAttributes( {
+			userId: sanitizeIdValue( parseInt( selectedUserId, 10 ) ),
+		} );
 	};
-	const handleCategoryChange = (selectedCategoryId) => {
+	const handleCategoryChange = ( selectedCategoryId ) => {
 		// convert selectedCategoryId to a number and sanitize
-		setAttributes({
-			categoryId: sanitizeIdValue(parseInt(selectedCategoryId, 10)),
-		});
+		setAttributes( {
+			categoryId: sanitizeIdValue( parseInt( selectedCategoryId, 10 ) ),
+		} );
 	};
-	const handleAuthorChange = (selectedAuthorId) => {
+	const handleAuthorChange = ( selectedAuthorId ) => {
 		// convert selectedAuthorId to a number and sanitize
-		setAttributes({
-			authorId: sanitizeIdValue(parseInt(selectedAuthorId, 10)),
-		});
+		setAttributes( {
+			authorId: sanitizeIdValue( parseInt( selectedAuthorId, 10 ) ),
+		} );
 	};
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__("Settings", "zitat-service")}>
+				<PanelBody title={ __( 'Settings', 'zitat-service' ) }>
 					<SelectControlLanguage
-						onChange={handleLanguageChange}
-						value={sanitizeLanguageValue(language)}
+						onChange={ handleLanguageChange }
+						value={ sanitizeLanguageValue( language ) }
 					/>
 					<SelectControlUser
-						onChange={handleUserChange}
-						value={sanitizeIdValue(userId)}
+						onChange={ handleUserChange }
+						value={ sanitizeIdValue( userId ) }
 					/>
 					<SelectControlCategory
-						userLanguage={userLanguage}
-						onChange={handleCategoryChange}
-						value={sanitizeIdValue(categoryId)}
+						userLanguage={ userLanguage }
+						onChange={ handleCategoryChange }
+						value={ sanitizeIdValue( categoryId ) }
 					/>
 					<SelectControlAuthor
-						userLanguage={userLanguage}
-						onChange={handleAuthorChange}
-						value={sanitizeIdValue(authorId)}
+						userLanguage={ userLanguage }
+						onChange={ handleAuthorChange }
+						value={ sanitizeIdValue( authorId ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<QuoteBlock
-				isLoaded={isLoaded}
-				quoteData={quoteData}
-				useBlockProps={useBlockProps}
+				isLoaded={ isLoaded }
+				quoteData={ quoteData }
+				useBlockProps={ useBlockProps }
 			/>
 		</>
 	);
