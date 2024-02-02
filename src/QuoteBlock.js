@@ -66,7 +66,12 @@ const QuoteBlock = ( { isLoaded, quoteData, useBlockProps } ) => {
 						) : (
 							<>
 								<div className="quotation">
-									<a href={ quoteData.link }>
+									{/* Because zitat-service.de has x-frame-options: SAMEORIGIN we need a new tab/window
+									  * with target. For security reasons rel="noopener noreferrer" is set to prevent the
+									  * new page from being able to access the window.opener property and ensures that no
+									  *	referrer information is passed to the new page.
+									  */}
+									<a href={ quoteData.link } target="_blank" rel="noopener noreferrer">
 										{ quoteData.quote }
 									</a>
 								</div>
