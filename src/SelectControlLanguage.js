@@ -2,7 +2,7 @@
  * src/selectControlUser.js - block editor UI SelectControl implementation for zitat-service users
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
  *
  */
 import { __ } from '@wordpress/i18n';
@@ -35,7 +35,7 @@ const SelectControlLanguage = ( { onChange, value } ) => {
 
 	return (
 		<SelectControl
-			label={ __( 'Language', 'zitat-service' ) }
+			label={ __( 'Language', 'zitat-service-random-quote' ) }
 			value={ value }
 			options={ options }
 			onChange={ onChange }

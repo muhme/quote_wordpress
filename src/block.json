@@ -43,7 +43,7 @@
 			"default": -1
 		}
 	},
-	"textdomain": "zitat-service",
+	"textdomain": "zitat-service-random-quote",
 	"editorScript": "file:./editorScript.js",
 	"render": "file:./render.php",
 	"style": "file:./style-editorScript.css"

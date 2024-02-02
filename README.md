@@ -1,6 +1,6 @@
-# WordPress Plugin zitat-service.de
+# WordPress Plugin 'Zitat-Service Random Quote'
 
-![WordPress plugin zitat_service](assets/screenshot-1.png)
+![WordPress plugin 'Zitat-Service Random Quote'](assets/screenshot-1.png)
 
 Free and open-source WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).
 
@@ -77,7 +77,7 @@ Language 'es_ES' installed.
 Language 'ja' installed.
 Language 'uk' installed.
 *** Create four additional admins with locales
-*** Activate plugin zitat-service
+*** Activate plugin zitat-service-random-quote
 *** Recursivly chown to www-data
 
 *** Waiting for container quote_wp_min
@@ -91,11 +91,11 @@ Language 'es_ES' installed.
 Language 'ja' installed.
 Language 'uk' installed.
 *** Create four additional admins with locales
-*** Activate plugin zitat-service
+*** Activate plugin zitat-service-random-quote
 *** Recursivly chown to www-data
 ```
 
-WordPress is installed with the five languages supported by the plugin. The plugin `zitat-service` is installed and activated. There are five admin users, each of whom has set one of the languages. Users are `admin`, `admin_de`, `admin_es`, `admin_ja` and `admin_uk`. Password is always `admin`.
+WordPress is installed with the five languages supported by the plugin. The plugin `Zitat-Service Random Quote` is installed and activated. There are five admin users, each of whom has set one of the languages. Users are `admin`, `admin_de`, `admin_es`, `admin_ja` and `admin_uk`. Password is always `admin`.
 
 ### Testing
 

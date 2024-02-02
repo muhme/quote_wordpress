@@ -2,7 +2,7 @@
  * src/common.js - common JavaScript constants and methods
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
  *
  */
 

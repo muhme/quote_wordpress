@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-# scripts/install.sh - install WordPress and plugin zitat-service with WP-CLI, with arguments:
+# scripts/install.sh - install WordPress and plugin zitat-service-random-quote with WP-CLI, with arguments:
 #   quote_wp_wordpress - doing installation on the actual version WordPress container
 #   quote_wp_min - doing installation on the minimal WordPress version container
 #   w/o arguments - doing the installation on both containers
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+# WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
 
 # doing the installation either on 
 if [ "$1" == "quote_wp_min" ]; then
@@ -27,7 +27,7 @@ docker exec -it "${CONTAINER}" sh -c \
 echo "*** Complete WordPress installation"
 # using 127.0.0.1	as host.docker.internal to have access from host and from Playwright docker container too
 docker exec -it "${CONTAINER}" sh -c \
-  "wp core install --allow-root --url="${URL}" --title='WordPress zitat-service plugin test' --admin_user=admin --admin_password=admin --admin_email=admin@admin.com"
+  "wp core install --allow-root --url="${URL}" --title='Zitat-Service Random Quote Plugin Test' --admin_user=admin --admin_password=admin --admin_email=admin@admin.com"
 
 # language English (United States) comes from installation
 echo "*** Install additional languages"
@@ -49,11 +49,11 @@ docker exec -it "${CONTAINER}" sh -c \
   wp user meta update 5 locale 'uk'                                                 --allow-root" 
 
 # now already existing with volume mapping
-# echo "*** install plugin zitat-service"
-# docker cp src "${CONTAINER}":/var/www/html/wp-content/plugins/zitat-service
+# echo "*** install plugin 'Zitat-Service Random Quote'"
+# docker cp src "${CONTAINER}":/var/www/html/wp-content/plugins/zitat-service-random-quote
 
-echo "*** Activate plugin zitat-service"
-docker exec -it "${CONTAINER}" sh -c "wp plugin activate zitat-service --allow-root"
+echo "*** Activate plugin 'Zitat-Service Random Quote'"
+docker exec -it "${CONTAINER}" sh -c "wp plugin activate zitat-service-random-quote --allow-root"
 
 # simple running all WP-CLI commands as root (with the --allow-root) and chown user/group in the end
 echo "*** Recursivly chown to www-data"

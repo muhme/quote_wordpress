@@ -3,7 +3,7 @@
  * src/helper.php - PHP constants and common used methods
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
  *
  */
 
@@ -90,7 +90,7 @@ function retrieveQuote($attributes)
     $response = wp_remote_get($url);
 
     if (is_wp_error($response)) {
-        return __("Error fetching quote", "zitat-service");
+        return __("Error fetching quote", "zitat-service-random-quote");
     }
 
     // extract the response code

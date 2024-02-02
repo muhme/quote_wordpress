@@ -2,7 +2,7 @@
  * src/index.js - block.json confgured editorScript
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
  */
 
 /**
@@ -32,7 +32,7 @@ import './style.scss';
 import metadata from './block.json';
 import Edit from './edit';
 
-// green 'Z' as zitat-service plugin icon
+// green 'Z' as zitat-service-random-quote plugin icon
 const zitatServiceIcon = (
 	<svg
 		width="24"
@@ -57,10 +57,10 @@ const zitatServiceIcon = (
  */
 registerBlockType( metadata.name, {
 	// title and description in block.js are only placeholders, for I18N they are set here
-	title: __( 'Random Quote', 'zitat-service' ),
+	title: __( 'Random Quote', 'zitat-service-random-quote' ),
 	description: __(
 		'Displays a random quote from the collection of the user community zitat-service.de.',
-		'zitat-service'
+		'zitat-service-random-quote'
 	),
 	// @see ./edit.js
 	edit: Edit,

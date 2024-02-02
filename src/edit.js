@@ -2,7 +2,7 @@
  * src/edit.js - block editor Edit implementation, used by index.js
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
  *
  */
 import { __, getLocaleData } from '@wordpress/i18n';
@@ -85,7 +85,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings', 'zitat-service' ) }>
+				<PanelBody title={ __( 'Settings', 'zitat-service-random-quote' ) }>
 					<SelectControlLanguage
 						onChange={ handleLanguageChange }
 						value={ sanitizeLanguageValue( language ) }
