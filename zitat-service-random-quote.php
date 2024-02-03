@@ -7,6 +7,7 @@
  * Requires PHP:      7.4
  * Version:           1.3.0
  * Author:            Heiko Lübbe
+ * Author URI:        https://www.heikol.de
  * License:           GPLv3
  * License URI:       https://raw.githubusercontent.com/muhme/quote_wordpress/main/LICENSE
  * Text Domain:       zitat-service-random-quote
