@@ -6,11 +6,11 @@ To ensure the integrity and reliability of the WordPress plugin `zitat-service`,
 
 [Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright test utils for WordPress [@wordpress/e2e-test-utils-playwright](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-e2e-test-utils-playwright/). Playwright can be used local installed on host system or with docker container `quote_wp_playwright`. 
 
-There are two WordPress Docker containers for testing. Docker container `quote_wp_wordpress` is the latest version WordPress and Docker container `quote_wp_min` is the minimum required WordPress version. Installation and test can go with one of them with container name as first argument. If no container name is given, the installation or the test is started two times, for each of the containers.
+Testing is performed against two WordPress Docker containers. The latest version of WordPress is installed in the docker container `quote_wp_wordpress` and the minimum required WordPress version is installed in the docker container `quote_wp_min`. The scripts for the installation and the test can be parameterised with a container name as the first argument. If no container name is specified, the installation or test is performed twice, once for each of the containers.
 
 :bulb: **Tip:** Before testing, you have to complete WordPress installation and to activate the plugin with `scripts/install.sh`.
 
-Playwright tests are grouped into `*-logged out` and `*-logged in`. The reason for this is that five different admin users with different locales are used for the backend tests with I18N. These tests are started logged out and themselves make a login with an administrative user in the locale to be tested.
+Playwright tests are grouped into `*-logged-out` and `*-logged-in`. The reason for this is that five different admin users with different locales are used for the backend tests with I18N. These tests are started logged out and themselves make a login with an administrative user in the locale to be tested.
 
 The frontend tests create posts with the desired plugin parameters in the backend and then check the expected result in the frontend. To create posts, they have to first be logged in once as a WordPress admin user with `login-setup`.
 
@@ -30,6 +30,7 @@ You can run the E2E tests in Docker container `quote_wp_playwright` with `script
 
 ```
 host$ scripts/test.sh quote_wp_wordpress --project=chromium-logged-out --project=chromium-logged-in
+*** Testing: WP_BASE_URL=http://host.docker.internal:4080 npx playwright test --project=chromium-logged-out --project=chromium-logged-in
 Running 25 tests using 6 workers
   ✓  1 [chromium-logged-out] › plugin.logged.out.spec.ts:22:7 › Backend – Plugin descriptions › en - English language (4.6s)
   ✓  2 [chromium-logged-out] › plugin.logged.out.spec.ts:29:7 › Backend – Plugin descriptions › de - German language (5.9s)
@@ -69,7 +70,7 @@ As the docker container volume is mapped, you can open the HTML report from file
 
 You can run one single test, e.g. on minimal version WordPress Docker container and with Chromium browser: 
 ```
-host$ scripts/test.sh quote_wp_min --project=chromium-logged-in -g \'language attribute not set\'
+host$ scripts/test.sh quote_wp_min --project=chromium-logged-in -g \'Language not set\' 
 ```
 
 ### Local Host Installation
