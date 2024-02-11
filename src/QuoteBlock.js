@@ -2,7 +2,7 @@
  * src/quoteBlock.js - React quote return block, used by edit.js
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  */
 import React from 'react';
@@ -66,12 +66,16 @@ const QuoteBlock = ( { isLoaded, quoteData, useBlockProps } ) => {
 						) : (
 							<>
 								<div className="quotation">
-									{/* Because zitat-service.de has x-frame-options: SAMEORIGIN we need a new tab/window
-									  * with target. For security reasons rel="noopener noreferrer" is set to prevent the
-									  * new page from being able to access the window.opener property and ensures that no
-									  *	referrer information is passed to the new page.
-									  */}
-									<a href={ quoteData.link } target="_blank" rel="noopener noreferrer">
+									{ /* Because zitat-service.de has x-frame-options: SAMEORIGIN we need a new tab/window
+									 * with target. For security reasons rel="noopener noreferrer" is set to prevent the
+									 * new page from being able to access the window.opener property and ensures that no
+									 *	referrer information is passed to the new page.
+									 */ }
+									<a
+										href={ quoteData.link }
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										{ quoteData.quote }
 									</a>
 								</div>

@@ -3,7 +3,7 @@
 # scripts/i18n-init.sh - Create languages/zitat-service-random-quote.pot (Portable Object Template) file
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+# WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
 #
 # needs gettext package installed as already in quote_wp_wordpress container
 # needs WP-CLI installed in quote_wp_wordpress container as scripts/install.sh does

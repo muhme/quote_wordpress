@@ -16,6 +16,8 @@
  * @package           zitat-service
  */
 
+ namespace ZitatServiceRandomQuote;
+
 if (!defined("ABSPATH")) {
     exit; // Exit if accessed directly.
 }
@@ -28,15 +30,16 @@ if (!defined("ABSPATH")) {
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  * @see https://wordpress.stackexchange.com/a/407437/239194
  */
-function zitat_service_zitat_service_block_init()
+function block_init()
 {
     register_block_type(__DIR__ . "/build");
 
-    // Load MO files for PHP.
+    // load MO files for PHP
     load_plugin_textdomain( 'zitat-service-random-quote', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
-    // Load JSON files for JS - this is necessary if using a custom languages path!!
+    // load JSON files for JS - this is necessary to use a custom languages path
+    // generates the handle based on the block name and the field name
     $script_handle = generate_block_asset_handle( 'zitat-service/random-quote', 'editorScript' );
     wp_set_script_translations( $script_handle, 'zitat-service-random-quote', plugin_dir_path( __FILE__ ) . 'languages' );
 }
-add_action("init", "zitat_service_zitat_service_block_init");
+add_action("init", "ZitatServiceRandomQuote\block_init");

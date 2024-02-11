@@ -1,6 +1,6 @@
 /**
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  * playwright.config.ts - Playwright configuration for E2E tests
  * @see ./test

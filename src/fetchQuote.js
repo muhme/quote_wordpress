@@ -2,7 +2,7 @@
  * src/fetchQuote.js - fetching a random quote, used by index.js
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  */
 
@@ -11,8 +11,8 @@ import {
 	devLog,
 	devError,
 	validLanguage,
-	ZITAT_SERVICE_API_URL,
-	ZITAT_SERVICE_VERSION,
+	ZITAT_SERVICE_RANDOM_QUOTE_API_URL,
+	ZITAT_SERVICE_RANDOM_QUOTE_VERSION,
 } from './common';
 
 /**
@@ -78,7 +78,7 @@ async function fetchQuote( attributes, userLanguage ) {
 	try {
 		// compose URL with parameters, plugin version 'V' and blocke editor marker 'B'
 		url =
-			`${ ZITAT_SERVICE_API_URL }/quote?V_${ ZITAT_SERVICE_VERSION }_B` +
+			`${ ZITAT_SERVICE_RANDOM_QUOTE_API_URL }/quote?V_${ ZITAT_SERVICE_RANDOM_QUOTE_VERSION }_B` +
 			checkLanguageForParameter( language, userLanguage ) +
 			checkIdForParameter( 'userId', userId ) +
 			checkIdForParameter( 'authorId', authorId ) +

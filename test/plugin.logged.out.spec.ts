@@ -2,7 +2,7 @@
  * tests/plugin.logged.out.spec.ts - backend E2E tests plugin description, without login
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  */
 
@@ -35,9 +35,7 @@ test.describe( 'Backend – Plugin descriptions', () => {
 			( await page.textContent(
 				'tr[data-slug="zitat-service-random-quote"] .plugin-description p'
 			) ) ?? '';
-		expect(
-			desc.startsWith( 'Zeigt ein zufälliges Zitat' )
-		).toBeTruthy();
+		expect( desc.startsWith( 'Zeigt ein zufälliges Zitat' ) ).toBeTruthy();
 	} );
 
 	test( 'es - Spanish language', async ( { page } ) => {

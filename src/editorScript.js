@@ -2,7 +2,7 @@
  * src/index.js - block.json confgured editorScript
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  */
 
 /**

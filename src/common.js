@@ -2,26 +2,24 @@
  * src/common.js - common JavaScript constants and methods
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  */
 
 // exported constants
-const DEFAULT_LANGUAGE = 'en';
-// languages that are implemented in the API , see https://api.zitat-service.de/v1/languages
-const LANGUAGES = [ 'en', 'de', 'es', 'ja', 'uk' ];
-const ZITAT_SERVICE_API_URL = 'https://api.zitat-service.de/v1';
-const ZITAT_SERVICE_VERSION = '1.3.0';
-const MAX_REQUESTED_IDS = 10000; // Januar 2024: authors, categories and users < 1.000
+const ZITAT_SERVICE_RANDOM_QUOTE_API_URL = 'https://api.zitat-service.de/v1';
+const ZITAT_SERVICE_RANDOM_QUOTE_VERSION = '1.3.0';
+const ZITAT_SERVICE_RANDOM_QUOTE_MAX_REQUESTED_ENTRIES = 10000; // January 2024: authors, categories and users < 1.000 therefore 10.000 should be save for years
 export {
-	DEFAULT_LANGUAGE,
-	LANGUAGES,
-	ZITAT_SERVICE_API_URL,
-	ZITAT_SERVICE_VERSION,
-	MAX_REQUESTED_IDS,
+	ZITAT_SERVICE_RANDOM_QUOTE_API_URL,
+	ZITAT_SERVICE_RANDOM_QUOTE_VERSION,
+	ZITAT_SERVICE_RANDOM_QUOTE_MAX_REQUESTED_ENTRIES,
 };
 
-// local constants
+// file-local constants
+const DEFAULT_LANGUAGE = 'en';
+// languages as implemented in the API, see https://api.zitat-service.de/v1/languages
+const LANGUAGES = [ 'en', 'de', 'es', 'ja', 'uk' ];
 const VALID_LANGUAGES_VALUES = [ 'all', 'frontend', ...LANGUAGES ];
 const MAX_VALID_ID = 10000; // Januar 2024: authors, categories and users < 1.000
 const DEFAULT_ID = -1; // -1 is not set == all authors/categories/users

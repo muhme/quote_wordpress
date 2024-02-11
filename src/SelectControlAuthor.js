@@ -2,7 +2,7 @@
  * src/selectControlAuthor.js - block editor UI SelectControl implementation for authors
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  */
 import { __ } from '@wordpress/i18n';
@@ -14,8 +14,8 @@ import {
 	devLog,
 	devError,
 	validLanguage,
-	MAX_REQUESTED_IDS,
-	ZITAT_SERVICE_API_URL,
+	ZITAT_SERVICE_RANDOM_QUOTE_MAX_REQUESTED_ENTRIES,
+	ZITAT_SERVICE_RANDOM_QUOTE_API_URL,
 } from './common';
 
 /**
@@ -53,9 +53,9 @@ const SelectControlAuthor = ( { userLanguage, onChange, value } ) => {
 
 	// e.g. https://api.zitat-service.de/v1/authors?size=10000&language=ja
 	const url =
-		ZITAT_SERVICE_API_URL +
+		ZITAT_SERVICE_RANDOM_QUOTE_API_URL +
 		'/authors?size=' +
-		MAX_REQUESTED_IDS +
+		ZITAT_SERVICE_RANDOM_QUOTE_MAX_REQUESTED_ENTRIES +
 		'&language=' +
 		validLanguage( userLanguage );
 

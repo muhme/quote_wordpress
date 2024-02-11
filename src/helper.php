@@ -3,21 +3,23 @@
  * src/helper.php - PHP constants and common used methods
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  */
 
-// plugin version as in src/block.json and src/common.js
-define("ZITAT_SERVICE_VERSION", "1.3.0");
+namespace ZitatServiceRandomQuote;
 
-// define("ZITAT_SERVICE_API_URL", "http://host.docker.internal:3000/v1");
-define("ZITAT_SERVICE_API_URL", "https://api.zitat-service.de/v1");
+// plugin version as in src/block.json and src/common.js
+define("ZITAT_SERVICE_RANDOM_QUOTE_VERSION", "1.3.0");
+
+// define("ZITAT_SERVICE_RANDOM_QUOTE_API_URL", "http://host.docker.internal:3000/v1");
+define("ZITAT_SERVICE_RANDOM_QUOTE_API_URL", "https://api.zitat-service.de/v1");
 
 // list of valid languages as from https://api.zitat-service.de/v1/languages
-define("LANGUAGES", ["de", "es", "en", "ja", "uk"]);
+define("ZITAT_SERVICE_RANDOM_QUOTE_LANGUAGES", ["de", "es", "en", "ja", "uk"]);
 
 // fall-back language English if the given language is not supported
-define("DEFAULT_LANGUAGE", "en");
+define("ZITAT_SERVICE_RANDOM_QUOTE_DEFAULT_LANGUAGE", "en");
 
 /**
  * Create appropriate language parameter part of URL.
@@ -43,7 +45,7 @@ function createLanguageParameter($language)
     }
 
     // check if the provided language is in the list of supported languages, else fallback and return English
-    return "&language=" . (in_array($language, LANGUAGES) ? $language : DEFAULT_LANGUAGE);
+    return "&language=" . (in_array($language, ZITAT_SERVICE_RANDOM_QUOTE_LANGUAGES) ? $language : ZITAT_SERVICE_RANDOM_QUOTE_DEFAULT_LANGUAGE);
 }
 
 /**
@@ -79,7 +81,7 @@ function createdIdParameter($parameter, $attributes)
 function retrieveQuote($attributes)
 {
     // creating URL to fetch quote (V - version, B - block editor)
-    $url = ZITAT_SERVICE_API_URL . "/quote_html?contentOnly=true&V_" . ZITAT_SERVICE_VERSION . "_B" .
+    $url = ZITAT_SERVICE_RANDOM_QUOTE_API_URL . "/quote_html?contentOnly=true&V_" . ZITAT_SERVICE_RANDOM_QUOTE_VERSION . "_B" .
     // add language attribute, if existing
     createLanguageParameter($attributes["language"]) .
     // add the three numerical ID attributes, if existing

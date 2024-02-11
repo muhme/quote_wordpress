@@ -2,7 +2,7 @@
  * tests/login.setup.ts - do WordPress admin login and store cookies
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  * expects the Website amd admin user are configured to use "English (United States)" as language
  */

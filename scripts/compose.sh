@@ -3,7 +3,7 @@
 # scripts/compose.sh - delete the five docker containers and build them new
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+# WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
 
 NAME=quote_wp_
 echo "*** Removing all docker containers ${NAME}*"

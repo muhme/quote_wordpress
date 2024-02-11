@@ -2,7 +2,7 @@
  * src/selectControlUser.js - block editor UI SelectControl implementation for zitat-service users
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
  *
  */
 import { __ } from '@wordpress/i18n';
@@ -13,8 +13,8 @@ import { SelectControl } from '@wordpress/components';
 import {
 	devLog,
 	devError,
-	MAX_REQUESTED_IDS,
-	ZITAT_SERVICE_API_URL,
+	ZITAT_SERVICE_RANDOM_QUOTE_MAX_REQUESTED_ENTRIES,
+	ZITAT_SERVICE_RANDOM_QUOTE_API_URL,
 } from './common';
 
 /* eslint-disable jsdoc/require-param, jsdoc/check-param-names -- params are not recognized correctly */
@@ -31,7 +31,10 @@ const SelectControlUser = ( { onChange, value } ) => {
 	const [ isLoaded, setIsLoaded ] = useState( false );
 
 	// e.g. https://api.zitat-service.de/v1/users?size=10000
-	const url = ZITAT_SERVICE_API_URL + '/users?size=' + MAX_REQUESTED_IDS;
+	const url =
+		ZITAT_SERVICE_RANDOM_QUOTE_API_URL +
+		'/users?size=' +
+		ZITAT_SERVICE_RANDOM_QUOTE_MAX_REQUESTED_ENTRIES;
 
 	devLog( `SelectControlUser() url=${ url }` );
 

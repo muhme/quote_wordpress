@@ -3,7 +3,7 @@
 # scripts/i18n-create.sh - create .mo and .json from .po files
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+# WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
 #
 # intended to be run in quote_wp_wordpress container
 # needs gettext package installed as already in quote_wp_wordpress container
