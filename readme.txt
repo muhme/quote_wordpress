@@ -22,6 +22,11 @@ Instructions for installation and configuration can be found at [wiki](https://g
 
 There is a demo running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
 
+== API zitat-service.de ==
+
+The WordPress plugin fetches all data from [api.zitat-service.de](https://api.zitat-service.de).
+Terms of use and privacy statement can be found in the [Imprint](https://www.zitat-service.de/en/start/contact).
+
 == Frequently Asked Questions ==
 
 = Where can I report a problem or request an improvement? =

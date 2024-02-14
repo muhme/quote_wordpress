@@ -107,6 +107,10 @@ More scripts are prepared for a pleasant and also faster development, see folder
 
 </details>
 
+## API zitat-service.de
+
+The Joomla module fetches all data from <a href="https://api.zitat-service.de">api.zitat-service.de</a>. Terms of use and privacy statement can be found in the <a href="https://www.zitat-service.de/en/start/contact">Imprint</a>.
+
 ## License
 
 GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe, see [LICENSE](LICENSE)
