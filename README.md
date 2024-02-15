@@ -109,7 +109,18 @@ More scripts are prepared for a pleasant and also faster development, see folder
 
 ## API zitat-service.de
 
-The Joomla module fetches all data from <a href="https://api.zitat-service.de">api.zitat-service.de</a>. Terms of use and privacy statement can be found in the <a href="https://www.zitat-service.de/en/start/contact">Imprint</a>.
+The Joomla module fetches all data from <a href="https://api.zitat-service.de">api.zitat-service.de</a>.
+Terms of use and privacy statement can be found in the <a href="https://www.zitat-service.de/en/start/contact">Imprint</a>.
+
+The random quotes on the frontend of the WordPress website are fetched by PHP code that runs on the WordPress server.
+This means that the process of retrieving quotes does not involve tracking or recording any user-specific data.
+Instead, it operates within the server environment, ensuring user privacy and compliance with guidelines that
+prohibit tracking users without their consent.
+
+The displayed quotes, along with their respective authors and sources, are linked externally to websites
+such as zitat-service.de and Wikipedia to provide users with additional context and information.
+It's important to note that all external links are activated only after manual verification by the admin team
+at zitat-service.de, ensuring the reliability and accuracy of the linked content.
 
 ## License
 

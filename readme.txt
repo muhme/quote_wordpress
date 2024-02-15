@@ -27,6 +27,16 @@ There is a demo running online at [wp-demo.zitat-service.de](https://wp-demo.zit
 The WordPress plugin fetches all data from [api.zitat-service.de](https://api.zitat-service.de).
 Terms of use and privacy statement can be found in the [Imprint](https://www.zitat-service.de/en/start/contact).
 
+The random quotes on the frontend of the WordPress website are fetched by PHP code that runs on the WordPress server.
+This means that the process of retrieving quotes does not involve tracking or recording any user-specific data.
+Instead, it operates within the server environment, ensuring user privacy and compliance with guidelines that
+prohibit tracking users without their consent.
+
+The displayed quotes, along with their respective authors and sources, are linked externally to websites
+such as zitat-service.de and Wikipedia to provide users with additional context and information.
+It's important to note that all external links are activated only after manual verification by the admin team
+at zitat-service.de, ensuring the reliability and accuracy of the linked content.
+
 == Frequently Asked Questions ==
 
 = Where can I report a problem or request an improvement? =
@@ -46,4 +56,4 @@ For older version see [github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md](
 
 == Upgrade Notice ==
 
-If you are using an earlier development version with short codes, you must remove the short codes and start with the new configuration of the block editor widget.
+If you are using an earlier development version with short codes, you must remove the short codes and start with a new configuration of the block editor widget.
