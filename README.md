@@ -4,9 +4,12 @@
 
 Free and open-source WordPress plugin to display random quotes from community [zitat-service.de](https://www.zitat-service.de).
 
-:bulb: **Tip:** Help for the WordPress plugin installation and administration is available at https://github.com/muhme/quote_wordpress/wiki.
+:bulb: **Tip:** There is a WordPress demo installation with plugin *Zitat-Service Random Quote*
+running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
 
-The plugin has not yet been submitted to WordPress as it is still under development. But there is a first working version in folder [dist](dist), which is ready for download and installation. Change log is available as [CHANGELOG.md](CHANGELOG.md).
+:bulb: **Tip:** Help for the WordPress plugin installation and administration is available at [github.com/muhme/quote_wordpress/wiki](https://github.com/muhme/quote_wordpress/wiki).
+
+The review of the plugin has not yet been completed and it is therefore not yet available in the WordPress Plugin Directory, but you can download and install from file [zitat-service-random-quote.zip](zitat-service-random-quote.zip). Change log is available as [CHANGELOG.md](CHANGELOG.md).
 
 ## Requirements
 
@@ -40,14 +43,16 @@ mcr.microsoft.com/playwright   0.0.0.0:4083->80/tcp                             
 Docker containers are:
   * quote_wp_wordpress – WordPress latest version
     * http://host.docker.internal:4080 – WordPress instance, ready for installation, test and development
+    * after `scripts/install.sh` the five admin users `admin`, `admin_de`, `admin_es`, `admin_ja` and `admin_uk` exist with the respective locales, password is always `admin`
     * [msmtp](https://marlam.de/msmtp/) is used as a simple SMPT client
     * A small WordPress plugin sets the sender email address (from field) fixed to 'webmaster@docker.local' and fixes the problem of undeliverable address 'wordpress@localhost' inside Docker container. Installing it as [must-use WordPress plugin](https://wordpress.org/support/article/must-use-plugins) to have it already actived.
     * has gettext package, vim and ping installed
   * quote_wp_min - minimum required PHP/WordPress version
     * http://host.docker.internal:4084 – WordPress instance, ready for installation and test
+    * after `scripts/install.sh` the five admin users `admin`, `admin_de`, `admin_es`, `admin_ja` and `admin_uk` exist with the respective locales, password is always `admin`
   * quote_wp_mariadb – MariaDB database
     * database available as mariadb:3306
-    * user 'root', password 'root' and database 'wordpress'
+    * user 'root', password 'root' and databases 'wordpress' and 'wp_min'
   * quote_wp_phpmyadmin – phpmyadmin for database administration
     * http://localhost:4081 – phpMyAdmin to work with the database
   * quote_wp_maildev - [MailDev](https://github.com/maildev/maildev) for collecting and showing WordPress mails
@@ -103,7 +108,28 @@ Automated Playwright tests are in subfolder [test](./test/) and and are describe
 
 ### Scripts
 
-More scripts are prepared for a pleasant and also faster development, see folder [scripts](./scripts/) and commented list of scripts there.
+Some bash-scripts are prepared for a pleasant and also faster development, see folder [scripts](./scripts/) and commented list of scripts there.
+
+### Task list for new plugin version
+* update version number etc. in
+  * package.json
+  * readme.txt
+  * CHANGELOG.md
+  * zitat-service-random-quote.php
+  * src/block.json
+  * src/helper.php
+  * src/common.js
+  * languages/\*.po\*
+* docker exec -it quote_wp_wordpress /var/www/html/wp-content/plugins/zitat-service-random-quote/scripts/i18n-create.sh
+* ncu / ncu -u / npm install / npm audit / npm audit -fix
+* npm run lint:css / npm run lint:js / npm run lint:js:fix
+* npm run format
+* npm run build
+* scripts/compose.sh build
+* scripts/install.sh
+* scripts/test.sh --workers=3
+* scripts/pack.sh / manual install the zipped plugin and do a short test
+* git status / git diff / git commit -a / git push
 
 </details>
 

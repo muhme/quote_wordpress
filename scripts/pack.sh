@@ -14,6 +14,9 @@ set -euo pipefail
 
 echo '*** Packing plugin'
 
+# to have created date now
+rm zitat-service-random-quote.zip
+
 # for packing list see https://developer.wordpress.org/plugins/plugin-basics/best-practices/#folder-structure
 npm run plugin-zip
 

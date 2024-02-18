@@ -1,7 +1,7 @@
 === Zitat-Service Random Quote ===
 Contributors: muhme
 Donate link: https://github.com/muhme/quote_wordpress
-Tags: quote, citation, quote-of-the-day
+Tags: quote, citation, proverb, inspirational quotes, quote of the day (QOTD), category-based quotes, author quotes
 Requires at least: 6.1
 Tested up to: 6.4
 Stable tag: 1.3.0
@@ -20,7 +20,7 @@ We have been online since 2007, free of charge and without advertising.
 
 Instructions for installation and configuration can be found at [wiki](https://github.com/muhme/quote_wordpress/wiki).
 
-There is a demo running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
+There is a WordPress demo installation with plugin *Zitat-Service Random Quote* running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
 
 == API zitat-service.de ==
 

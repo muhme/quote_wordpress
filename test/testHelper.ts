@@ -192,7 +192,13 @@ async function userLogin(
 ) {
 	await page.goto( '/wp-admin' );
 	await page.getByLabel( 'Username or Email Address' ).fill( user );
-	await page.locator( 'input#user_pass' ).fill( password );
+
+	// sometimes it fails, so wait until the element is finished
+	// await page.locator( 'input#user_pass' ).fill( password );
+	const passwordInput = page.locator( 'input#user_pass' );
+	await passwordInput.waitFor( { state: 'visible' } );
+	await passwordInput.fill( password );
+
 	await page.getByText( 'Log in' ).click();
 
 	// '#wpadminbar' is visible on Desktop and mobile

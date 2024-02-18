@@ -1,1 +1,26 @@
-{"translation-revision-date":"YEAR-MO-DA HO:MI+ZONE","generator":"WP-CLI\/2.9.0","source":"build\/editorScript.js","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","lang":"es","plural-forms":"nplurals=2; plural=(n != 1);"},"Error fetching quote":["Error al obtener la cita"],"User":["Usuario"],"Category":["Categor\u00eda"],"Author":["Autor"],"Random Quote":["Cita Aleatoria"],"Displays a random quote from the collection of the user community zitat-service.de.":["Muestra una cita aleatoria de la colecci\u00f3n de la comunidad de usuarios de zitat-service.de."],"Settings":["Configuraci\u00f3n"],"Language":["Idioma"],"Loading quote ...":["Cargando cita ..."]}}}
+{
+	"translation-revision-date": "YEAR-MO-DA HO:MI+ZONE",
+	"generator": "WP-CLI/2.10.0",
+	"source": "build/editorScript.js",
+	"domain": "messages",
+	"locale_data": {
+		"messages": {
+			"": {
+				"domain": "messages",
+				"lang": "es",
+				"plural-forms": "nplurals=2; plural=(n != 1);"
+			},
+			"Error fetching quote": [ "Error al obtener la cita" ],
+			"User": [ "Usuario" ],
+			"Category": [ "Categor\u00eda" ],
+			"Author": [ "Autor" ],
+			"Random Quote": [ "Cita Aleatoria" ],
+			"Displays a random quote from the collection of the user community zitat-service.de.": [
+				"Muestra una cita aleatoria de la colecci\u00f3n de la comunidad de usuarios de zitat-service.de."
+			],
+			"Settings": [ "Configuraci\u00f3n" ],
+			"Language": [ "Idioma" ],
+			"Loading quote ...": [ "Cargando cita ..." ]
+		}
+	}
+}

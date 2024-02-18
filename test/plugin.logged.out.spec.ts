@@ -17,7 +17,7 @@ import { ADMIN_USER, ADMIN_PASSWORD } from '../playwright.config';
  * needs the admins created with scripts/install.sh
  * data-slug is the translated plugin name and this is checked together with the plugin description
  */
-test.describe( 'Backend – Plugin descriptions', () => {
+test.describe( 'Backend – Plugin description', () => {
 	test( 'en - English language', async ( { page } ) => {
 		await userLogin( page, ADMIN_USER, ADMIN_PASSWORD, null );
 		await page.goto( '/wp-admin/plugins.php' );
