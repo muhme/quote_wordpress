@@ -9,7 +9,7 @@ running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
 
 :bulb: **Tip:** Help for the WordPress plugin installation and administration is available at [github.com/muhme/quote_wordpress/wiki](https://github.com/muhme/quote_wordpress/wiki).
 
-The review of the plugin has not yet been completed and it is therefore not yet available in the WordPress Plugin Directory, but you can download and install from file [zitat-service-random-quote.zip](zitat-service-random-quote.zip). Change log is available as [CHANGELOG.md](CHANGELOG.md).
+The review of the plugin has not yet been completed and it is therefore not yet available in the WordPress Plugin Directory, but you can download and install from file [zitat-service-random-quote.zip](https://github.com/muhme/quote_wordpress/releases/download/1.3.0/zitat-service-random-quote.zip). Change log is available as [CHANGELOG.md](CHANGELOG.md).
 
 ## Requirements
 
@@ -128,7 +128,7 @@ Some bash-scripts are prepared for a pleasant and also faster development, see f
 * scripts/compose.sh build
 * scripts/install.sh
 * scripts/test.sh --workers=3
-* scripts/pack.sh / manual install the zipped plugin and do a short test
+* scripts/pack.sh / manual install the zipped plugin, Plugin Check (PCP) with all categories, do a short test
 * git status / git diff / git commit -a / git push
 
 </details>

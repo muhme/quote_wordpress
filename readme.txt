@@ -1,7 +1,7 @@
 === Zitat-Service Random Quote ===
 Contributors: muhme
 Donate link: https://github.com/muhme/quote_wordpress
-Tags: quote, citation, proverb, inspirational quotes, quote of the day (QOTD), category-based quotes, author quotes
+Tags: quote, citation, proverb, inspirational quotes, quote of the day (QOTD)
 Requires at least: 6.1
 Tested up to: 6.4
 Stable tag: 1.3.0

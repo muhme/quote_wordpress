@@ -12,6 +12,6 @@ require_once plugin_dir_path(__FILE__) . "helper.php";
 ?>
 
 <div
-  <?php echo get_block_wrapper_attributes(); ?>>
+  <?php echo wp_kses_data(get_block_wrapper_attributes()); ?>>
   <?php echo wp_kses_post(ZitatServiceRandomQuote\retrieveQuote($attributes)); ?>
 </div>
