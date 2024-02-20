@@ -135,7 +135,7 @@ Some bash-scripts are prepared for a pleasant and also faster development, see f
 
 ## API zitat-service.de
 
-The Joomla module fetches all data from <a href="https://api.zitat-service.de">api.zitat-service.de</a>.
+The WordPress plugin fetches all data from <a href="https://api.zitat-service.de">api.zitat-service.de</a>.
 Terms of use and privacy statement can be found in the <a href="https://www.zitat-service.de/en/start/contact">Imprint</a>.
 
 The random quotes on the frontend of the WordPress website are fetched by PHP code that runs on the WordPress server.
