@@ -68,9 +68,10 @@ As the docker container volume is mapped, you can open the HTML report from file
 127.0.0.1	host.docker.internal
 ```
 
-You can run one single test, e.g. on minimal version WordPress Docker container and with Chromium browser: 
+You can run a single test, e.g. to check again after a failed test. Two examples: 
 ```
-host$ scripts/test.sh quote_wp_min --project=chromium-logged-in -g \'Language not set\' 
+host$ scripts/test.sh quote_wp_min --project=chromium-logged-in -g \'Language not set\'
+host$ scripts/test.sh quote_wp_wordpress --project=mobile-chrome-logged-out -g \'ja - Japanese language\'
 ```
 
 ### Local Host Installation
