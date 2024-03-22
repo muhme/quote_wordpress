@@ -1,10 +1,10 @@
-=== Zitat-Service Random Quote ===
+=== Random Quote from Zitat-Service ===
 Contributors: muhme
 Donate link: https://github.com/muhme/quote_wordpress
 Tags: quote, citation, proverb, inspirational quotes, quote of the day (QOTD)
 Requires at least: 6.1
 Tested up to: 6.4
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -13,14 +13,14 @@ Displays a random quote from user community zitat-service.de in English, German,
 
 == Description ==
 
-The WordPress plugin *Zitat-Service Random Quote* displays a random quote from the collection of the
+The WordPress plugin *Random Quote from Zitat-Service* displays a random quote from the collection of the
 user community [zitat-service.de/en](https://www.zitat-service.de/en). The selection of
 quotes comes from the five languages Deutsch 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 and Українська 🇺🇦.
 We have been online since 2007, free of charge and without advertising.
 
 Instructions for installation and configuration can be found at [wiki](https://github.com/muhme/quote_wordpress/wiki).
 
-There is a WordPress demo installation with plugin *Zitat-Service Random Quote* running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
+There is a WordPress demo installation with plugin *Random Quote from Zitat-Service* running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
 
 == API zitat-service.de ==
 
@@ -48,6 +48,12 @@ Please use [github.com/muhme/quote_wordpress/issues](https://github.com/muhme/qu
 1. This screenshot combines the display in the list of plugins and the backend view with the selection of quotes in the "English" language and the "Dance" category.
 
 == Changelog ==
+
+= 1.4.0 =
+* WordPress Plugin Review Team requested changes.
+* Bumped follow-redirects from 1.15.5 to 1.15.6.
+
+For more details see [github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md)
 
 = 1.3.0 =
 * First implementation as Gutenberg block editor plugin.

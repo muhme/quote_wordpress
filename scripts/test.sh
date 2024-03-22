@@ -3,7 +3,7 @@
 # scripts/test.sh - running end-to-end tests
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+# WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 
 CONTAINER="quote_wp_wordpress"
 WP_BASE_URL="http://host.docker.internal:4080";

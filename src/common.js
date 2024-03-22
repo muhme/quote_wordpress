@@ -2,13 +2,13 @@
  * src/common.js - common JavaScript constants and methods
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
 
 // exported constants
 const ZITAT_SERVICE_RANDOM_QUOTE_API_URL = 'https://api.zitat-service.de/v1';
-const ZITAT_SERVICE_RANDOM_QUOTE_VERSION = '1.3.0';
+const ZITAT_SERVICE_RANDOM_QUOTE_VERSION = '1.4.0';
 const ZITAT_SERVICE_RANDOM_QUOTE_MAX_REQUESTED_ENTRIES = 10000; // January 2024: authors, categories and users < 1.000 therefore 10.000 should be save for years
 export {
 	ZITAT_SERVICE_RANDOM_QUOTE_API_URL,

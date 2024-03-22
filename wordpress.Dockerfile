@@ -2,7 +2,7 @@
 # wordpress.Dockerfile - create docker container quote_wp_wordpress
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+# WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 # 
 
 # use latest WordPress - actual 6.4.2

@@ -2,7 +2,7 @@
  * src/selectControlAuthor.js - block editor UI SelectControl implementation for authors
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
 import { __ } from '@wordpress/i18n';
@@ -85,7 +85,7 @@ const SelectControlAuthor = ( { userLanguage, onChange, value } ) => {
 
 	return (
 		<SelectControl
-			label={ __( 'Author', 'zitat-service-random-quote' ) }
+			label={ __( 'Author', 'random-quote-zitat-service' ) }
 			value={ value }
 			options={ options }
 			onChange={ onChange }

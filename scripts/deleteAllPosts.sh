@@ -6,7 +6,7 @@
 #   w/o arguments      - cleaning on both containers
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress plugin zitat-service-random-quote, see https://github.com/muhme/quote_wordpress
+# WordPress plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 
 # doing the installation either on 
 if [ "$1" == "quote_wp_min" ]; then

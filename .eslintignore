@@ -1,7 +1,7 @@
 # .eslintignore - ignore certain files and folders for `npm run lint:js`
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+# WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 #
 # see `npm run lint:js -- --help`
 #

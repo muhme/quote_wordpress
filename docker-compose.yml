@@ -2,7 +2,7 @@
 # docker-compose.yml - define and orchestrate the used docker containers
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+# WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 
 version: '3.5'
 services:
@@ -22,11 +22,11 @@ services:
             WORDPRESS_CONFIG_EXTRA: define('FORCE_SSL_ADMIN', false);
         volumes:
             # mount only needed sub-directories and plugin PHP file
-            - ./src:/var/www/html/wp-content/plugins/zitat-service-random-quote/src
-            - ./build:/var/www/html/wp-content/plugins/zitat-service-random-quote/build
-            - ./scripts:/var/www/html/wp-content/plugins/zitat-service-random-quote/scripts
-            - ./languages:/var/www/html/wp-content/plugins/zitat-service-random-quote/languages
-            - ./zitat-service-random-quote.php:/var/www/html/wp-content/plugins/zitat-service-random-quote/zitat-service-random-quote.php
+            - ./src:/var/www/html/wp-content/plugins/random-quote-zitat-service/src
+            - ./build:/var/www/html/wp-content/plugins/random-quote-zitat-service/build
+            - ./scripts:/var/www/html/wp-content/plugins/random-quote-zitat-service/scripts
+            - ./languages:/var/www/html/wp-content/plugins/random-quote-zitat-service/languages
+            - ./random-quote-zitat-service.php:/var/www/html/wp-content/plugins/random-quote-zitat-service/random-quote-zitat-service.php
         ports:
             - '4080:80'
         depends_on:
@@ -46,11 +46,11 @@ services:
             WORDPRESS_CONFIG_EXTRA: define('FORCE_SSL_ADMIN', false);
         volumes:
             # mount only needed sub-directories and plugin PHP file
-            - ./src:/var/www/html/wp-content/plugins/zitat-service-random-quote/src
-            - ./build:/var/www/html/wp-content/plugins/zitat-service-random-quote/build
-            - ./scripts:/var/www/html/wp-content/plugins/zitat-service-random-quote/scripts
-            - ./languages:/var/www/html/wp-content/plugins/zitat-service-random-quote/languages
-            - ./zitat-service-random-quote.php:/var/www/html/wp-content/plugins/zitat-service-random-quote/zitat-service-random-quote.php
+            - ./src:/var/www/html/wp-content/plugins/random-quote-zitat-service/src
+            - ./build:/var/www/html/wp-content/plugins/random-quote-zitat-service/build
+            - ./scripts:/var/www/html/wp-content/plugins/random-quote-zitat-service/scripts
+            - ./languages:/var/www/html/wp-content/plugins/random-quote-zitat-service/languages
+            - ./random-quote-zitat-service.php:/var/www/html/wp-content/plugins/random-quote-zitat-service/random-quote-zitat-service.php
         ports:
             - '4084:80'
         depends_on:

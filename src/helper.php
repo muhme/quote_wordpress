@@ -3,14 +3,14 @@
  * src/helper.php - PHP constants and common used methods
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
 
-namespace ZitatServiceRandomQuote;
+namespace RandomQuoteZitatService;
 
 // plugin version as in src/block.json and src/common.js
-define("ZITAT_SERVICE_RANDOM_QUOTE_VERSION", "1.3.0");
+define("ZITAT_SERVICE_RANDOM_QUOTE_VERSION", "1.4.0");
 
 // define("ZITAT_SERVICE_RANDOM_QUOTE_API_URL", "http://host.docker.internal:3000/v1");
 define("ZITAT_SERVICE_RANDOM_QUOTE_API_URL", "https://api.zitat-service.de/v1");
@@ -92,7 +92,7 @@ function retrieveQuote($attributes)
     $response = wp_remote_get($url);
 
     if (is_wp_error($response)) {
-        return __("Error fetching quote", "zitat-service-random-quote");
+        return __("Error fetching quote", "random-quote-zitat-service");
     }
 
     // extract the response code

@@ -4,7 +4,20 @@ All notable changes to the WordPress plugin zitat-service will be documented in 
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [1.3.0] [Unreleased]
+## [1.4.0] [Unreleased]
+
+### Security
+  * Moderate: Bump follow-redirects from 1.15.5 to 1.15.6 
+
+### Changed
+  * WordPress Plugin Review Team sets slug/plugin permalink as: random-quote-zitat-service
+  * following changed:
+    * text domain: random-quote-zitat-service
+    * display name: Random Quote from Zitat-Service
+    * PHP namespace: RandomQuoteZitatService
+    * Gutenberg block name: random-quote-zitat-service/random-quote
+
+## [1.3.0] 2024-02-18
 
 ### Added
   * Replacing shortcode with block editor widget implementation

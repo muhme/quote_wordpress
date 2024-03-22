@@ -2,7 +2,7 @@
  * tests/testHelper.ts - utility methods used in the tests
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
 
@@ -122,7 +122,9 @@ async function checkNoQuoteFound( page: Page, postId: number | null ) {
 	await page.goto( `/?p=${ postId }` );
 
 	// Check for visibility of the plugin
-	const quoteDiv = page.locator( '.wp-block-zitat-service-random-quote' );
+	const quoteDiv = page.locator(
+		'.wp-block-random-quote-zitat-service-random-quote'
+	);
 	await expect( quoteDiv ).toHaveCount( 1 );
 
 	await expect( quoteDiv ).toContainText( 'Error 404' );
@@ -165,9 +167,9 @@ async function createPostWithPlugin<
 	// post is created via REST, set the content in additional step to prevent encoding HTML special chars
 	await editor.setContent( `
 <p>${ title }</p>
-<!-- wp:zitat-service/random-quote ${ attributesStringified } -->
+<!-- wp:random-quote-zitat-service/random-quote ${ attributesStringified } -->
 <div class="zitat-service-quote"> ...</div>
-<!-- /wp:zitat-service/random-quote -->
+<!-- /wp:random-quote-zitat-service/random-quote -->
 ` );
 
 	return editor.publishPost();

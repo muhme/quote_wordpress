@@ -3,7 +3,7 @@
 # scripts/i18n-create.sh - create .mo and .json from .po files
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
-# WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+# WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 #
 # intended to be run in quote_wp_wordpress container
 # needs gettext package installed as already in quote_wp_wordpress container
@@ -22,7 +22,7 @@ LANGUAGES=(
 )
 
 # destination folder
-cd /var/www/html/wp-content/plugins/zitat-service-random-quote/languages
+cd /var/www/html/wp-content/plugins/random-quote-zitat-service/languages
 
 # create 20 .mo files
 echo "*** Create .mo binary message catalog files for PHP"
@@ -31,7 +31,7 @@ for lang in "${!LANGUAGES[@]}"; do
     locales=${LANGUAGES[$lang]}
     for locale in $locales; do
       # echo "*** $lang $locale"
-      msgfmt "zitat-service-random-quote-${lang}.po" -o "zitat-service-random-quote-${locale}.mo"
+      msgfmt "random-quote-zitat-service-${lang}.po" -o "random-quote-zitat-service-${locale}.mo"
     done
 done
 chown -R www-data:www-data .
@@ -47,16 +47,16 @@ for lang in "${!LANGUAGES[@]}"; do
       # echo "*** $lang $locale"
       if [ "${locale}" != "${lang}" ] ; then
         # create .po for the locale temporary if not the same file
-        cp "zitat-service-random-quote-${lang}.po" "zitat-service-random-quote-${locale}.po"
+        cp "random-quote-zitat-service-${lang}.po" "random-quote-zitat-service-${locale}.po"
       fi
       # make json files and delete all except the json for build/editorScript.js
-      wp i18n make-json "zitat-service-random-quote-${locale}.po" --no-purge --quiet --allow-root
-      for file in zitat-service-random-quote-${locale}-*.json; do
+      wp i18n make-json "random-quote-zitat-service-${locale}.po" --no-purge --quiet --allow-root
+      for file in random-quote-zitat-service-${locale}-*.json; do
         grep -q "\"build\\\/editorScript.js\"" "${file}" || rm "${file}"
       done
       if [ "${locale}" != "${lang}" ] ; then
         # delete temporary .po for the locale if not the language file
-        rm "zitat-service-random-quote-${locale}.po"
+        rm "random-quote-zitat-service-${locale}.po"
       fi
     done
 done

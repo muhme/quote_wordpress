@@ -2,7 +2,7 @@
  * src/selectControlCategory.js - block editor UI SelectControl implementation for categories
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
 import { __ } from '@wordpress/i18n';
@@ -66,7 +66,7 @@ const SelectControlCategory = ( { userLanguage, onChange, value } ) => {
 
 	return (
 		<SelectControl
-			label={ __( 'Category', 'zitat-service-random-quote' ) }
+			label={ __( 'Category', 'random-quote-zitat-service' ) }
 			value={ value }
 			options={ options }
 			onChange={ onChange }

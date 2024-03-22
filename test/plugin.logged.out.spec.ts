@@ -2,7 +2,7 @@
  * tests/plugin.logged.out.spec.ts - backend E2E tests plugin description, without login
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
 
@@ -23,7 +23,7 @@ test.describe( 'Backend – Plugin description', () => {
 		await page.goto( '/wp-admin/plugins.php' );
 		const desc =
 			( await page.textContent(
-				'tr[data-slug="zitat-service-random-quote"] .plugin-description p'
+				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
 			) ) ?? '';
 		expect( desc.startsWith( 'Displays a random quote' ) ).toBeTruthy();
 	} );
@@ -33,7 +33,7 @@ test.describe( 'Backend – Plugin description', () => {
 		await page.goto( '/wp-admin/plugins.php' );
 		const desc =
 			( await page.textContent(
-				'tr[data-slug="zitat-service-random-quote"] .plugin-description p'
+				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
 			) ) ?? '';
 		expect( desc.startsWith( 'Zeigt ein zufälliges Zitat' ) ).toBeTruthy();
 	} );
@@ -43,7 +43,7 @@ test.describe( 'Backend – Plugin description', () => {
 		await page.goto( '/wp-admin/plugins.php' );
 		const desc =
 			( await page.textContent(
-				'tr[data-slug="zitat-service-random-quote"] .plugin-description p'
+				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
 			) ) ?? '';
 		expect( desc.startsWith( 'Muestra una cita aleatoria' ) ).toBeTruthy();
 	} );
@@ -51,10 +51,9 @@ test.describe( 'Backend – Plugin description', () => {
 	test( 'ja - Japanese language', async ( { page } ) => {
 		await userLogin( page, ADMIN_USER + '_ja', ADMIN_PASSWORD, null );
 		await page.goto( '/wp-admin/plugins.php' );
-		// zitat-service-ランダム引用
 		const desc =
 			( await page.textContent(
-				'tr[data-slug="zitat-service-random-quote"] .plugin-description p'
+				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
 			) ) ?? '';
 		expect( desc.startsWith( 'ドイツ語' ) ).toBeTruthy();
 	} );
@@ -62,10 +61,9 @@ test.describe( 'Backend – Plugin description', () => {
 	test( 'uk - Ukrainian language', async ( { page } ) => {
 		await userLogin( page, ADMIN_USER + '_uk', ADMIN_PASSWORD, null );
 		await page.goto( '/wp-admin/plugins.php' );
-		// zitat-service-випадковий-цитат
 		const desc =
 			( await page.textContent(
-				'tr[data-slug="zitat-service-random-quote"] .plugin-description p'
+				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
 			) ) ?? '';
 		expect( desc.startsWith( 'Показує випадковий цитат' ) ).toBeTruthy();
 	} );

@@ -1,6 +1,6 @@
 # Scripts for a more pleasant and also faster development
 
-These scripts support the development and testing of WordPress plugin `Zitat-Service Random Quote` (see [../README.md](../README.md)).
+These scripts support the development and testing of WordPress plugin `Random Quote from Zitat-Service` (see [../README.md](../README.md)).
 
 The scripts are used on the Mac command line or in the container, but should also work on Linux and the Windows subsystem for Linux.
 

@@ -2,7 +2,7 @@
  * tests/plugin.logged.in.spec.ts - frontend E2E tests using the plugin
  *
  * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
- * WordPress-plugin Zitat-Service Random Quote, see https://github.com/muhme/quote_wordpress
+ * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
 import { test } from '@wordpress/e2e-test-utils-playwright';
