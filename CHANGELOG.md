@@ -7,7 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com) and this p
 ## [1.4.0] [Unreleased]
 
 ### Security
-  * Moderate: Bump follow-redirects from 1.15.5 to 1.15.6 
+  * High severity: Bumps webpack-dev-middleware from 5.3.3 to 5.3.4
+  * Moderate severity: Bump follow-redirects from 1.15.5 to 1.15.6
 
 ### Changed
   * WordPress Plugin Review Team sets slug/plugin permalink as: random-quote-zitat-service

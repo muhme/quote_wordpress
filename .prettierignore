@@ -6,3 +6,5 @@
 # see https://prettier.io/docs/en/ignore.html
 #
 playwright-report
+languages/*.json
+test-results
