@@ -7,7 +7,7 @@ Tested up to: 6.4
 Stable tag: 1.4.0
 Requires PHP: 7.4
 License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://raw.githubusercontent.com/muhme/quote_wordpress/main/LICENSE.txt
 
 Displays a random quote from user community zitat-service.de in English, German, Spanish, Japanese and Ukrainian.
 
@@ -22,7 +22,7 @@ Instructions for installation and configuration can be found at [wiki](https://g
 
 There is a WordPress demo installation with plugin *Random Quote from Zitat-Service* running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
 
-== API zitat-service.de ==
+== Usage of External API.zitat-service.de ==
 
 The WordPress plugin fetches all data from [api.zitat-service.de](https://api.zitat-service.de).
 Terms of use and privacy statement can be found in the [Imprint](https://www.zitat-service.de/en/start/contact).

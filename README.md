@@ -60,6 +60,9 @@ Docker containers are:
     * http://localhost:4082 – MailDev web interface
   * quote_wp_playwright- for E2E testing
 
+:warning: **Caution:** Do not uninstall the plugin in WordPress, otherwise you will also delete source files,
+as they are mounted via Docker Volume.
+
 :bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwrigth container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine, if you make the following `/etc/hosts` entry:
 ```bash
 127.0.0.1	host.docker.internal
@@ -128,12 +131,12 @@ Some bash-scripts are prepared for a pleasant and also faster development, see f
 * scripts/compose.sh build
 * scripts/install.sh
 * scripts/test.sh --workers=3
-* scripts/pack.sh / manual install the zipped plugin, Plugin Check (PCP) with all categories, do a short test
+* scripts/pack.sh / manual install the zipped plugin in empty WP, Plugin Check (PCP) with all categories, do a short test
 * git status / git diff / git commit -a / git push
 
 </details>
 
-## API zitat-service.de
+## Usage of External API.zitat-service.de
 
 The WordPress plugin fetches all data from <a href="https://api.zitat-service.de">api.zitat-service.de</a>.
 Terms of use and privacy statement can be found in the <a href="https://www.zitat-service.de/en/start/contact">Imprint</a>.
@@ -150,7 +153,7 @@ at zitat-service.de, ensuring the reliability and accuracy of the linked content
 
 ## License
 
-GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe, see [LICENSE](LICENSE)
+GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe, see [LICENSE.txt](LICENSE.txt)
 
 ## Contact
 Don't hesitate to ask if you have any questions or comments.

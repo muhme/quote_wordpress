@@ -9,14 +9,12 @@
  * Author:            Heiko Lübbe
  * Author URI:        https://www.heikol.de
  * License:           GPLv3
- * License URI:       https://raw.githubusercontent.com/muhme/quote_wordpress/main/LICENSE
+ * License URI:       https://raw.githubusercontent.com/muhme/quote_wordpress/main/LICENSE.txt
  * Text Domain:       random-quote-zitat-service
  * Domain Path:       /languages
- *
- * @package           zitat-service
  */
 
- namespace RandomQuoteZitatService;
+namespace RandomQuoteZitatService;
 
 if (!defined("ABSPATH")) {
     exit; // Exit if accessed directly.

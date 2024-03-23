@@ -9,6 +9,10 @@
 
 namespace RandomQuoteZitatService;
 
+if (!defined("ABSPATH")) {
+    exit; // Exit if accessed directly.
+}
+
 // plugin version as in src/block.json and src/common.js
 define("ZITAT_SERVICE_RANDOM_QUOTE_VERSION", "1.4.0");
 

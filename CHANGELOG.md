@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com) and this p
     * display name: Random Quote from Zitat-Service
     * PHP namespace: RandomQuoteZitatService
     * Gutenberg block name: random-quote-zitat-service/random-quote
+  * node package update with ncu, to be up-to-date
 
 ## [1.3.0] 2024-02-18
 
