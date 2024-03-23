@@ -4,7 +4,11 @@ All notable changes to the WordPress plugin zitat-service will be documented in 
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [1.4.0] [Unreleased]
+## [1.4.0] 2024-03-23
+
+:warning: **Caution:** Gutenberg block name has changed from `wp:zitat-service/random-quote` to
+`wp:random-quote-zitat-service/random-quote`. If you are already using it, you have to change this twice (for opening
+and closing) within code editor, or delete and recreate `Random Quote` blocks.
 
 ### Security
   * High severity: Bumps webpack-dev-middleware from 5.3.3 to 5.3.4
@@ -18,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com) and this p
     * PHP namespace: RandomQuoteZitatService
     * Gutenberg block name: random-quote-zitat-service/random-quote
   * node package update with ncu, to be up-to-date
+  * JavaScript debugging output (console.log and console.error) can be enabled from browser
 
 ## [1.3.0] 2024-02-18
 

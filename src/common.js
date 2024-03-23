@@ -74,15 +74,21 @@ function sanitizeIdValue( id ) {
 export { sanitizeIdValue };
 
 /**
- * Make console.log() on development stage only.
+ * Use console.log() if parameterized.
+ *
+ * > localStorage.setItem('debugMode', 'true'); // in browser console to enable debug messages
+ * > localStorage.removeItem('debugMode'); // to disable them
+ *
  * @param {*} message
  */
 function devLog( message ) {
 	if (
-		window.location.hostname === 'localhost' ||
-		window.location.hostname === 'host.docker.internal'
+		typeof localStorage !== 'undefined' &&
+		// disabled as localStorage is a browser global object and its presence is checked maniacally
+		// eslint-disable-next-line no-undef
+		localStorage.getItem( 'debugMode' ) === 'true'
 	) {
-		// as it is only on development environment
+		// disable lint error, as the console usage is parameterized
 		// eslint-disable-next-line no-console
 		console.log( message );
 	}
@@ -90,15 +96,21 @@ function devLog( message ) {
 export { devLog };
 
 /**
- * Make console.error() on development stage only.
+ * Use console.error() if parameterized.
+ *
+ * > localStorage.setItem('debugMode', 'true'); // in browser console to enable debug messages
+ * > localStorage.removeItem('debugMode'); // to disable them
+ *
  * @param {*} message
  */
 function devError( message ) {
 	if (
-		window.location.hostname === 'localhost' ||
-		window.location.hostname === 'host.docker.internal'
+		typeof localStorage !== 'undefined' &&
+		// disabled as localStorage is a browser global object and its presence is checked maniacally
+		// eslint-disable-next-line no-undef
+		localStorage.getItem( 'debugMode' ) === 'true'
 	) {
-		// as it is only on development environment
+		// disable lint error, as the console usage is parameterized
 		// eslint-disable-next-line no-console
 		console.error( message );
 	}

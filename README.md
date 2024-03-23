@@ -123,16 +123,23 @@ Some bash-scripts are prepared for a pleasant and also faster development, see f
   * src/helper.php
   * src/common.js
   * languages/\*.po\*
-* docker exec -it quote_wp_wordpress /var/www/html/wp-content/plugins/random-quote-zitat-service/scripts/i18n-create.sh
-* ncu / ncu -u / npm install / npm audit / npm audit -fix
-* npm run lint:css / npm run lint:js / npm run lint:js:fix
-* npm run format
-* npm run build
-* scripts/compose.sh build
-* scripts/install.sh
-* scripts/test.sh --workers=3
-* scripts/pack.sh / manual install the zipped plugin in empty WP, Plugin Check (PCP) with all categories, do a short test
+* `scripts/pack.sh full` which is doing:
+  * docker exec -it quote_wp_wordpress /var/www/html/wp-content/plugins/random-quote-zitat-service/scripts/i18n-create.sh
+  * ncu -> ncu -u && npm install
+  * npm audit -> npm audit -fix
+  * npm run lint:css
+  * npm run lint:js -> npm run lint:js:fix
+  * npm run format
+  * npm run build
+  * scripts/compose.sh build
+  * scripts/install.sh
+  * scripts/test.sh --workers=2
+  * scripts/pack.sh
+* manual install the zipped plugin in empty WP, do Plugin Check (PCP) with all categories, do a short test
 * git status / git diff / git commit -a / git push
+
+:bulb: **Tip:** If a command fails in `scripts/pack.sh full` this script stops.
+If a common fix action is available it is shown after `->`.
 
 </details>
 

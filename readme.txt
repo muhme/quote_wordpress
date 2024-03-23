@@ -49,16 +49,15 @@ Please use [github.com/muhme/quote_wordpress/issues](https://github.com/muhme/qu
 
 == Changelog ==
 
-= 1.4.0 =
-* WordPress Plugin Review Team requested changes.
-* Bumped follow-redirects from 1.15.5 to 1.15.6.
+For changelog in detail see [CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md)
 
-For more details see [github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md)
+= 1.4.0 =
+* WordPress Plugin Review Team requested changes, including plugin name change and updated all dependencies.
 
 = 1.3.0 =
 * First implementation as Gutenberg block editor plugin.
 
-For older version see [github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md)
+For older versions see [CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md)
 
 == Upgrade Notice ==
 

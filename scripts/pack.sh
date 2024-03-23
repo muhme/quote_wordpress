@@ -14,6 +14,39 @@ set -euo pipefail
 
 echo '*** Packing plugin'
 
+if [ $# -eq 1 ] && [ "$1" = "full" ]; then
+
+    echo '*** i18n-create.sh'
+    docker exec -it quote_wp_wordpress /var/www/html/wp-content/plugins/random-quote-zitat-service/scripts/i18n-create.sh
+
+    echo '*** ncu – node check updates -> ncu -u && npm install'
+    ncu
+
+    echo '*** npm audit – node package manager audit'
+    npm audit
+
+    echo '*** npm run lint:css – node package manager linting CSS'
+    npm run lint:css
+
+    echo '*** npm run lint:js – node package manager linting JavaScript -> npm run lint:js:fix'
+    npm run lint:js
+
+    echo '*** npm run format – node package manager source code formatting'
+    npm run format
+
+    echo '*** npm run build'
+    npm run build
+
+    echo '*** scripts/compose.sh build'
+    scripts/compose.sh build
+
+    echo '*** scripts/install.sh'
+    scripts/install.sh
+
+    echo '*** scripts/test.sh --workers=2'
+    scripts/test.sh --workers=2
+fi
+
 # to have created date now
 rm -f random-quote-zitat-service.zip
 

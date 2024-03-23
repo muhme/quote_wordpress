@@ -8,7 +8,7 @@ The scripts are used on the Mac command line or in the container, but should als
 | --- | --- | --- |
 | [scripts/install.sh](install.sh) | Inside WordPress containers install WP-CLI, complete the WordPress installation, install additional languages and admin users and activate the plugin. | - first argument is the container name `quote_wp_wordpress` or `quote_wp_min`, otherwise it will be installed in both containers<br />- must be executed first and only once |
 | [scripts/test.sh](test.sh) | Run E2E tests in Playwright container. | - first argument is the container name `quote_wp_wordpress` or `quote_wp_min`, otherwise it will be tested in both containers<br />- see [../test](../test) |
-| [scripts/pack.sh](pack.sh) | Create the plugin ZIP file. |  |
+| [scripts/pack.sh](pack.sh) | Create the plugin ZIP file. | - with optional argument `full` doing all the deployment steps |
 | [scripts/compose.sh](compose.sh) | Delete the five Docker containers and build them new. | - with optional argument `build` the WordPress containers are rebuild without cache |
 | [scripts/clean.sh](clean.sh) | Removes all quote_wp_* Docker containers. |  |
 | [scripts/deleteAllPosts.sh](deleteAllPosts.sh) | Testing creates posts, this script simply deletes all posts. | - :warning: ALL posts are deleted<br />- first argument is the container name `quote_wp_wordpress` or `quote_wp_min`, otherwise posts will be deleted in both containers |
