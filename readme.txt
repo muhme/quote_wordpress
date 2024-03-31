@@ -13,10 +13,7 @@ Displays a random quote from user community zitat-service.de in English, German,
 
 == Description ==
 
-The WordPress plugin *Random Quote from Zitat-Service* displays a random quote from the collection of the
-user community [zitat-service.de/en](https://www.zitat-service.de/en). The selection of
-quotes comes from the five languages Deutsch 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 and Українська 🇺🇦.
-We have been online since 2007, free of charge and without advertising.
+The WordPress plugin *Random Quote from Zitat-Service* displays a random quote from the collection of the user community [zitat-service.de/en](https://www.zitat-service.de/en). The selection of quotes comes from the five languages Deutsch 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 and Українська 🇺🇦. We have been online since 2007, free of charge and without advertising.
 
 Instructions for installation and configuration can be found at [wiki](https://github.com/muhme/quote_wordpress/wiki).
 
@@ -24,18 +21,11 @@ There is a WordPress demo installation with plugin *Random Quote from Zitat-Serv
 
 == Usage of External API.zitat-service.de ==
 
-The WordPress plugin fetches all data from [api.zitat-service.de](https://api.zitat-service.de).
-Terms of use and privacy statement can be found in the [Imprint](https://www.zitat-service.de/en/start/contact).
+The WordPress plugin fetches all data from [api.zitat-service.de](https://api.zitat-service.de). Terms of use and privacy statement can be found in the [Imprint](https://www.zitat-service.de/en/start/contact).
 
-The random quotes on the frontend of the WordPress website are fetched by PHP code that runs on the WordPress server.
-This means that the process of retrieving quotes does not involve tracking or recording any user-specific data.
-Instead, it operates within the server environment, ensuring user privacy and compliance with guidelines that
-prohibit tracking users without their consent.
+The random quotes on the frontend of the WordPress website are fetched by PHP code that runs on the WordPress server. This means that the process of retrieving quotes does not involve tracking or recording any user-specific data. Instead, it operates within the server environment, ensuring user privacy and compliance with guidelines that prohibit tracking users without their consent.
 
-The displayed quotes, along with their respective authors and sources, are linked externally to websites
-such as zitat-service.de and Wikipedia to provide users with additional context and information.
-It's important to note that all external links are activated only after manual verification by the admin team
-at zitat-service.de, ensuring the reliability and accuracy of the linked content.
+The displayed quotes, along with their respective authors and sources, are linked externally to websites such as zitat-service.de and Wikipedia to provide users with additional context and information. It's important to note that all external links are activated only after manual verification by the admin team at zitat-service.de, ensuring the reliability and accuracy of the linked content.
 
 == Frequently Asked Questions ==
 
