@@ -56,6 +56,10 @@ docker exec -it "${CONTAINER}" sh -c \
 # echo "*** install plugin 'Random Quote from Zitat-Service'"
 # docker cp src "${CONTAINER}":/var/www/html/wp-content/plugins/random-quote-zitat-service
 
+# build the plugin block in creating the files in the 'build' folder
+echo '*** npm run build'
+npm run build
+
 echo "*** Activate plugin 'Random Quote from Zitat-Service'"
 docker exec -it "${CONTAINER}" sh -c "wp plugin activate random-quote-zitat-service --allow-root"
 
@@ -63,6 +67,7 @@ docker exec -it "${CONTAINER}" sh -c "wp plugin activate random-quote-zitat-serv
 echo "*** Recursivly chown to www-data"
 docker exec -it "${CONTAINER}" sh -c "chown -R www-data:www-data /var/www/html 2>/dev/null"
 
+# started without arguments? then actual WordPress version is installed and we continue with minimal version 
 if [ "$#" -eq 0 ]; then
   # Um Rekursionen zu verstehen muss man zunächst Rekursionen verstehen.
   # Mira Mezini, https://www.zitat-service.de/de/quotations/1114
