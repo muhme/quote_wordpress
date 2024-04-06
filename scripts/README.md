@@ -14,6 +14,7 @@ The scripts are used on the Mac command line or in the container, but should als
 | [scripts/deleteAllPosts.sh](deleteAllPosts.sh) | Testing creates posts, this script simply deletes all posts. | - :warning: ALL posts are deleted<br />- first argument is the container name `quote_wp_wordpress` or `quote_wp_min`, otherwise posts will be deleted in both containers |
 | [scripts/i18n-init.sh](i18n-init.sh) | Create the portable object template .pot file and four portable object files. | - :warning: the .pot and the four .po files are  overwritten<br>- see [../languages](../languages) |
 | [scripts/i18n-create.sh](i18n-create.sh) | Create 20 .mo and 20 .json files from the 4 .po files. | - intended to be run in quote_wp_wordpress container, see [../languages](../languages) |
+| [scripts/svn.sh](svn.sh) | Create the SVN checkout directory and update from assets/ and ZIP |
 
 And now you are ready to quintuple the speed :smiley: Create the six Docker containers, install WordPress and the plugin twice and running the E2E tests twice. All with just one command line:
 ```

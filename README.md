@@ -9,14 +9,22 @@ running online at [wp-demo.zitat-service.de](https://wp-demo.zitat-service.de).
 
 :bulb: **Tip:** Help for the WordPress plugin installation and administration is available at [github.com/muhme/quote_wordpress/wiki](https://github.com/muhme/quote_wordpress/wiki).
 
-The review of the plugin has not yet been completed and it is therefore not yet available in the WordPress Plugin Directory, but you can download and install from file [random-quote-zitat-service.zip](random-quote-zitat-service.zip). Change log is available as [CHANGELOG.md](CHANGELOG.md).
+The public URL for the plugin in the WordPress Plugin Directory is [wordpress.org/plugins/random-quote-zitat-service](https://wordpress.org/plugins/random-quote-zitat-service/).
+
+Change log is available as [CHANGELOG.md](CHANGELOG.md).
 
 ## Requirements
 
 * WordPress >= 6.1
 * PHP >= 7.4
 
+
 ## Test & Development Environment
+
+Tested are the versions:
+  * PHP 7.4 & WordPress 6.1
+  * PHP 8.2 & WordPress 6.5
+
 <details>
   <summary>There is a docker test and development environment prepared.</summary>
 To create the test and development environment run:
