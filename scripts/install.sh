@@ -17,6 +17,10 @@ else
   CONTAINER="quote_wp_wordpress"
 fi
 
+# needed before using node_modules/wait-on/bin/wait-on
+echo "*** npm install"
+npm install
+
 echo "*** Waiting for container ${CONTAINER}"
 node_modules/wait-on/bin/wait-on -l -t "60s" "${URL}" 
 
