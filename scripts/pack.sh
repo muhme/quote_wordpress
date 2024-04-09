@@ -20,7 +20,7 @@ if [ $# -eq 1 ] && [ "$1" = "full" ]; then
     docker exec -it quote_wp_wordpress /var/www/html/wp-content/plugins/random-quote-zitat-service/scripts/i18n-create.sh
 
     echo '*** ncu – node check updates -> ncu -u && npm install'
-    ncu
+    ncu -e 2
 
     echo '*** npm audit – node package manager audit'
     npm audit

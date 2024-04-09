@@ -22,10 +22,10 @@ cp -r assets "${SLUG}"
 (cd "${SLUG}/trunk" && unzip -o "../../${SLUG}.zip")
 
 cat <<EOF
-You have to do:
+You have to do something like:
 $ cd random-quote-zitat-service
 $ svn stat
-$ svn div
+$ svn diff
 $ svn ci -m 'new version 1.4.0' --username muhme
 $ svn cp trunk tags/1.4.0
 $ svn ci -m 'tagging version 1.4.0'

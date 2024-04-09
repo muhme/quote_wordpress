@@ -14,7 +14,7 @@ if (!defined("ABSPATH")) {
 }
 
 // plugin version as in src/block.json and src/common.js
-define("ZITAT_SERVICE_RANDOM_QUOTE_VERSION", "1.4.0");
+define("ZITAT_SERVICE_RANDOM_QUOTE_VERSION", "1.4.1");
 
 // define("ZITAT_SERVICE_RANDOM_QUOTE_API_URL", "http://host.docker.internal:3000/v1");
 define("ZITAT_SERVICE_RANDOM_QUOTE_API_URL", "https://api.zitat-service.de/v1");

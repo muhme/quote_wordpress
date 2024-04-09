@@ -3,8 +3,8 @@ Contributors: muhme
 Donate link: https://github.com/muhme/quote_wordpress
 Tags: quote, citation, proverb, inspirational quotes, quote of the day (QOTD)
 Requires at least: 6.1
-Tested up to: 6.4
-Stable tag: 1.4.0
+Tested up to: 6.5
+Stable tag: 1.4.1
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://raw.githubusercontent.com/muhme/quote_wordpress/main/LICENSE.txt
@@ -40,6 +40,9 @@ Please use [github.com/muhme/quote_wordpress/issues](https://github.com/muhme/qu
 == Changelog ==
 
 For changelog in detail see [CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md)
+
+= 1.4.1 =
+* Node modules update, tested with WordPress 6.5 and documentation updated.
 
 = 1.4.0 =
 * WordPress Plugin Review Team requested changes, including plugin name change and updated all dependencies.

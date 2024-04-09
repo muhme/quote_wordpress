@@ -4,6 +4,11 @@ All notable changes to the WordPress plugin zitat-service will be documented in 
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [1.4.1] 2024-04-09
+
+### Documentation
+  * Node modules update, tested with WordPress 6.5 and documentation updated.
+
 ## [1.4.0] 2024-03-23
 
 :warning: **Caution:** Gutenberg block name has changed from `wp:zitat-service/random-quote` to
@@ -44,12 +49,12 @@ and closing) within code editor, or delete and recreate `Random Quote` blocks.
 ## [1.2.0] 2023-12-26
 
 ### Added
-  * I18N for backend was added.
+  * I18N for backend added.
 
 ## [1.1.0] 2023-12-09
 
 ### Added
-  * Shortcode parameter `language` was added.
+  * Shortcode parameter `language` added.
 
 ## [1.0.0] 2023-11-29
 

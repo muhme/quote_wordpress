@@ -5,7 +5,7 @@
  * Description:       Displays a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦.
  * Requires at least: 6.1
  * Requires PHP:      7.4
- * Version:           1.4.0
+ * Version:           1.4.1
  * Author:            Heiko Lübbe
  * Author URI:        https://www.heikol.de
  * License:           GPLv3
