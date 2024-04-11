@@ -39,7 +39,7 @@ Please use [github.com/muhme/quote_wordpress/issues](https://github.com/muhme/qu
 
 == Changelog ==
 
-For changelog in detail see [CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md)
+For changelog in detail see [CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md).
 
 = 1.4.1 =
 * Node modules update, tested with WordPress 6.5 and documentation updated.
@@ -50,7 +50,7 @@ For changelog in detail see [CHANGELOG.md](https://github.com/muhme/quote_wordpr
 = 1.3.0 =
 * First implementation as Gutenberg block editor plugin.
 
-For older versions see [CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md)
+For older versions see [CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md).
 
 == Upgrade Notice ==
 
