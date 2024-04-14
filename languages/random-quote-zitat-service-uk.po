@@ -6,14 +6,14 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: random-quote-zitat-service 1.4.1\n"
+"Project-Id-Version: random-quote-zitat-service 1.4.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/random-quote-zitat-service\n"
 "Last-Translator: Heiko Lübbe\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-14T04:56:37+00:00\n"
+"POT-Creation-Date: 2024-04-13T12:00:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: random-quote-zitat-service\n"
@@ -29,12 +29,12 @@ msgid "https://github.com/muhme/quote_wordpress"
 msgstr "https://github.com/muhme/quote_wordpress"
 
 #. Description of the plugin
-msgid "Displays a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Español 🇪🇸, 日本語 🇯🇵 or Українська 🇺🇦."
+msgid "Displays a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Spanish 🇪🇸, Japanese 🇯🇵 or Ukrainian 🇺🇦."
 msgstr "Показує випадковий цитат з колекції спільноти користувачів zitat-service.de на німецькій 🇩🇪, англійській 🇬🇧, іспанській 🇪🇸, японській 🇯🇵 та українській 🇺🇦 мовах."
 
 #. Author of the plugin
 msgid "Heiko Lübbe"
-msgstr "Heiko Lübbe"
+msgstr "Гейко Люббе"
 
 #: build/helper.php:72
 #: src/helper.php:72

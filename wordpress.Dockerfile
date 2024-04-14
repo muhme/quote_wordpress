@@ -5,7 +5,7 @@
 # WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 # 
 
-# use latest WordPress - actual 6.4.2
+# use latest WordPress - actual 6.4.2, Apr-13-2024: you have to manual update to 6.5.2 and run the tests again
 FROM wordpress
 
 # use MSMTP as sendmail compatible SMTP client and deliver emails to maildev:1025

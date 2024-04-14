@@ -27,6 +27,7 @@ Tested are the versions:
 
 <details>
   <summary>There is a docker test and development environment prepared.</summary>
+
 [Docker](https://www.docker.com/), [git](https://git-scm.com/) and [npm](https://www.npmjs.com/) must be installed. To create your test and development environment run:
 
 ```
@@ -111,7 +112,7 @@ Language 'uk' installed.
 *** Recursivly chown to www-data
 ```
 
-WordPress is installed with the five languages supported by the plugin. The plugin `Random Quote from Zitat-Service` is installed and activated. There are five admin users, each of whom has set one of the languages. Users are `admin`, `admin_de`, `admin_es`, `admin_ja` and `admin_uk`. Password is always `admin`.
+WordPress is installed with the five languages supported by the plugin. The plugin `Random Quote from Zitat-Service` is installed and activated. There are five admin users, each of whom has set one of the languages. Users are `admin`, `admin_de`, `admin_es`, `admin_ja` and `admin_uk`. Password is always `admin`. Further details on I18n can be found under [languages](./languages).
 
 ### Testing
 

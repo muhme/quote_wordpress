@@ -8,7 +8,7 @@
 
 // exported constants
 const ZITAT_SERVICE_RANDOM_QUOTE_API_URL = 'https://api.zitat-service.de/v1';
-const ZITAT_SERVICE_RANDOM_QUOTE_VERSION = '1.4.1';
+const ZITAT_SERVICE_RANDOM_QUOTE_VERSION = '1.4.2';
 const ZITAT_SERVICE_RANDOM_QUOTE_MAX_REQUESTED_ENTRIES = 10000; // January 2024: authors, categories and users < 1.000 therefore 10.000 should be save for years
 export {
 	ZITAT_SERVICE_RANDOM_QUOTE_API_URL,

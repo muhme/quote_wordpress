@@ -4,6 +4,9 @@ All notable changes to the WordPress plugin zitat-service will be documented in 
 
 The format is based on [Keep a Changelog](https://keepachangelog.com) and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [1.4.2] 2024-04-13
+ * Node modules update and adaptation of character strings after backward translation.
+
 ## [1.4.1] 2024-04-09
 
 ### Documentation
