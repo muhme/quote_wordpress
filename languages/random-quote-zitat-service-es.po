@@ -6,7 +6,7 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: random-quote-zitat-service 1.4.2\n"
+"Project-Id-Version: random-quote-zitat-service 1.4.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/random-quote-zitat-service\n"
 "Last-Translator: Heiko Lübbe\n"
 "Language-Team: none\n"

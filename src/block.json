@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "random-quote-zitat-service/random-quote",
 	"description": "Displays a random quote from the collection of the user community zitat-service.de.",
-	"version": "1.4.2",
+	"version": "1.4.3",
 	"title": "Random Quote",
 	"category": "text",
 	"keywords": [

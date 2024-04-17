@@ -65,6 +65,6 @@ test.describe( 'Backend – Plugin description', () => {
 			( await page.textContent(
 				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
 			) ) ?? '';
-		expect( desc.startsWith( 'Показує випадковий цитат' ) ).toBeTruthy();
+		expect( desc.startsWith( 'Відображає випадкову цитату' ) ).toBeTruthy();
 	} );
 } );

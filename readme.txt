@@ -41,6 +41,9 @@ Please use [github.com/muhme/quote_wordpress/issues](https://github.com/muhme/qu
 
 For changelog in detail see [CHANGELOG.md](https://github.com/muhme/quote_wordpress/blob/main/CHANGELOG.md).
 
+= 1.4.3 =
+* Logo changed.
+
 = 1.4.2 =
 * Node modules update and adaptation of character strings after backward translation.
 

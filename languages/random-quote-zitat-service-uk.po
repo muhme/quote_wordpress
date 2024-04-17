@@ -6,7 +6,7 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: random-quote-zitat-service 1.4.2\n"
+"Project-Id-Version: random-quote-zitat-service 1.4.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/random-quote-zitat-service\n"
 "Last-Translator: Heiko Lübbe\n"
 "Language-Team: none\n"
@@ -30,7 +30,7 @@ msgstr "https://github.com/muhme/quote_wordpress"
 
 #. Description of the plugin
 msgid "Displays a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Spanish 🇪🇸, Japanese 🇯🇵 or Ukrainian 🇺🇦."
-msgstr "Показує випадковий цитат з колекції спільноти користувачів zitat-service.de на німецькій 🇩🇪, англійській 🇬🇧, іспанській 🇪🇸, японській 🇯🇵 та українській 🇺🇦 мовах."
+msgstr "Відображає випадкову цитату з колекції спільноти користувачів zitat-service.de на німецькій 🇩🇪, англійській 🇬🇧, іспанській 🇪🇸, японській 🇯🇵 та українській 🇺🇦 мовах."
 
 #. Author of the plugin
 msgid "Heiko Lübbe"
