@@ -4,7 +4,7 @@ Donate link: https://github.com/muhme/quote_wordpress
 Tags: quote, citation, proverb, inspirational quotes, quote of the day (QOTD)
 Requires at least: 6.1
 Tested up to: 6.5
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://raw.githubusercontent.com/muhme/quote_wordpress/main/LICENSE.txt
