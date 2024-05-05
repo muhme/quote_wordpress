@@ -72,7 +72,7 @@ Docker containers are:
 :warning: **Caution:** Do not uninstall the plugin in WordPress, otherwise you will also delete source files,
 as they are mounted via Docker Volume.
 
-:bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwrigth container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine, if you make the following `/etc/hosts` entry:
+:bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwright container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine, if you make the following `/etc/hosts` entry:
 ```bash
 127.0.0.1	host.docker.internal
 ```
