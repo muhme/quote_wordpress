@@ -95,4 +95,7 @@ services:
         volumes:
             # to see HTML reports as file
             - .:/quote_wordpress
+        # enable host.docker.internal on Linux
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
         working_dir: /quote_wordpress
