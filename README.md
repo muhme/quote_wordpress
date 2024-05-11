@@ -28,7 +28,7 @@ Tested are the versions:
 <details>
   <summary>There is a docker test and development environment prepared.</summary>
 
-[Docker](https://www.docker.com/), [git](https://git-scm.com/) and [npm](https://www.npmjs.com/) must be installed. To create your test and development environment run:
+[Docker](https://www.docker.com/), [git](https://git-scm.com/), [node](https://nodejs.org/) >= v20 and [npm](https://www.npmjs.com/) must be installed (under Microsoft Windows in WSL2). To create your test and development environment run:
 
 ```
 host$ git clone https://github.com/muhme/quote_wordpress
