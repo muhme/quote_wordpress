@@ -57,8 +57,9 @@ docker exec -it "${CONTAINER}" sh -c \
 # docker cp src "${CONTAINER}":/var/www/html/wp-content/plugins/random-quote-zitat-service
 
 # build the plugin block in creating the files in the 'build' folder
-echo '*** npm run build'
-npm run build
+# but folder 'build' is owned by www-data, on Ubuntu in WSL2 in Windows, therefore run as sudo
+echo '*** sudo npm run build'
+sudo npm run build
 
 echo "*** Activate plugin 'Random Quote from Zitat-Service'"
 docker exec -it "${CONTAINER}" sh -c "wp plugin activate random-quote-zitat-service --allow-root"
