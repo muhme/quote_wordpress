@@ -40,13 +40,13 @@ Six Docker containers are running:
 
 ```
 host$ docker ps
-IMAGE                          PORTS                                            NAMES
-quote_wordpress-wordpress      0.0.0.0:4080->80/tcp                             quote_wp_wordpress
-wordpress:6.1-php7.4-apache    0.0.0.0:4084->80/tcp                             quote_wp_min
-phpmyadmin/phpmyadmin          0.0.0.0:4081->80/tcp                             quote_wp_phpmyadmin
-mariadb                        3306/tcp                                         quote_wp_mariadb
-maildev/maildev                0.0.0.0:1025->1025/tcp, 0.0.0.0:4082->1080/tcp   quote_wp_maildev
-mcr.microsoft.com/playwright   0.0.0.0:4083->80/tcp                             quote_wp_playwright
+NAMES                 IMAGE                          PORTS
+quote_wp_wordpress    quote_wordpress-wordpress      0.0.0.0:4080->80/tcp
+quote_wp_min          wordpress:6.1-php7.4-apache    0.0.0.0:4084->80/tcp
+quote_wp_phpmyadmin   phpmyadmin/phpmyadmin          0.0.0.0:4081->80/tcp
+quote_wp_mariadb      mariadb                        3306/tcp
+quote_wp_maildev      maildev/maildev                0.0.0.0:1025->1025/tcp, 0.0.0.0:4082->1080/tcp
+quote_wp_playwright   mcr.microsoft.com/playwright   0.0.0.0:4083->80/tcp
 ```
 
 Docker containers are:
