@@ -57,9 +57,16 @@ docker exec -it "${CONTAINER}" sh -c \
 # docker cp src "${CONTAINER}":/var/www/html/wp-content/plugins/random-quote-zitat-service
 
 # build the plugin block in creating the files in the 'build' folder
-# but folder 'build' is owned by www-data, on Ubuntu in WSL2 in Windows, therefore run as sudo
 echo '*** sudo npm run build'
-sudo npm run build
+current_user=$(whoami)
+build_dir_owner=$(ls -ld "build" | awk '{print $3}')
+# folder 'build' owned by e.g. root on Ubuntu?
+if [ "${current_user}" != "${build_dir_owner}" ] ; then
+  echo "*** Actual user is \"${current_user}\" and directory \"build\" is owned by \"${build_dir_owner}\", please confirm sudo access"  
+  sudo npm run build
+else
+  npm run build
+fi
 
 echo "*** Activate plugin 'Random Quote from Zitat-Service'"
 docker exec -it "${CONTAINER}" sh -c "wp plugin activate random-quote-zitat-service --allow-root"
