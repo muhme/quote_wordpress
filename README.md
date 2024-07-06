@@ -23,7 +23,7 @@ Change log is available as [CHANGELOG.md](CHANGELOG.md).
 
 Tested are the versions:
   * PHP 7.4 & WordPress 6.1
-  * PHP 8.2 & WordPress 6.5
+  * PHP 8.2 & WordPress 6.6
 
 <details>
   <summary>There is a docker test and development environment prepared.</summary>
