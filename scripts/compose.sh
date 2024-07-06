@@ -1,13 +1,15 @@
 #!/bin/bash
 #
-# scripts/compose.sh - delete the five docker containers and build them new
+# scripts/compose.sh - Delete the five docker containers and build them new
+# samples:
+#   scripts/compose.sh
+#   scripts/compose.sh build – Run compose build --no-cache first
 #
 # GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
 # WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 
-NAME=quote_wp_
-echo "*** Removing all docker containers ${NAME}*"
-docker ps -a --format '{{.Names}}' | grep "^$NAME" | xargs docker rm -f
+# Clean up first, just in case
+scripts/clean.sh
 
 if [ $# -eq 1 ] && [ "$1" = "build" ] ; then
   echo '*** Docker compose build --no-cache'
