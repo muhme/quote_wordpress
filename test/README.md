@@ -18,7 +18,7 @@ One more grouping are the different browsers. Actual we can test with five diffe
 
 You can run all the actual 2 x 121 tests with:
 ```
-host$ scripts/test.sh
+scripts/test.sh
 ```
 
 ### Dockerized
@@ -29,7 +29,9 @@ You can run the E2E tests in Docker container `quote_wp_playwright` with `script
   <summary>Sample for Chromium browser and the actual WordPress version:</summary>
 
 ```
-host$ scripts/test.sh quote_wp_wordpress --project=chromium-logged-out --project=chromium-logged-in
+scripts/test.sh quote_wp_wordpress --project=chromium-logged-out --project=chromium-logged-in
+```
+```
 *** Testing: WP_BASE_URL=http://host.docker.internal:4080 npx playwright test --project=chromium-logged-out --project=chromium-logged-in
 Running 25 tests using 6 workers
   ✓  1 [chromium-logged-out] › plugin.logged.out.spec.ts:22:7 › Backend – Plugin descriptions › en - English language (4.6s)
@@ -70,20 +72,27 @@ As the docker container volume is mapped, you can open the HTML report from file
 
 You can run a single test, e.g. to check again after a failed test. Two examples: 
 ```
-host$ scripts/test.sh quote_wp_min --project=chromium-logged-in -g \'Language not set\'
-host$ scripts/test.sh quote_wp_wordpress --project=mobile-chrome-logged-out -g \'ja - Japanese language\'
+scripts/test.sh quote_wp_min --project=chromium-logged-in -g \'Language not set\'
+```
+```
+scripts/test.sh quote_wp_wordpress --project=mobile-chrome-logged-out -g \'ja - Japanese language\'
+```
+
+You can also use patterns, e.g. to perform subsets of tests:
+```
+scripts/test.sh quote_wp_wordpress --project=webkit-logged-in -g 'Frontend – Widget › Language *'
 ```
 
 ### Local Host Installation
 
-It is possible to run the E2E tests on your host machine if you install Playwright locally:
+It is possible to run the E2E tests on your Docker host machine if you install Playwright locally:
 
 ```bash
-host$ npm install playwright --save-dev
-host$ npm install @wordpress/e2e-test-utils-playwright --save-dev
-host$ npx playwright install
-host$ npx playwright install-deps
-host$ npx playwright test 
+npm install playwright --save-dev
+npm install @wordpress/e2e-test-utils-playwright --save-dev
+npx playwright install
+npx playwright install-deps
+npx playwright test 
 ```
 
 Various options can used, such as `--ui` for interactive UI mode, see [Playwright command line otions](https://playwright.dev/docs/test-cli).
@@ -93,5 +102,5 @@ Various options can used, such as `--ui` for interactive UI mode, see [Playwrigh
 The standard for the parallelization of Playwright is 6 workers. If this is too much load for your host, you can reduce the number of workers with the `--workers` option, for example:
 
 ```bash
-host$ scripts/test.sh --workers=2
+scripts/test.sh --workers=2
 ```
