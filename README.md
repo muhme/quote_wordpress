@@ -30,16 +30,18 @@ Tested are the versions:
 
 [Docker](https://www.docker.com/), [git](https://git-scm.com/), [node](https://nodejs.org/) >= v20 and [npm](https://www.npmjs.com/) must be installed (under Microsoft Windows in WSL2). To create your test and development environment run:
 
-```
-host$ git clone https://github.com/muhme/quote_wordpress
-host$ cd quote_wordpress
-host$ docker compose up -d
+```bash
+git clone https://github.com/muhme/quote_wordpress
+cd quote_wordpress
+docker compose up -d
 ```
 
 Six Docker containers are running:
 
+```bash
+docker ps
 ```
-host$ docker ps
+```
 NAMES                 IMAGE                          PORTS
 quote_wp_wordpress    quote_wordpress-wordpress      0.0.0.0:4080->80/tcp
 quote_wp_min          wordpress:6.1-php7.4-apache    0.0.0.0:4084->80/tcp
@@ -80,9 +82,10 @@ as they are mounted via Docker Volume.
 ### Installation
 
 The command-line interface for WordPress [WP-CLI](https://wp-cli.org/) is used for the script-based completion of the installation and other tasks. After creating the Docker containers `quote_wp_wordpress` and `quote_wp_min` run `scripts/install.sh` once:
+```bash
+scripts/install.sh
 ```
-host$ scripts/install.sh
-
+```
 *** Waiting for container quote_wp_wordpress
 waiting for 1 resources: http://host.docker.internal:4080
 *** Installing WP-CLI

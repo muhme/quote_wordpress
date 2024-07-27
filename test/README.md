@@ -17,7 +17,7 @@ The frontend tests create posts with the desired plugin parameters in the backen
 One more grouping are the different browsers. Actual we can test with five different browsers: chromium, firefox, webkit, mobile-chrome and mobile-safari.
 
 You can run all the actual 2 x 121 tests with:
-```
+```bash
 scripts/test.sh
 ```
 
@@ -28,7 +28,7 @@ You can run the E2E tests in Docker container `quote_wp_playwright` with `script
 <details>
   <summary>Sample for Chromium browser and the actual WordPress version:</summary>
 
-```
+```bash
 scripts/test.sh quote_wp_wordpress --project=chromium-logged-out --project=chromium-logged-in
 ```
 ```
@@ -71,15 +71,15 @@ As the docker container volume is mapped, you can open the HTML report from file
 ```
 
 You can run a single test, e.g. to check again after a failed test. Two examples: 
-```
+```bash
 scripts/test.sh quote_wp_min --project=chromium-logged-in -g \'Language not set\'
 ```
-```
+```bash
 scripts/test.sh quote_wp_wordpress --project=mobile-chrome-logged-out -g \'ja - Japanese language\'
 ```
 
 You can also use patterns, e.g. to perform subsets of tests:
-```
+```bash
 scripts/test.sh quote_wp_wordpress --project=webkit-logged-in -g 'Frontend – Widget › Language *'
 ```
 
