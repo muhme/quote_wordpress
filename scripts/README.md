@@ -17,6 +17,6 @@ The scripts are used on the Mac command line or in the container, but should als
 | [scripts/svn.sh](svn.sh) | Create the SVN checkout directory and update from assets/ and ZIP |
 
 And now you are ready to quintuple the speed :smiley: Create the six Docker containers, install WordPress and the plugin twice and running the E2E tests twice. All with just one command line:
-```
-host$ scripts/compose.sh && scripts/install.sh && scripts/test.sh
+```bash
+scripts/compose.sh && scripts/install.sh && scripts/test.sh
 ```
