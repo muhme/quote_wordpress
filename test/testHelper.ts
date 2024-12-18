@@ -201,7 +201,8 @@ async function userLogin(
 	await passwordInput.waitFor( { state: 'visible' } );
 	await passwordInput.fill( password );
 
-	await page.getByText( 'Log in' ).click();
+	// Changed with WordPress 6.7 from 'Log in' to 'Log In'
+	await page.getByRole('button', { name: /log in/i }).click();
 
 	// '#wpadminbar' is visible on Desktop and mobile
 	await expect( page.locator( 'div#wpadminbar' ) ).toBeVisible();

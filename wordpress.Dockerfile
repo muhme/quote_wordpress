@@ -5,12 +5,10 @@
 # WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
 # 
 
-# Use the latest WordPress Docker image: 6 July 2024 – Docker image version is still 6.5.4
-#   You could manually update to 6.5.5 in http://host.docker.internal:4080/wp-admin or
-#   use the 6.6-RC2, see https://make.wordpress.org/core/handbook/testing/beta-testing/,
-#   and run the tests again: scripts/test.sh quote_wp_wordpress
-#
-FROM wordpress
+# Use the latest default WordPress Docker image
+# FROM wordpress
+# 18 December 2024: Default Docker image version is still 6.5.4, explicit set 6.7.1
+FROM wordpress:6.7.1-php8.3-apache
 
 # Use MSMTP as sendmail compatible SMTP client and deliver emails to maildev:1025
 RUN apt-get update -qq && apt-get upgrade -yqq  && apt-get install -y msmtp
