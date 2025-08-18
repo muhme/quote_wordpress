@@ -21,9 +21,9 @@ Change log is available as [CHANGELOG.md](CHANGELOG.md).
 
 ## Test & Development Environment
 
-Tested are the versions:
-  * PHP 7.4 & WordPress 6.1
-  * PHP 8.3 & WordPress 6.7
+The versions were last tested in August 2025:
+  * PHP 7.4 & WordPress 6.1 (minimum supported version)
+  * PHP 8.3 & WordPress 6.8 (current supported version)
 
 <details>
   <summary>There is a docker test and development environment prepared.</summary>

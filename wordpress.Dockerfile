@@ -7,8 +7,8 @@
 
 # Use the latest default WordPress Docker image
 # FROM wordpress
-# 18 December 2024: Default Docker image version is still 6.5.4, explicit set 6.7.1
-FROM wordpress:6.7.1-php8.3-apache
+# 18 August 2025: Default Docker image version is current 6.8.2
+FROM wordpress
 
 # Use MSMTP as sendmail compatible SMTP client and deliver emails to maildev:1025
 RUN apt-get update -qq && apt-get upgrade -yqq  && apt-get install -y msmtp
