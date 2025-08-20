@@ -17,10 +17,10 @@
 		"start": "wp-scripts start --webpack-copy-php"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.54.2",
+		"@playwright/test": "^1.55.0",
 		"@wordpress/e2e-test-utils-playwright": "^1.28.0",
 		"@wordpress/scripts": "^30.21.0",
-		"playwright": "^1.54.2"
+		"playwright": "^1.55.0"
 	},
 	"dependencies": {
 		"@wordpress/element": "^6.28.0",

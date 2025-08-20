@@ -88,7 +88,7 @@ services:
     playwright:
         container_name: quote_wp_playwright
         # Docker image version that matches NPM playwright
-        image: mcr.microsoft.com/playwright:v1.54.2
+        image: mcr.microsoft.com/playwright:v1.55.0
         restart: unless-stopped
         # don't use Playwright run, instead sleep one year and tests are started by docker exec calls
         entrypoint: ['sleep', '31536000']
