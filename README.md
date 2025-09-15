@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua) This WordPress plugin supports the selection of the Ukrainian language. Цей плагін WordPress підтримує вибір української мови.
+
 # WordPress Plugin 'Random Quote from Zitat-Service'
 
 ![WordPress plugin 'Random Quote from Zitat-Service'](assets/screenshot-1.png)
