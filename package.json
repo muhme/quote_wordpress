@@ -19,14 +19,17 @@
 	"devDependencies": {
 		"@playwright/test": "^1.56.1",
 		"@wordpress/e2e-test-utils-playwright": "^1.28.0",
-		"@wordpress/scripts": "^30.21.0",
+		"@wordpress/scripts": "^31.2.0",
 		"playwright": "^1.56.1"
 	},
 	"dependencies": {
 		"@wordpress/element": "^6.33.0",
 		"axios": "^1.12.1",
 		"dompurify": "^3.2.6",
-		"lighthouse": "^12.8.1",
-		"wait-on": "^8.0.4"
+		"lighthouse": "^13.0.1",
+		"wait-on": "^9.0.3"
+	},
+	"overrides": {
+		"webpack-dev-server": "^5.2.2"
 	}
 }
