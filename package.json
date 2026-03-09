@@ -1,6 +1,6 @@
 {
 	"name": "random-quote-zitat-service",
-	"version": "1.4.3",
+	"version": "1.4.4",
 	"description": "Displays a random quote from the collection of the user community zitat-service.de in German 🇩🇪, English 🇬🇧, Spanish 🇪🇸, Japanese 🇯🇵 or Ukrainian 🇺🇦.",
 	"author": "Heiko Lübbe",
 	"license": "GPLv3",
@@ -18,18 +18,20 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.56.1",
-		"@wordpress/e2e-test-utils-playwright": "^1.28.0",
+		"@wordpress/e2e-test-utils-playwright": "^1.41.0",
 		"@wordpress/scripts": "^31.2.0",
 		"playwright": "^1.56.1"
 	},
 	"dependencies": {
 		"@wordpress/element": "^6.33.0",
-		"axios": "^1.13.5",
+		"axios": "^1.13.6",
 		"dompurify": "^3.2.6",
-		"lighthouse": "^13.0.1",
-		"wait-on": "^9.0.3"
+		"lighthouse": "^13.0.3",
+		"wait-on": "^9.0.4"
 	},
 	"overrides": {
-		"webpack-dev-server": "^5.2.2"
+		"webpack-dev-server": "^5.2.2",
+		"minimatch": "^3.1.5",
+		"serialize-javascript": "^7.0.4"
 	}
 }
