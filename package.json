@@ -25,7 +25,7 @@
 	"dependencies": {
 		"@wordpress/element": "^6.33.0",
 		"axios": "^1.15.0",
-		"dompurify": "^3.2.6",
+		"dompurify": "^3.4.0",
 		"lighthouse": "^13.0.3",
 		"wait-on": "^9.0.4"
 	},
