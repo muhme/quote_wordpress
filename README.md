@@ -174,7 +174,7 @@ at zitat-service.de, ensuring the reliability and accuracy of the linked content
 
 ## License
 
-GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe, see [LICENSE.txt](LICENSE.txt)
+GPLv3 License, Copyright (c) 2023 - 2026 Heiko Lübbe, see [LICENSE.txt](LICENSE.txt)
 
 ## Contact
 Don't hesitate to ask if you have any questions or comments.

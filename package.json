@@ -17,19 +17,24 @@
 		"start": "wp-scripts start --webpack-copy-php"
 	},
 	"devDependencies": {
-		"@playwright/test": "^1.56.1",
-		"@wordpress/e2e-test-utils-playwright": "^1.41.0",
-		"@wordpress/scripts": "^31.2.0",
-		"playwright": "^1.56.1"
+		"@playwright/test": "^1.61.1",
+		"@wordpress/e2e-test-utils-playwright": "^1.50.0",
+		"@wordpress/scripts": "^32.6.0",
+		"playwright": "^1.61.1"
 	},
 	"dependencies": {
-		"@wordpress/element": "^6.33.0",
-		"axios": "^1.16.0",
+		"@wordpress/element": "^8.2.0",
+		"axios": "^1.18.1",
 		"dompurify": "^3.4.11",
-		"lighthouse": "^13.0.3",
-		"wait-on": "^9.0.4"
+		"lighthouse": "^13.4.0",
+		"wait-on": "^9.0.10"
 	},
 	"overrides": {
+		"@opentelemetry/core": "^2.8.0",
+		"@sentry/node": "^10.63.0",
+		"uuid": "^11.1.1",
+		"markdown-it": "^14.3.0",
+		"linkify-it": "^5.0.2",
 		"webpack-dev-server": "^5.2.2",
 		"minimatch": "^3.1.5",
 		"serialize-javascript": "^7.0.4"
