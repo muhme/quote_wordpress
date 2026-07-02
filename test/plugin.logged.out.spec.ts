@@ -1,14 +1,23 @@
 /**
  * tests/plugin.logged.out.spec.ts - backend E2E tests plugin description, without login
  *
- * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * GPLv3 License, Copyright (c) 2023 - 2026 Heiko Lübbe
  * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
 
 import { test, expect } from '@wordpress/e2e-test-utils-playwright';
+import type { Page } from 'playwright';
 import { userLogin } from './testHelper';
 import { ADMIN_USER, ADMIN_PASSWORD } from '../playwright.config';
+
+async function getPluginDescription( page: Page ) {
+	const description = page.locator(
+		'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
+	);
+	await expect( description ).toBeVisible( { timeout: 15000 } );
+	return ( await description.textContent() ) ?? '';
+}
 
 /*
  * I18N Test of the five different languages in the backend, with five admins, each with their own language settings
@@ -21,50 +30,35 @@ test.describe( 'Backend – Plugin description', () => {
 	test( 'en - English language', async ( { page } ) => {
 		await userLogin( page, ADMIN_USER, ADMIN_PASSWORD, null );
 		await page.goto( '/wp-admin/plugins.php' );
-		const desc =
-			( await page.textContent(
-				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
-			) ) ?? '';
+		const desc = await getPluginDescription( page );
 		expect( desc.startsWith( 'Displays a random quote' ) ).toBeTruthy();
 	} );
 
 	test( 'de - German language', async ( { page } ) => {
 		await userLogin( page, ADMIN_USER + '_de', ADMIN_PASSWORD, null );
 		await page.goto( '/wp-admin/plugins.php' );
-		const desc =
-			( await page.textContent(
-				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
-			) ) ?? '';
+		const desc = await getPluginDescription( page );
 		expect( desc.startsWith( 'Zeigt ein zufälliges Zitat' ) ).toBeTruthy();
 	} );
 
 	test( 'es - Spanish language', async ( { page } ) => {
 		await userLogin( page, ADMIN_USER + '_es', ADMIN_PASSWORD, null );
 		await page.goto( '/wp-admin/plugins.php' );
-		const desc =
-			( await page.textContent(
-				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
-			) ) ?? '';
+		const desc = await getPluginDescription( page );
 		expect( desc.startsWith( 'Muestra una cita aleatoria' ) ).toBeTruthy();
 	} );
 
 	test( 'ja - Japanese language', async ( { page } ) => {
 		await userLogin( page, ADMIN_USER + '_ja', ADMIN_PASSWORD, null );
 		await page.goto( '/wp-admin/plugins.php' );
-		const desc =
-			( await page.textContent(
-				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
-			) ) ?? '';
+		const desc = await getPluginDescription( page );
 		expect( desc.startsWith( 'ドイツ語' ) ).toBeTruthy();
 	} );
 
 	test( 'uk - Ukrainian language', async ( { page } ) => {
 		await userLogin( page, ADMIN_USER + '_uk', ADMIN_PASSWORD, null );
 		await page.goto( '/wp-admin/plugins.php' );
-		const desc =
-			( await page.textContent(
-				'tr[data-plugin^="random-quote-zitat-service"] .plugin-description p'
-			) ) ?? '';
+		const desc = await getPluginDescription( page );
 		expect( desc.startsWith( 'Відображає випадкову цитату' ) ).toBeTruthy();
 	} );
 } );

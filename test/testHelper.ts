@@ -1,7 +1,7 @@
 /**
  * tests/testHelper.ts - utility methods used in the tests
  *
- * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * GPLv3 License, Copyright (c) 2023 - 2026 Heiko Lübbe
  * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
@@ -193,7 +193,9 @@ async function userLogin(
 	storagePath: string | null
 ) {
 	await page.goto( '/wp-admin' );
-	await page.getByLabel( 'Username or Email Address' ).fill( user );
+	const userInput = page.getByLabel( 'Username or Email Address' );
+	await expect( userInput ).toBeVisible();
+	await userInput.fill( user );
 
 	// sometimes it fails, so wait until the element is finished
 	// await page.locator( 'input#user_pass' ).fill( password );
@@ -202,9 +204,13 @@ async function userLogin(
 	await passwordInput.fill( password );
 
 	// Changed with WordPress 6.7 from 'Log in' to 'Log In'
-	await page.getByRole('button', { name: /log in/i }).click();
+	await Promise.all( [
+		page.waitForURL( '**/wp-admin/**' ),
+		page.getByRole( 'button', { name: /log in/i } ).click(),
+	] );
 
 	// '#wpadminbar' is visible on Desktop and mobile
+	await expect( page.locator( 'body.wp-admin' ) ).toBeVisible();
 	await expect( page.locator( 'div#wpadminbar' ) ).toBeVisible();
 
 	if ( storagePath !== null ) {

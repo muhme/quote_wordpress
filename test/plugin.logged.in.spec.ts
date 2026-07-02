@@ -1,7 +1,7 @@
 /**
  * tests/plugin.logged.in.spec.ts - frontend E2E tests using the plugin
  *
- * GPLv3 License, Copyright (c) 2023 - 2024 Heiko Lübbe
+ * GPLv3 License, Copyright (c) 2023 - 2026 Heiko Lübbe
  * WordPress-plugin random-quote-zitat-service, see https://github.com/muhme/quote_wordpress
  *
  */
@@ -69,6 +69,9 @@ const heikoAdminTestData: LanguageTestData = {
  * Needs to be logged-in as WordPress admin before.
  */
 test.describe( 'Frontend – Widget', () => {
+	// Creates/publishes backend content during tests, so run serially to avoid race conditions.
+	test.describe.configure( { mode: 'serial' } );
+
 	Object.entries( heikoAdminTestData ).forEach(
 		( [
 			lang,

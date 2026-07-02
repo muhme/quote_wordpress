@@ -1,20 +1,34 @@
 # Tests
 
-To ensure the integrity and reliability of the WordPress plugin `Random Quote from Zitat-Service`, the `test` subfolder contains a test suite. An overview of the plugin can be found in the [../README.md](../README.md) file in the parent directory.
+To ensure the integrity and reliability of the WordPress plugin `Random Quote from Zitat-Service`,
+the `test` subfolder contains a test suite. An overview of the plugin can be found in the
+[../README.md](../README.md) file in the parent directory.
 
 ## Test Environment
 
-[Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright test utils for WordPress [@wordpress/e2e-test-utils-playwright](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-e2e-test-utils-playwright/). Playwright can be used local installed on host system or with docker container `quote_wp_playwright`. 
+[Playwright](https://playwright.dev/) is used as the platform for End-to-End (E2E) testing and extended with Playwright
+test utils for WordPress
+[@wordpress/e2e-test-utils-playwright](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-e2e-test-utils-playwright/).
+Playwright can be used local installed on host system or with docker container `quote_wp_playwright`. 
 
-Testing is performed against two WordPress Docker containers. The latest version of WordPress is installed in the docker container `quote_wp_wordpress` and the minimum required WordPress version is installed in the docker container `quote_wp_min`. The scripts for the installation and the test can be parameterised with a container name as the first argument. If no container name is specified, the installation or test is performed twice, once for each of the containers.
+Testing is performed against two WordPress Docker containers. The latest version of WordPress is installed in the
+docker container `quote_wp_wordpress` and the minimum required WordPress version is installed in the
+docker container `quote_wp_min`.
+The scripts for the installation and the test can be parameterized with a container name as the first argument.
+If no container name is specified, the installation or test is performed twice, once for each container.
 
-:bulb: **Tip:** Before testing, you have to complete WordPress installation and to activate the plugin with `scripts/install.sh`.
+:bulb: **Tip:** Before testing, you have to complete WordPress installation and to activate the plugin with
+                `scripts/install.sh`.
 
-Playwright tests are grouped into `*-logged-out` and `*-logged-in`. The reason for this is that five different admin users with different locales are used for the backend tests with I18N. These tests are started logged out and themselves make a login with an administrative user in the locale to be tested.
+Playwright tests are grouped into `*-logged-out` and `*-logged-in`.
+The reason for this is that five different admin users with different locales are used for the backend tests with I18N.
+These tests are started logged out and themselves make a login with an administrative user in the locale to be tested.
 
-The frontend tests create posts with the desired plugin parameters in the backend and then check the expected result in the frontend. To create posts, they have to first be logged in once as a WordPress admin user with `login-setup`.
+The frontend tests create posts with the desired plugin parameters in the backend and then check the expected result in
+the frontend. To create posts, they have to first be logged in once as a WordPress admin user with `login-setup`.
 
-One more grouping are the different browsers. Actual we can test with five different browsers: chromium, firefox, webkit, mobile-chrome and mobile-safari.
+Another grouping is by browser.
+Currently, we can test with five different browsers: chromium, firefox, webkit, mobile-chrome, and mobile-safari.
 
 You can run all the actual 2 x 121 tests with:
 ```bash
@@ -63,9 +77,13 @@ Running 25 tests using 6 workers
 ```
 </details>
 
-As the docker container volume is mapped, you can open the HTML report from file `playwright-report/index.html` in your preferred browser.
+As the docker container volume is mapped, you can open the HTML report from file `playwright-report/index.html`
+in your preferred browser.
 
-:bulb: **Tip:** To have WordPress working with HTTP and from localhost and inside Docker container, plus access WordPress from Playwrigth container the little trick is to use the URL `http://host.docker.internal:4080`. The hostname `host.docker.internal` is identical inside docker container and on host machine, if you make the following `/etc/hosts` entry:
+:bulb: **Tip:** To have WordPress working with HTTP from localhost and from inside the Docker container
+       (including access from the Playwright container), use the URL `http://host.docker.internal:4080`.
+       The hostname `host.docker.internal` is identical inside the Docker container and
+       on the host machine if you add the following `/etc/hosts` entry:
 ```bash
 127.0.0.1	host.docker.internal
 ```
@@ -95,12 +113,30 @@ npx playwright install-deps
 npx playwright test 
 ```
 
-Various options can used, such as `--ui` for interactive UI mode, see [Playwright command line otions](https://playwright.dev/docs/test-cli).
+Various options can be used, such as `--ui` for interactive UI mode.
+See [Playwright command line options](https://playwright.dev/docs/test-cli).
 
 ### Trouble-Shooting
 
-The standard for the parallelization of Playwright is 6 workers. If this is too much load for your host, you can reduce the number of workers with the `--workers` option, for example:
+The tests use the live zitat-service API (no mock/stub), so occasional flaky failures can happen because of network
+latency, temporary API errors, or backend load.
+If some test(s) fail a second run with PlayWright option `--last-failed` is executed.
+Additionally you can try the following:
+
+1. Reduce concurrency for a more stable run:
 
 ```bash
-scripts/test.sh --workers=2
+scripts/test.sh --workers=1
+```
+
+2. Enable PlayWright retries for transient failures:
+
+```bash
+scripts/test.sh --retries=2
+```
+
+3. Combine both for maximum stability:
+
+```bash
+scripts/test.sh --workers=1 --retries=2
 ```
